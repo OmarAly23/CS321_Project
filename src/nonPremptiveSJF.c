@@ -8,9 +8,10 @@ int main() {
 	int processes[ASIZE] = {};
 	int waitingTime[ASIZE] = {};
 	int turnAroundTime[ASIZE] = {};
-	int i, j, fd;
+	int i, j, fd, numOfProcesses;
 	int k, l, closing_descriptor = 0;
 	char *region;
+	char *temp;
 	struct stat info;
 	char buff[MAXBUF];
 	bzero(buff, sizeof(buff));
@@ -27,8 +28,11 @@ int main() {
 		buff[l] = region[k];
 		
 	printf("%s\n", buff);
-	printf("%c\n%c\n%c\n%c\n%c\n", buff[0], buff[1], buff[2], buff[3], buff[4]);
-
+	/* Extracting the number of processes from the file */
+	temp = strtok(buff, "\n");
+	numOfProcesses = atoi(temp);
+	printf("%d\n", numOfProcesses);
+	
 
 
 	closing_descriptor = close(fd);
