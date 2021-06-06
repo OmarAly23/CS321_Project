@@ -1,0 +1,5 @@
+    Burst Time	Arrival Time  Proccess Priority  Quantum Time
+        20           0               3               2
+        10           3               2               2
+        30           7               1               2
+        10           3               2               2
