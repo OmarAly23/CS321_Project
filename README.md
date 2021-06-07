@@ -13,3 +13,6 @@
 ### Phase 1:
   - Reading scheduling data from a file and implementing three scheduling algorithms.
   - Create the shared memory
+### Phase 2:
+  - Implementing the remaining algorithms 
+  - Create the threads for each of the scheduling algorithms 
