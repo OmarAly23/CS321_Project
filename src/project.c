@@ -1,6 +1,7 @@
 #include "project.h"
 #include "die_with_error.h"
 #define numOfProcesses 3
+// #define arr 2
 
 void die_with_error(char *msg); // Function Prototype
 
@@ -23,7 +24,7 @@ void *fcfs(void *arg) {
 
 	int waitingTime[ASIZE] = {};
 	int processes[ASIZE] = {};
-	int waitingTime[ASIZE] = {};
+	// int waitingTime[ASIZE] = {};
 	int turnAroundTime[ASIZE] = {};
 	int total_waiting_time = 0;
 	int total_turnAround_time = 0;
@@ -134,7 +135,7 @@ void *sjfNon(void *arg) {
 
 	int waitingTime[ASIZE] = {};
 	int processes[ASIZE] = {};
-	int waitingTime[ASIZE] = {};
+	// int waitingTime[ASIZE] = {};
 	int turnAroundTime[ASIZE] = {};
 	int total_waiting_time = 0;
 	int total_turnAround_time = 0;
