@@ -14,12 +14,20 @@ typedef struct data {
 	int quantumTime;
 } data;
 
-data dt[numOfProcesses];
+data dt_main[numOfProcesses];
 
 
 void *fcfs(void *arg) {
 
 	/* The struct d2 should contain the burst and arrival time of all the processes */
+	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
+	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
+
+	for (int t = 0; t < numOfProcesses; t++) {
+		printf("%d %d %d %d\n", dt[t].burstTime, dt[t].arrivalTime, dt[t].priority, dt[t].quantumTime);
+	}
+
+	free(dt);
 
 
 	int waitingTime[ASIZE] = {};
@@ -84,6 +92,16 @@ void *fcfs(void *arg) {
 void *sjfPreemptive(void *arg) {
 
 	/* The struct d2 should contain the burst and arrival time of all the processes */
+	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
+	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
+
+	for (int t = 0; t < numOfProcesses; t++) {
+		printf("%d %d %d %d\n", dt[t].burstTime, dt[t].arrivalTime, dt[t].priority, dt[t].quantumTime);
+	}
+
+	free(dt);
+
+
 
 	int waitingTime[ASIZE] = {};
 	int processes[ASIZE] = {};
@@ -132,6 +150,15 @@ void *sjfPreemptive(void *arg) {
 void *sjfNon(void *arg) {
 
 	/* The struct d2 should contain the burst and arrival time of all the processes */
+	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
+	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
+
+	for (int t = 0; t < numOfProcesses; t++) {
+		printf("%d %d %d %d\n", dt[t].burstTime, dt[t].arrivalTime, dt[t].priority, dt[t].quantumTime);
+	}
+
+	free(dt);
+
 
 	int waitingTime[ASIZE] = {};
 	int processes[ASIZE] = {};
@@ -245,10 +272,10 @@ int main (void) {
 
 
 	for (i = 0; i < numOfProcesses; i++) {
-		dt[i].quantumTime = buff[0];
-		dt[i].burstTime = bt[i];
-		dt[i].arrivalTime = at[i];
-		dt[i].priority = pt[i];
+		dt_main[i].quantumTime = buff[0];
+		dt_main[i].burstTime = bt[i];
+		dt_main[i].arrivalTime = at[i];
+		dt_main[i].priority = pt[i];
 	}
 
 
