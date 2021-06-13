@@ -215,7 +215,7 @@ int main (void) {
 	int i = 0, j = 0;
 
 	int fd = 0;
-	fd = open("temp.txt", O_RDONLY, 0);
+	fd = open("proj.txt", O_RDONLY, 0);
 	if (fd < 0)
 		die_with_error("Error opening the file");
 	
@@ -235,13 +235,13 @@ int main (void) {
 	bt[1] = atoi(strcat(&buff[5], &buff[6]));
 	bt[2] = atoi(strcat(&buff[8], &buff[9]));
 
-	at[0] = 10;
-	at[1] = 12;
-	at[2] = 14;
+	at[0] = buff[10];
+	at[1] = buff[12];
+	at[2] = buff[14];
 
-	pt[0] = 15;
-	pt[1] = 17;
-	pt[2] = 19;
+	pt[0] = buff[15];
+	pt[1] = buff[17];
+	pt[2] = buff[19];
 
 
 	for (i = 0; i < numOfProcesses; i++) {
