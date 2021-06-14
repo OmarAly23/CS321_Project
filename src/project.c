@@ -30,18 +30,18 @@ void *safe_calloc(size_t size) {
 }
 
 void *fcfs(void *arg) {
-	printf("FCFS\n");
+	printf("\n\nFCFS\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
 	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
 
-	for (int t = 0; t < numOfProcesses; t++) {
-		printf("%d %d %d %d\n", dt[t].burstTime, dt[t].arrivalTime, dt[t].priority, dt[t].quantumTime);
-	}
+	// for (int t = 0; t < numOfProcesses; t++) {
+	// 	printf("%d %d %d %d\n", dt[t].burstTime, dt[t].arrivalTime, dt[t].priority, dt[t].quantumTime);
+	// }
 
-	free(dt);
+	// free(dt);
 
-	pthread_detach(pthread_self());
+	// pthread_detach(pthread_self());
 
 	int waitingTime[ASIZE] = {};
 	int processes[ASIZE] = {};
@@ -100,22 +100,24 @@ void *fcfs(void *arg) {
 
 	pthread_mutex_unlock(&mutex);
 
+	free(dt);
+
 	return NULL;
 }
 /* Shortest Job First Preemptive Scheduling Algorithm */
 void *sjfPreemptive(void *arg) {
-	printf("Preemptive\n");
+	printf("\n\nPreemptive\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
 	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
 
-	for (int t = 0; t < numOfProcesses; t++) {
-		printf("%d %d %d %d\n", dt[t].burstTime, dt[t].arrivalTime, dt[t].priority, dt[t].quantumTime);
-	}
+	// for (int t = 0; t < numOfProcesses; t++) {
+	// 	printf("%d %d %d %d\n", dt[t].burstTime, dt[t].arrivalTime, dt[t].priority, dt[t].quantumTime);
+	// }
 
-	free(dt);
+	// free(dt);
 
-	pthread_detach(pthread_self());
+	// pthread_detach(pthread_self());
 
 	
 	int waitingTime[ASIZE] = {};
@@ -160,23 +162,24 @@ void *sjfPreemptive(void *arg) {
 	printf("Average TurnAround Time:	%lf\n", turnAroundAvg);
 
 	pthread_mutex_unlock(&mutex1);
+	free(dt);
 
 	return NULL;
 }
 /* Shortest job first Non-Preemptive Scheduling Algorithm */
 void *sjfNon(void *arg) {
-	printf("NonPreemptive\n");
+	printf("\n\nNonPreemptive\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
 	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
 
-	for (int t = 0; t < numOfProcesses; t++) {
-		printf("%d %d %d %d\n", dt[t].burstTime, dt[t].arrivalTime, dt[t].priority, dt[t].quantumTime);
-	}
+	// for (int t = 0; t < numOfProcesses; t++) {
+	// 	printf("%d %d %d %d\n", dt[t].burstTime, dt[t].arrivalTime, dt[t].priority, dt[t].quantumTime);
+	// }
 
-	free(dt);
+	// free(dt);
 
-	pthread_detach(pthread_self());
+	// pthread_detach(pthread_self());
 	
 
 	int waitingTime[ASIZE] = {};
@@ -249,8 +252,234 @@ void *sjfNon(void *arg) {
 	
 	pthread_mutex_unlock(&mutex2);
 
+	free(dt);
+
 	return NULL;
 }
+
+
+// /* Round Robin Scheduling Algorithm */
+// void *roundRobin(void *arg) {
+
+// 	/* The struct d2 should contain the burst and arrival time of all the processes */
+// 	data *d2;
+// 	d2 = (data*)*arg;
+
+// 	// Use for loop to enter the details of the process like Arrival time and the Burst Time
+// 	for(i=0; i<NOP; i++) {
+	
+// 		printf("\n Enter the Arrival and Burst time of the Process[%d]\n", i+1);
+// 		printf(" Arrival time is: \t");  // Accept arrival time
+// 		scanf("%d", &at[i]);
+// 		printf(" \nBurst time is: \t"); // Accept the Burst time
+// 		scanf("%d", &bt[i]);
+// 		temp[i] = bt[i]; // store the burst time in temp array
+// 	}
+	
+// 	// Accept the Time qunat
+// 	printf("Enter the Time Quantum for the process: \t");
+// 	scanf("%d", &quant);
+// 	// Display the process No, burst time, Turn Around Time and the waiting time
+// 	printf("\n Process No \t\t Burst Time \t\t TAT \t\t Waiting Time ");
+	
+// 	for(sum=0, i = 0; y!=0;) {
+	
+// 		if(temp[i] <= quant && temp[i] > 0) { // define the condition 
+// 	    		sum = sum + temp[i];
+// 	    		temp[i] = 0;
+// 	    		count=1;
+//     		} else if(temp[i] > 0) {
+			
+//         		temp[i] = temp[i] - quant;
+//         		sum = sum + quant;
+//     		}
+    		
+// 		if(temp[i]==0 && count==1) {
+			
+//         		y--; //decrement the process no.
+//         		printf("\nProcess No[%d] \t\t %d\t\t\t\t %d\t\t\t %d", i+1, bt[i], sum-at[i], sum-at[i]-bt[i]);
+//         		wt = wt+sum-at[i]-bt[i];
+//        	 		tat = tat+sum-at[i];
+//         		count =0;
+//   	  	}
+  	  
+// 		if(i==NOP-1) {
+//   	      		i=0;
+//   	  	} else if(at[i+1]<=sum) {
+//        	 		i++;
+//     		  } else {
+//         		i=0;
+//  	   		}
+// 	}
+	
+// 	// represents the average waiting time and Turn Around time
+// 	avg_wt = wt * 1.0/NOP;
+// 	avg_tat = tat * 1.0/NOP;
+// 	printf("\n Average Turn Around Time: \t%f", avg_wt);
+// 	printf("\n Average Waiting Time: \t%f", avg_tat);
+// 	getch();  
+
+// 	return NULL;
+// }
+
+// /* Priority Non-Preemptive Schedling Algorithm */
+// void *priorityNon(void *arg) {
+
+// 	/* The struct d2 should contain the burst and arrival time of all the processes */
+// 	data *d2;
+// 	d2 = (data*)*arg;
+
+//     	int bt[20],p[20],wt[20],tat[20],pr[20],i,j,n,total=0,pos,temp,avg_wt,avg_tat;
+//     	printf("Enter Total Number of Process:");
+//     	scanf("%d",&n);
+//  
+//     	printf("\nEnter Burst Time and Priority\n");
+//     	for(i=0;i<n;i++) {
+	
+// 		printf("\nP[%d]\n",i+1);
+//         	printf("Burst Time:");
+//         	scanf("%d",&bt[i]);
+//         	printf("Priority:");
+//         	scanf("%d",&pr[i]);
+//         	p[i]=i+1;           //contains process number
+//     	}
+//  
+//     	//sorting burst time, priority and process number in ascending order using selection sort
+//     	for(i=0;i<n;i++) {
+//         
+// 		pos=i;
+//         	for(j=i+1;j<n;j++) {
+//             		if(pr[j]<pr[pos])
+//                 		pos=j;
+//         	}
+//  
+//         	temp=pr[i];
+//         	pr[i]=pr[pos];
+//         	pr[pos]=temp;
+//  
+//         	temp=bt[i];
+//         	bt[i]=bt[pos];
+//         	bt[pos]=temp;
+//  	
+//   	        temp=p[i];
+//         	p[i]=p[pos];
+//         	p[pos]=temp;
+//     	}
+//  
+//     	wt[0]=0;	//waiting time for first process is zero
+//  
+//     	//calculate waiting time
+//     	for(i=1;i<n;i++) {
+//        		wt[i]=0;
+//         	for(j=0;j<i;j++)
+//             		wt[i]+=bt[j];
+//  
+//  	       	total+=wt[i];
+//     	}
+//  
+//     	avg_wt=total/n;      //average waiting time
+//     	total=0;
+//  
+//     	printf("\nProcess\t    Burst Time    \tWaiting Time\tTurnaround Time");
+//     	for(i=0;i<n;i++) {
+//         
+// 		tat[i]=bt[i]+wt[i];     //calculate turnaround time
+//         	total+=tat[i];
+//         	printf("\nP[%d]\t\t  %d\t\t    %d\t\t\t%d",p[i],bt[i],wt[i],tat[i]);
+//     	}
+//  
+//     	avg_tat=total/n;     //average turnaround time
+//     	printf("\n\nAverage Waiting Time=%d",avg_wt);
+//    	printf("\nAverage Turnaround Time=%d\n",avg_tat);
+
+// 	return NULL;
+// }
+
+// /* Priority Preemptive Scheduling Algorithm */
+// void *priorityPre(void *arg) {
+	
+// 	/* The struct d2 should contain the burst and arrival time of all the processes */
+// 	data *d2;
+// 	d2 = (data*)*arg;
+
+// 	for(i=0;i<n;i++) {
+
+// 	printf("Enter process %d id: ",i+1);
+
+// 	scanf("%d",&id[i]);
+
+// 	printf("Enter process %d burst time: ",i+1);
+
+// 	scanf("%d",&bt[i]);
+
+// 	printf("Enter process %d priority: ",i+1);
+
+// 	scanf("%d",&p[i]);
+
+// 	}
+
+// 	for(i=0;i<n;i++) {
+
+// 		for(j=i+1;j<n;j++) {
+
+// 			if(p[i]>p[j]) {
+
+// 				temp=p[i];
+// 				p[i]=p[j];
+// 				p[j]=temp;
+// 				temp=bt[i];
+// 				bt[i]=bt[j];
+// 				bt[j]=temp;
+// 				temp=id[i];
+// 				id[i]=id[j];
+// 				id[j]=temp;
+
+// 			}
+
+// 		}
+
+// 		wt[i]=0;
+
+// 	}
+
+// 	for(i=0;i<n;i++) {
+
+// 		for(j=0;j<i;j++) {
+
+// 			wt[i]=wt[i]+bt[j];
+
+// 		}
+
+// 		tat[i]=wt[i]+bt[i];
+
+// 	}
+
+// 	float avwt=0,avtat=0;
+
+// 	printf("Process\tP\tBT\tWT\tTAT\n");
+
+// 	for(i=0;i<n;i++) {
+
+// 		printf("%d\t%d\t%d\t%d\t%d\n",id[i],p[i],bt[i],wt[i],tat[i]);
+
+// 		avwt=avwt+wt[i];
+
+// 		avtat=avtat+tat[i];
+
+// 	}
+
+// 	avwt=avwt/n;
+
+// 	avtat=avtat/n;
+
+// 	printf("Average Waiting Time: %f\n",avwt);
+
+// 	printf("\nAverage Turnaround Time: %f",avtat);
+
+
+// 	return NULL;
+
+// }
 
 
 
@@ -345,9 +574,9 @@ int main (void) {
 	
 
 	/* Looping over each created thread to reap them */
-	// pthread_join(tid1, NULL);
-	// pthread_join(tid2, NULL);
-	// pthread_join(tid3, NULL);
+	pthread_join(tid1, NULL);
+	pthread_join(tid2, NULL);
+	pthread_join(tid3, NULL);
 
 
 
