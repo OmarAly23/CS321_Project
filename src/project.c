@@ -8,6 +8,10 @@ void die_with_error(char *msg); // Function Prototype
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t mutex1 = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t mutex2 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mutex3 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mutex4 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mutex5 = PTHREAD_MUTEX_INITIALIZER;
+
 
 
 typedef struct data {
@@ -258,228 +262,227 @@ void *sjfNon(void *arg) {
 }
 
 
-// /* Round Robin Scheduling Algorithm */
-// void *roundRobin(void *arg) {
+/* Round Robin Scheduling Algorithm */
+void *roundRobin(void *arg) {
 
-// 	/* The struct d2 should contain the burst and arrival time of all the processes */
-// 	data *d2;
-// 	d2 = (data*)*arg;
+	/* The struct d2 should contain the burst and arrival time of all the processes */
+	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
+	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
 
-// 	// Use for loop to enter the details of the process like Arrival time and the Burst Time
-// 	for(i=0; i<NOP; i++) {
+	int temp[ASIZE];
+	int count = 0, sum = 0;
+	int wt = 0, tat = 0;
+	double avg_wt, avg_tat;
+	// Use for loop to enter the details of the process like Arrival time and the Burst Time
+	pthread_mutex_lock(&mutex3);
+
+	for(i=0; i< numOfProcesses; i++) {
 	
-// 		printf("\n Enter the Arrival and Burst time of the Process[%d]\n", i+1);
-// 		printf(" Arrival time is: \t");  // Accept arrival time
-// 		scanf("%d", &at[i]);
-// 		printf(" \nBurst time is: \t"); // Accept the Burst time
-// 		scanf("%d", &bt[i]);
-// 		temp[i] = bt[i]; // store the burst time in temp array
-// 	}
+		printf("\n Enter the Arrival and Burst time of the Process[%d]\n", i+1);
+		printf(" Arrival time is: \t%d", dt[i].arrivalTime); 
+		printf(" \nBurst time is: \t%d", dt[i].burstTime);
+		temp[i] = bt[i]; // store the burst time in temp array
+	}
 	
-// 	// Accept the Time qunat
-// 	printf("Enter the Time Quantum for the process: \t");
-// 	scanf("%d", &quant);
-// 	// Display the process No, burst time, Turn Around Time and the waiting time
-// 	printf("\n Process No \t\t Burst Time \t\t TAT \t\t Waiting Time ");
+	// Accept the Time qunat
+	printf("Enter the Time Quantum for the process: \t%d", dt[i].quantumTime);
+	// Display the process No, burst time, Turn Around Time and the waiting time
+	printf("\n Process No \t\t Burst Time \t\t TAT \t\t Waiting Time ");
 	
-// 	for(sum=0, i = 0; y!=0;) {
+	for(sum=0, i = 0; y!=0;) {
 	
-// 		if(temp[i] <= quant && temp[i] > 0) { // define the condition 
-// 	    		sum = sum + temp[i];
-// 	    		temp[i] = 0;
-// 	    		count=1;
-//     		} else if(temp[i] > 0) {
+		if(temp[i] <= dt[i].quantumTime && temp[i] > 0) { // define the condition 
+	    		sum = sum + temp[i];
+	    		temp[i] = 0;
+	    		count=1;
+    		} else if(temp[i] > 0) {
 			
-//         		temp[i] = temp[i] - quant;
-//         		sum = sum + quant;
-//     		}
+        		temp[i] = temp[i] - dt[i].quantumTime;
+        		sum = sum + dt[i].quantumTime;
+    		}
     		
-// 		if(temp[i]==0 && count==1) {
+		if(temp[i]==0 && count==1) {
 			
-//         		y--; //decrement the process no.
-//         		printf("\nProcess No[%d] \t\t %d\t\t\t\t %d\t\t\t %d", i+1, bt[i], sum-at[i], sum-at[i]-bt[i]);
-//         		wt = wt+sum-at[i]-bt[i];
-//        	 		tat = tat+sum-at[i];
-//         		count =0;
-//   	  	}
+        		y--; //decrement the process no.
+        		printf("\nProcess No[%d] \t\t %d\t\t\t\t %d\t\t\t %d", i+1, dt[i].burstTime, sum-dt[i].arrivalTime, sum-dt[i].arrivalTime-dt[i].burstTime);
+        		wt = wt+sum-dt[i].arrivalTime-dt[i].burstTime;
+       	 		tat = tat+sum-dt[i].arrivalTime;
+        		count =0;
+  	  	}
   	  
-// 		if(i==NOP-1) {
-//   	      		i=0;
-//   	  	} else if(at[i+1]<=sum) {
-//        	 		i++;
-//     		  } else {
-//         		i=0;
-//  	   		}
-// 	}
+		if(i==numOfProcesses-1) {
+  	      		i=0;
+  	  	} else if(at[i+1]<=sum) {
+       	 		i++;
+    		  } else {
+        		i=0;
+ 	   		}
+	}
 	
-// 	// represents the average waiting time and Turn Around time
-// 	avg_wt = wt * 1.0/NOP;
-// 	avg_tat = tat * 1.0/NOP;
-// 	printf("\n Average Turn Around Time: \t%f", avg_wt);
-// 	printf("\n Average Waiting Time: \t%f", avg_tat);
-// 	getch();  
+	// represents the average waiting time and Turn Around time
+	avg_wt = wt * 1.0/numOfProcesses;
+	avg_tat = tat * 1.0/numOfProcesses;
+	printf("\n Average Turn Around Time: \t%f", avg_wt);
+	printf("\n Average Waiting Time: \t%f", avg_tat);
+	// getch();  
+	pthread_mutex_unlock(&mutex3);
+	free(dt);
+	return NULL;
+}
 
-// 	return NULL;
-// }
+/* Priority Non-Preemptive Schedling Algorithm */
+void *priorityNon(void *arg) {
 
-// /* Priority Non-Preemptive Schedling Algorithm */
-// void *priorityNon(void *arg) {
+	/* The struct d2 should contain the burst and arrival time of all the processes */
 
-// 	/* The struct d2 should contain the burst and arrival time of all the processes */
-// 	data *d2;
-// 	d2 = (data*)*arg;
+		data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
+		memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
 
-//     	int bt[20],p[20],wt[20],tat[20],pr[20],i,j,n,total=0,pos,temp,avg_wt,avg_tat;
-//     	printf("Enter Total Number of Process:");
-//     	scanf("%d",&n);
-//  
-//     	printf("\nEnter Burst Time and Priority\n");
-//     	for(i=0;i<n;i++) {
+
+    	int bt[20],p[20],wt[20],tat[20],pr[20],i,j,n,total=0,pos,temp,avg_wt,avg_tat;
+ 		
+		pthread_mutex_lock(&mutex4);
+
+    	printf("\nEnter Burst Time and Priority\n");
+    	for(i=0;i<numOfProcesses;i++) {
 	
-// 		printf("\nP[%d]\n",i+1);
-//         	printf("Burst Time:");
-//         	scanf("%d",&bt[i]);
-//         	printf("Priority:");
-//         	scanf("%d",&pr[i]);
-//         	p[i]=i+1;           //contains process number
-//     	}
-//  
-//     	//sorting burst time, priority and process number in ascending order using selection sort
-//     	for(i=0;i<n;i++) {
-//         
-// 		pos=i;
-//         	for(j=i+1;j<n;j++) {
-//             		if(pr[j]<pr[pos])
-//                 		pos=j;
-//         	}
-//  
-//         	temp=pr[i];
-//         	pr[i]=pr[pos];
-//         	pr[pos]=temp;
-//  
-//         	temp=bt[i];
-//         	bt[i]=bt[pos];
-//         	bt[pos]=temp;
-//  	
-//   	        temp=p[i];
-//         	p[i]=p[pos];
-//         	p[pos]=temp;
-//     	}
-//  
-//     	wt[0]=0;	//waiting time for first process is zero
-//  
-//     	//calculate waiting time
-//     	for(i=1;i<n;i++) {
-//        		wt[i]=0;
-//         	for(j=0;j<i;j++)
-//             		wt[i]+=bt[j];
-//  
-//  	       	total+=wt[i];
-//     	}
-//  
-//     	avg_wt=total/n;      //average waiting time
-//     	total=0;
-//  
-//     	printf("\nProcess\t    Burst Time    \tWaiting Time\tTurnaround Time");
-//     	for(i=0;i<n;i++) {
-//         
-// 		tat[i]=bt[i]+wt[i];     //calculate turnaround time
-//         	total+=tat[i];
-//         	printf("\nP[%d]\t\t  %d\t\t    %d\t\t\t%d",p[i],bt[i],wt[i],tat[i]);
-//     	}
-//  
-//     	avg_tat=total/n;     //average turnaround time
-//     	printf("\n\nAverage Waiting Time=%d",avg_wt);
-//    	printf("\nAverage Turnaround Time=%d\n",avg_tat);
+			printf("\nP[%d]\n",i+1);
+        	printf("Burst Time: %d\n", dt[i].burstTime);
+        	printf("Priority: %d\n", dt[i].priority);
+        	p[i]=i+1;           //contains process number
+    	}
+ 
+    	//sorting burst time, priority and process number in ascending order using selection sort
+    	for(i=0;i<numOfProcesses;i++) {
+        
+			pos=i;
+        	for(j=i+1;j<numOfProcesses;j++) {
+            		if(pr[j]<pr[pos])
+                		pos=j;
+        	}
+ 
+        	temp=dt[i].priority;
+        	dt[i].priority=dt[pos].priority;
+        	dt[pos].priority=temp;
+ 
+        	temp=dt[i].burstTime;
+        	dt[i].burstTime=dt[pos].burstTime;
+        	dt[pos].burstTime=temp;
+ 	
+  	        temp=p[i];
+        	p[i]=p[pos];
+        	p[pos]=temp;
+    	}
+ 
+    	wt[0]=0;	//waiting time for first process is zero
+ 
+    	//calculate waiting time
+    	for(i=1;i<numOfProcesses;i++) {
+       		wt[i]=0;
+        	for(j=0;j<i;j++)
+            		wt[i]+=dt[j].burstTime;
+ 
+ 	       	total+=wt[i];
+    	}
+ 
+    	avg_wt=total/numOfProcesses;      //average waiting time
+    	total=0;
+ 
+    	printf("\nProcess\t    Burst Time    \tWaiting Time\tTurnaround Time");
+    	for(i=0;i<numOfProcesses;i++) {
+        
+		tat[i]=dt[i].burstTime+wt[i];     //calculate turnaround time
+        	total+=tat[i];
+        	printf("\nP[%d]\t\t  %d\t\t    %d\t\t\t%d",p[i],dt[i].burstTime,wt[i],tat[i]);
+    	}
+ 
+    	avg_tat=total/numOfProcesses;     //average turnaround time
+    	printf("\n\nAverage Waiting Time=%d",avg_wt);
+   		printf("\nAverage Turnaround Time=%d\n",avg_tat);
 
-// 	return NULL;
-// }
+		pthread_mutex_unlock(&mutex4);
+		free(dt);
+		return NULL;
+}
 
-// /* Priority Preemptive Scheduling Algorithm */
-// void *priorityPre(void *arg) {
+/* Priority Preemptive Scheduling Algorithm */
+void *priorityPre(void *arg) {
 	
-// 	/* The struct d2 should contain the burst and arrival time of all the processes */
-// 	data *d2;
-// 	d2 = (data*)*arg;
-
-// 	for(i=0;i<n;i++) {
-
-// 	printf("Enter process %d id: ",i+1);
-
-// 	scanf("%d",&id[i]);
-
-// 	printf("Enter process %d burst time: ",i+1);
-
-// 	scanf("%d",&bt[i]);
-
-// 	printf("Enter process %d priority: ",i+1);
-
-// 	scanf("%d",&p[i]);
-
-// 	}
-
-// 	for(i=0;i<n;i++) {
-
-// 		for(j=i+1;j<n;j++) {
-
-// 			if(p[i]>p[j]) {
-
-// 				temp=p[i];
-// 				p[i]=p[j];
-// 				p[j]=temp;
-// 				temp=bt[i];
-// 				bt[i]=bt[j];
-// 				bt[j]=temp;
-// 				temp=id[i];
-// 				id[i]=id[j];
-// 				id[j]=temp;
-
-// 			}
-
-// 		}
-
-// 		wt[i]=0;
-
-// 	}
-
-// 	for(i=0;i<n;i++) {
-
-// 		for(j=0;j<i;j++) {
-
-// 			wt[i]=wt[i]+bt[j];
-
-// 		}
-
-// 		tat[i]=wt[i]+bt[i];
-
-// 	}
-
-// 	float avwt=0,avtat=0;
-
-// 	printf("Process\tP\tBT\tWT\tTAT\n");
-
-// 	for(i=0;i<n;i++) {
-
-// 		printf("%d\t%d\t%d\t%d\t%d\n",id[i],p[i],bt[i],wt[i],tat[i]);
-
-// 		avwt=avwt+wt[i];
-
-// 		avtat=avtat+tat[i];
-
-// 	}
-
-// 	avwt=avwt/n;
-
-// 	avtat=avtat/n;
-
-// 	printf("Average Waiting Time: %f\n",avwt);
-
-// 	printf("\nAverage Turnaround Time: %f",avtat);
+	/* The struct d2 should contain the burst and arrival time of all the processes */
+	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
+	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
+	int bt[20],p[20],wt[20],tat[20],pr[20],i,j,n,total=0,pos,temp= 0;
+	double avg_wt,avg_tat;
 
 
-// 	return NULL;
+	pthread_mutex_lock(&mutex5);
+	for(i=0;i<numOfProcesses;i++) {
 
-// }
+	printf("Enter process %d burst time: %d",i+1, dt[i].burstTime);
+
+	printf("Enter process %d priority: %d",i+1, dt[i].priority);
+
+	}
+
+	for(i=0;i<numOfProcesses;i++) {
+
+		for(j=i+1;j<numOfProcesses;j++) {
+
+			if(dt[i].priority>dt[j].priority) {
+
+				temp = dt[i].priority;
+				dt[i].priority = dt[j].priority;
+				dt[j].priority = temp;
+
+				temp = dt[i].burstTime;
+				dt[i].burstTime = dt[j].burstTime;
+				dt[j].burstTime = temp;
+
+			}
+
+		}
+
+		wt[i]=0;
+
+	}
+
+	for(i=0;i<numOfProcesses;i++) {
+
+		for(j=0;j<i;j++) {
+
+			wt[i]=wt[i]+dt[j].burstTime;
+
+		}
+
+		tat[i]=wt[i]+dt[i].burstTime;
+
+	}
+
+	printf("Process\tP\tBT\tWT\tTAT\n");
+
+	for(i=0;i<numOfProcesses;i++) {
+
+		printf("%d\t%d\t%d\t%d\n",dt[i].priority,dt[i].burstTime,wt[i],tat[i]);
+
+		avg_wt=avg_wt+wt[i];
+
+		avg_tat=avg_tat+tat[i];
+
+	}
+
+	avg_wt=avg_wt/numOfProcesses;
+
+	avg_tat=avg_tat/numOfProcesses;
+
+	printf("Average Waiting Time: %f\n",avg_wt);
+
+	printf("\nAverage Turnaround Time: %f",avg_tat);
+
+	pthread_mutex_unlock(&mutex5);
+	free(dt);
+	return NULL;	
+
+}
 
 
 
