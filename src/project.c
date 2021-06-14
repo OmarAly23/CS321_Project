@@ -34,7 +34,7 @@ void *safe_calloc(size_t size) {
 }
 
 void *fcfs(void *arg) {
-	printf("\n\nFCFS\n");
+	printf("\n\nFCFS\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
 	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
@@ -110,7 +110,7 @@ void *fcfs(void *arg) {
 }
 /* Shortest Job First Preemptive Scheduling Algorithm */
 void *sjfPreemptive(void *arg) {
-	printf("\n\nPreemptive\n");
+	printf("\n\nPreemptive\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
 	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
@@ -172,7 +172,7 @@ void *sjfPreemptive(void *arg) {
 }
 /* Shortest job first Non-Preemptive Scheduling Algorithm */
 void *sjfNon(void *arg) {
-	printf("\n\nNonPreemptive\n");
+	printf("\n\nNonPreemptive\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
 	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
@@ -264,7 +264,7 @@ void *sjfNon(void *arg) {
 
 /* Round Robin Scheduling Algorithm */
 void *roundRobin(void *arg) {
-
+	printf("\n\nRound Robin\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
 	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
@@ -333,7 +333,7 @@ void *roundRobin(void *arg) {
 
 /* Priority Non-Preemptive Schedling Algorithm */
 void *priorityNon(void *arg) {
-
+		printf("\n\nNon Preemptive Priority\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 
 		data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
@@ -407,7 +407,7 @@ void *priorityNon(void *arg) {
 
 /* Priority Preemptive Scheduling Algorithm */
 void *priorityPre(void *arg) {
-	
+	printf("\n\nPreemptive Priority\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
 	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
@@ -503,7 +503,7 @@ int main (void) {
 		die_with_error("Error opening the file");
 	
 	fstat(fd, &info);
-	printf("The size of the file is: %ld\n", info.st_size);
+	// printf("The size of the file is: %ld\n", info.st_size);
 	region = mmap(NULL, info.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
 
 	for (i = 0, j = 0; i < info.st_size; i++, j++)
@@ -520,7 +520,7 @@ int main (void) {
 	int pt[3] = {};
 	int qt = atoi(&buff[0]);
 
-	printf("testing\n");
+	// printf("testing\n");
 	temp = strcat(&buff[2], &buff[3]);
 	bt[0] = atoi(temp);
 	temp2 = strcat(&buff[5], &buff[6]);
@@ -528,12 +528,12 @@ int main (void) {
 	// temp3 = strcat(&buff[8], &buff[9]);
 	bt[2] = 30;
 
-	printf("testing1\n");
+	// printf("testing1\n");
 	at[0] = buff[10];
 	at[1] = buff[12];
 	at[2] = buff[14];
 
-	printf("testing2\n");
+	// printf("testing2\n");
 	pt[0] = buff[15];
 	pt[1] = buff[17];
 	pt[2] = buff[19];
