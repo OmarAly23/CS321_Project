@@ -6,6 +6,9 @@
 void die_with_error(char *msg); // Function Prototype
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mutex1 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mutex2 = PTHREAD_MUTEX_INITIALIZER;
+
 
 typedef struct data {
 	int burstTime;
@@ -40,62 +43,62 @@ void *fcfs(void *arg) {
 
 	pthread_detach(pthread_self());
 
-
+	int waitingTime[ASIZE] = {};
+	int processes[ASIZE] = {};
 	// int waitingTime[ASIZE] = {};
-	// int processes[ASIZE] = {};
-	// // int waitingTime[ASIZE] = {};
-	// int turnAroundTime[ASIZE] = {};
-	// int total_waiting_time = 0;
-	// int total_turnAround_time = 0;
-	// int position = 0, tempVal = 0, total = 0, i = 0, j = 0;
-	// double waitingAvg = 0.0, turnAroundAvg = 0.0;
+	int turnAroundTime[ASIZE] = {};
+	int total_waiting_time = 0;
+	int total_turnAround_time = 0;
+	int position = 0, tempVal = 0, total = 0, i = 0, j = 0;
+	double waitingAvg = 0.0, turnAroundAvg = 0.0;
+
+	pthread_mutex_lock(&mutex);
+	for (int p = 0; p < numOfProcesses; p++) {
+		printf("Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
+		processes[p] = p+1;
+	}
+
+	/* First we find the waiting time */
+	/* The waiting time of the first process is always zero */
+	waitingTime[0] = 0;
+
+	for (i = 0; i < numOfProcesses; i++)
+		waitingTime[i] = dt[i].burstTime + waitingTime[i-1];
+
+	/* Now we calculate the average turnAround time
+	 * TurnAround time is calculated by adding the burst time with the waitingtime
+	 * BurstTime + waitingTime;
+	 */
+
+	for (i = 0; i < numOfProcesses; i++)
+		turnAroundTime[i] = dt[i].burstTime + waitingTime[i];
+
+	/* Now we display each processes's information
+	 * Burst time, waiting time and turnAround time
+	 */
+
+	printf("\nProcesses	Burst time	Waiting time	TurnAround time\n\n");
 
 
-	// for (int p = 0; p < numOfProcesses; p++) {
-	// 	printf("Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
-	// 	processes[p] = p+1;
-	// }
+	for (i = 0; i < numOfProcesses; i++) {
 
-	// /* First we find the waiting time */
-	// /* The waiting time of the first process is always zero */
-	// waitingTime[0] = 0;
+		total_waiting_time += waitingTime[i];
+		total_turnAround_time += turnAroundTime[i];
 
-	// for (i = 0; i < numOfProcesses; i++)
-	// 	waitingTime[i] = dt[i].burstTime + waitingTime[i-1];
+		printf("Process	[%d] ", (i+1));
+		printf("	   %d ", dt[i].burstTime);
+		printf("		%d ", waitingTime[i]);
+		printf("		     %d\n", turnAroundTime[i]);
 
-	// /* Now we calculate the average turnAround time
-	//  * TurnAround time is calculated by adding the burst time with the waitingtime
-	//  * BurstTime + waitingTime;
-	//  */
+	}
 
-	// for (i = 0; i < numOfProcesses; i++)
-	// 	turnAroundTime[i] = dt[i].burstTime + waitingTime[i];
+	waitingAvg = (double)total_waiting_time / numOfProcesses;
+	turnAroundAvg = (double)total_turnAround_time / numOfProcesses;
 
-	// /* Now we display each processes's information
-	//  * Burst time, waiting time and turnAround time
-	//  */
+	printf("\nAverage waiting time = %.6f\n", waitingAvg);
+	printf("Average turn around time = %.6f\n", turnAroundAvg);
 
-	// printf("\nProcesses	Burst time	Waiting time	TurnAround time\n\n");
-
-
-	// for (i = 0; i < numOfProcesses; i++) {
-
-	// 	total_waiting_time += waitingTime[i];
-	// 	total_turnAround_time += turnAroundTime[i];
-
-	// 	printf("Process	[%d] ", (i+1));
-	// 	printf("	   %d ", dt[i].burstTime);
-	// 	printf("		%d ", waitingTime[i]);
-	// 	printf("		     %d\n", turnAroundTime[i]);
-
-	// }
-
-	// waitingAvg = (double)total_waiting_time / numOfProcesses;
-	// turnAroundAvg = (double)total_turnAround_time / numOfProcesses;
-
-	// printf("\nAverage waiting time = %.6f\n", waitingAvg);
-	// printf("Average turn around time = %.6f\n", turnAroundAvg);
-
+	pthread_mutex_unlock(&mutex);
 
 	return NULL;
 }
@@ -114,46 +117,49 @@ void *sjfPreemptive(void *arg) {
 
 	pthread_detach(pthread_self());
 
-	// int waitingTime[ASIZE] = {};
-	// int processes[ASIZE] = {};
-	// int waitTime = 0;
-	// int turnAroundTime[ASIZE] = {};
-	// int tempArr[ASIZE] = {};
-	// int total_waiting_time = 0;
-	// int total_turnAround_time = 0;
-	// int position = 0, tempVal = 0, total = 0, closing_descriptor = 0;
-	// double waitingAvg = 0.0, turnAroundAvg = 0.0;
-	// int time = 0, count = 0, end = 0;
-	// int i = 0, smallest = 0;
+	
+	int waitingTime[ASIZE] = {};
+	int processes[ASIZE] = {};
+	int waitTime = 0;
+	int turnAroundTime[ASIZE] = {};
+	int tempArr[ASIZE] = {};
+	int total_waiting_time = 0;
+	int total_turnAround_time = 0;
+	int position = 0, tempVal = 0, total = 0, closing_descriptor = 0;
+	double waitingAvg = 0.0, turnAroundAvg = 0.0;
+	int time = 0, count = 0, end = 0;
+	int i = 0, smallest = 0;
 
-	// dt[numOfProcesses].burstTime = 9999;
+	dt[numOfProcesses].burstTime = 9999;
 
-	// for (time = 0; count != numOfProcesses; time++) {
+	pthread_mutex_lock(&mutex1);
 
-	// 	smallest = numOfProcesses;
-	// 	for (i = 0; i < numOfProcesses; i++) {
+	for (time = 0; count != numOfProcesses; time++) {
 
-	// 		if (dt[i].arrivalTime <= time && dt[i].burstTime < dt[smallest].burstTime && dt[i].burstTime > 0)
-	// 			smallest = i;
+		smallest = numOfProcesses;
+		for (i = 0; i < numOfProcesses; i++) {
 
-	// 	}
-	// 	dt[smallest].burstTime--;
-	// 	if (dt[smallest].burstTime == 0) {
-	// 		count++;
-	// 		end = time + 1;
-	// 		waitTime += end - dt[smallest].arrivalTime;
-	// 		total_turnAround_time += end - dt[smallest].arrivalTime;
-	// 	}
+			if (dt[i].arrivalTime <= time && dt[i].burstTime < dt[smallest].burstTime && dt[i].burstTime > 0)
+				smallest = i;
 
-	// }
+		}
+		dt[smallest].burstTime--;
+		if (dt[smallest].burstTime == 0) {
+			count++;
+			end = time + 1;
+			waitTime += end - dt[smallest].arrivalTime;
+			total_turnAround_time += end - dt[smallest].arrivalTime;
+		}
 
-	// waitingAvg = waitTime / numOfProcesses;
-	// turnAroundAvg = total_turnAround_time / numOfProcesses;
+	}
 
-	// printf("\nAverage Waiting Time:		%lf\n", waitingAvg);
-	// printf("Average TurnAround Time:	%lf\n", turnAroundAvg);
+	waitingAvg = waitTime / numOfProcesses;
+	turnAroundAvg = total_turnAround_time / numOfProcesses;
 
+	printf("\nAverage Waiting Time:		%lf\n", waitingAvg);
+	printf("Average TurnAround Time:	%lf\n", turnAroundAvg);
 
+	pthread_mutex_unlock(&mutex1);
 
 	return NULL;
 }
@@ -171,74 +177,78 @@ void *sjfNon(void *arg) {
 	free(dt);
 
 	pthread_detach(pthread_self());
+	
 
+	int waitingTime[ASIZE] = {};
+	int processes[ASIZE] = {};
 	// int waitingTime[ASIZE] = {};
-	// int processes[ASIZE] = {};
-	// // int waitingTime[ASIZE] = {};
-	// int turnAroundTime[ASIZE] = {};
-	// int total_waiting_time = 0;
-	// int total_turnAround_time = 0;
-	// int position = 0, tempVal = 0, total = 0, closing_descriptor = 0, i = 0, j = 0;
-	// double waitingAvg = 0.0, turnAroundAvg = 0.0;
+	int turnAroundTime[ASIZE] = {};
+	int total_waiting_time = 0;
+	int total_turnAround_time = 0;
+	int position = 0, tempVal = 0, total = 0, closing_descriptor = 0, i = 0, j = 0;
+	double waitingAvg = 0.0, turnAroundAvg = 0.0;
 
-
-	// for (int p = 0; p < numOfProcesses; p++) {
-	// 	printf("Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
-	// 	processes[p] = p+1;
-	// }
+	pthread_mutex_lock(&mutex2);
 	
-	// /* Sorting algorithm of the burst time */
-	// /* The burst times are being sorted using the selection sort algorithm */
-	// for (i = 0; i < numOfProcesses; i++) {
-	// 	position = i;
-	// 	for (j = i; j < numOfProcesses; j++) {
-	// 		if (dt[i].burstTime < dt[position].burstTime)
-	// 			position = j;
-	// 	}
-
-	// 	/* Swapping */
-	// 	tempVal = dt[i].burstTime;
-	// 	dt[i].burstTime = dt[position].burstTime;
-	// 	dt[position].burstTime = tempVal;
-
-	// 	tempVal = processes[i];
-	// 	processes[i] = processes[i];
-	// 	processes[position] = tempVal;
-	// }
-
-	// /* The waiting time of the first element is always zero */
-	// waitingTime[0] = 0;
-
-	// /* The waiting time is computed by adding the burst time with the waiting time */
-	// for (i = 1; i < numOfProcesses; i++) {
-	// 	waitingTime[i] = 0;
-	// 	for (j = 0; j < i; j++)
-	// 		waitingTime[i] += dt[j].burstTime;
-	// 	/* The total variable contains the sun of all the waiting time */
-	// 	total += waitingTime[i];
-	// }
-	// /* 
-	//  * Now that we have the sum of the waiting time and the number of processes 
-	//  * We can compute the average of the waiting time
-	//  */
-	// waitingAvg = (double)total / numOfProcesses; 
-
-	// /* re-initialize the variable to be used again for the turn around time calculation */
-	// total = 0;
+	for (int p = 0; p < numOfProcesses; p++) {
+		printf("Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
+		processes[p] = p+1;
+	}
 	
-	// printf("\nProcess ID		Burst Time		Waiting Time		TurnAround Time\n");
-	// for (i = 0; i < numOfProcesses; i++) {
-	// 	turnAroundTime[i] = dt[i].burstTime + waitingTime[i];
-	// 	total += turnAroundTime[i];
-	// 	printf("\nProcess[%d]		%d			%d			%d\n", processes[i], dt[i].burstTime, waitingTime[i], turnAroundTime[i]);
-	// }
+	/* Sorting algorithm of the burst time */
+	/* The burst times are being sorted using the selection sort algorithm */
+	for (i = 0; i < numOfProcesses; i++) {
+		position = i;
+		for (j = i; j < numOfProcesses; j++) {
+			if (dt[i].burstTime < dt[position].burstTime)
+				position = j;
+		}
 
-	// /* The turn around time is the additon of the burst time with the waiting time */
-	// turnAroundAvg = (double)total / numOfProcesses;
+		/* Swapping */
+		tempVal = dt[i].burstTime;
+		dt[i].burstTime = dt[position].burstTime;
+		dt[position].burstTime = tempVal;
 
-	// printf("\nAverage Waiting Time = %f\n", waitingAvg);
-	// printf("\nAverage TurnAround Time = %f\n", turnAroundAvg);
+		tempVal = processes[i];
+		processes[i] = processes[i];
+		processes[position] = tempVal;
+	}
+
+	/* The waiting time of the first element is always zero */
+	waitingTime[0] = 0;
+
+	/* The waiting time is computed by adding the burst time with the waiting time */
+	for (i = 1; i < numOfProcesses; i++) {
+		waitingTime[i] = 0;
+		for (j = 0; j < i; j++)
+			waitingTime[i] += dt[j].burstTime;
+		/* The total variable contains the sun of all the waiting time */
+		total += waitingTime[i];
+	}
+	/* 
+	 * Now that we have the sum of the waiting time and the number of processes 
+	 * We can compute the average of the waiting time
+	 */
+	waitingAvg = (double)total / numOfProcesses; 
+
+	/* re-initialize the variable to be used again for the turn around time calculation */
+	total = 0;
 	
+	printf("\nProcess ID		Burst Time		Waiting Time		TurnAround Time\n");
+	for (i = 0; i < numOfProcesses; i++) {
+		turnAroundTime[i] = dt[i].burstTime + waitingTime[i];
+		total += turnAroundTime[i];
+		printf("\nProcess[%d]		%d			%d			%d\n", processes[i], dt[i].burstTime, waitingTime[i], turnAroundTime[i]);
+	}
+
+	/* The turn around time is the additon of the burst time with the waiting time */
+	turnAroundAvg = (double)total / numOfProcesses;
+
+	printf("\nAverage Waiting Time = %f\n", waitingAvg);
+	printf("\nAverage TurnAround Time = %f\n", turnAroundAvg);
+	
+	pthread_mutex_unlock(&mutex2);
+
 	return NULL;
 }
 
@@ -248,7 +258,7 @@ int main (void) {
 		/* Considering that the data is to be read from a text file and shared among all thread */
 
 	char *region = calloc(MAXBUF, sizeof(char));
-	char buff[MAXBUF]; bzero(buff, sizeof(buff));
+	char buff[100]; bzero(buff, sizeof(buff));
 	char *temp = malloc(sizeof(char) * MAXBUF);
 	char *temp2 = malloc(sizeof(char) * MAXBUF);
 	char *temp3 = malloc(sizeof(char) * MAXBUF);
@@ -261,6 +271,7 @@ int main (void) {
 		die_with_error("Error opening the file");
 	
 	fstat(fd, &info);
+	printf("The size of the file is: %ld\n", info.st_size);
 	region = mmap(NULL, info.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
 
 	for (i = 0, j = 0; i < info.st_size; i++, j++)
@@ -296,9 +307,9 @@ int main (void) {
 	pt[2] = buff[19];
 
 	
-	for (i = 0; i < numOfProcesses; i++) {
-		printf("%d %d %d\n", bt[i], at[i], pt[i]);
-	}
+	// for (i = 0; i < numOfProcesses; i++) {
+	// 	printf("%d %d %d\n", bt[i], at[i], pt[i]);
+	// }
 
 	for (i = 0; i < numOfProcesses; i++) {
 		dt_main[i].quantumTime = qt;
