@@ -313,7 +313,7 @@ void *roundRobin(void *arg) {
   	  
 		if(i==numOfProcesses-1) {
   	      		i=0;
-  	  	} else if(at[i+1]<=sum) {
+  	  	} else if(dt[i+1].arrivalTime<=sum) {
        	 		i++;
     		  } else {
         		i=0;
@@ -553,7 +553,7 @@ int main (void) {
 
 
 	// dt_address = &dt;
-	pthread_t tid1, tid2, tid3;
+	pthread_t tid1, tid2, tid3, tid4, tid5, tid6;
 	
 	/* The six threads each to represent one scheduling algorithm */
 
@@ -566,14 +566,14 @@ int main (void) {
 	/* Shortest Job First Non-Preemptive Scheduling Algorithm */
 	pthread_create(&tid3, NULL, sjfNon,  NULL);
 	
-	// /* Round Robin Scheduling Algorithm */
-	// pthread_create(&tid4, NULL, roundRobin, &dt_address);
+	/* Round Robin Scheduling Algorithm */
+	pthread_create(&tid4, NULL, roundRobin, NULL);
 	
-	// /* Priority Non-Preemptive Scheduling Algorithm*/
-	// pthread_create(&tid5, NULL, priorityNon, &dt_address);
+	/* Priority Non-Preemptive Scheduling Algorithm*/
+	pthread_create(&tid5, NULL, priorityNon, NULL);
 	
-	// /* Priority Preemptive Scheduling Algorithm */
-	// pthread_create(&tid6, NULL, priorityPre, &dt_address);
+	/* Priority Preemptive Scheduling Algorithm */
+	pthread_create(&tid6, NULL, priorityPre, NULL);
 
 	
 
@@ -581,6 +581,9 @@ int main (void) {
 	pthread_join(tid1, NULL);
 	pthread_join(tid2, NULL);
 	pthread_join(tid3, NULL);
+	pthread_join(tid4, NULL);
+	pthread_join(tid5, NULL);
+	pthread_join(tid6, NULL);
 
 
 
