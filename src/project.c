@@ -339,67 +339,66 @@ void *priorityNon(void *arg) {
 		data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
 		memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
 
-
-    	int bt[20],p[20],wt[20],tat[20],pr[20],i,j,n,total=0,pos,temp,avg_wt,avg_tat;
- 		
+		
+		int bt[20],p[20],wt[20],tat[20],pr[20],i,j,n,total=0,pos,temp,avg_wt,avg_tat;
 		pthread_mutex_lock(&mutex4);
 
-    	printf("\nEnter Burst Time and Priority\n");
-    	for(i=0;i<numOfProcesses;i++) {
+		printf("\nEnter Burst Time and Priority\n");
+		for(i=0;i<numOfProcesses;i++) {
 	
 			printf("\nP[%d]\n",i+1);
-        	printf("Burst Time: %d\n", dt[i].burstTime);
-        	printf("Priority: %d\n", dt[i].priority);
-        	p[i]=i+1;           //contains process number
-    	}
- 
-    	//sorting burst time, priority and process number in ascending order using selection sort
-    	for(i=0;i<numOfProcesses;i++) {
-        
+			printf("Burst Time: %d\n", dt[i].burstTime);
+			printf("Priority: %d\n", dt[i].priority);
+			p[i]=i+1; //contains process number
+		}
+
+		//sorting burst time, priority and process number in ascending order using selection sort
+		for(i=0;i<numOfProcesses;i++) {
+
 			pos=i;
-        	for(j=i+1;j<numOfProcesses;j++) {
-            		if(pr[j]<pr[pos])
-                		pos=j;
-        	}
- 
-        	temp=dt[i].priority;
-        	dt[i].priority=dt[pos].priority;
-        	dt[pos].priority=temp;
- 
-        	temp=dt[i].burstTime;
-        	dt[i].burstTime=dt[pos].burstTime;
-        	dt[pos].burstTime=temp;
- 	
-  	        temp=p[i];
-        	p[i]=p[pos];
-        	p[pos]=temp;
-    	}
- 
-    	wt[0]=0;	//waiting time for first process is zero
- 
-    	//calculate waiting time
-    	for(i=1;i<numOfProcesses;i++) {
-       		wt[i]=0;
-        	for(j=0;j<i;j++)
-            		wt[i]+=dt[j].burstTime;
- 
- 	       	total+=wt[i];
-    	}
- 
-    	avg_wt=total/numOfProcesses;      //average waiting time
-    	total=0;
- 
-    	printf("\nProcess\t    Burst Time    \tWaiting Time\tTurnaround Time");
-    	for(i=0;i<numOfProcesses;i++) {
-        
-		tat[i]=dt[i].burstTime+wt[i];     //calculate turnaround time
-        	total+=tat[i];
-        	printf("\nP[%d]\t\t  %d\t\t    %d\t\t\t%d",p[i],dt[i].burstTime,wt[i],tat[i]);
-    	}
- 
-    	avg_tat=total/numOfProcesses;     //average turnaround time
-    	printf("\n\nAverage Waiting Time=%d",avg_wt);
-   		printf("\nAverage Turnaround Time=%d\n",avg_tat);
+			for(j=i+1;j<numOfProcesses;j++) {
+				if(pr[j]<pr[pos])
+					pos=j;
+			}
+
+			temp=dt[i].priority;
+			dt[i].priority=dt[pos].priority;
+			dt[pos].priority=temp;
+
+			temp=dt[i].burstTime;
+			dt[i].burstTime=dt[pos].burstTime;
+			dt[pos].burstTime=temp;
+	
+			temp=p[i];
+			p[i]=p[pos];
+			p[pos]=temp;
+		}
+
+		wt[0]=0;	//waiting time for first process is zero
+
+		//calculate waiting time
+		for(i=1;i<numOfProcesses;i++) {
+			wt[i]=0;
+			for(j=0;j<i;j++)
+					wt[i]+=dt[j].burstTime;
+
+			total+=wt[i];
+		}
+
+		avg_wt=total/numOfProcesses;//average waiting time
+		total=0;
+
+		printf("\nProcess\t    Burst Time    \tWaiting Time\tTurnaround Time");
+		for(i=0;i<numOfProcesses;i++) {
+		
+			tat[i]=dt[i].burstTime+wt[i]; //calculate turnaround time
+			total+=tat[i];
+			printf("\nP[%d]\t\t  %d\t\t    %d\t\t\t%d",p[i],dt[i].burstTime,wt[i],tat[i]);
+		}
+
+		avg_tat=total/numOfProcesses; //average turnaround time
+		printf("\n\nAverage Waiting Time=%d",avg_wt);
+		printf("\nAverage Turnaround Time=%d\n",avg_tat);
 
 		pthread_mutex_unlock(&mutex4);
 		free(dt);
