@@ -34,7 +34,7 @@ void *safe_calloc(size_t size) {
 }
 
 void *fcfs(void *arg) {
-	printf("\n\nFCFS\n\n");
+	printf("\n\n*************************FCFS*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
 	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
@@ -56,7 +56,7 @@ void *fcfs(void *arg) {
 	int position = 0, tempVal = 0, total = 0, i = 0, j = 0;
 	double waitingAvg = 0.0, turnAroundAvg = 0.0;
 
-	pthread_mutex_lock(&mutex);
+	//pthread_mutex_lock(&mutex);
 	for (int p = 0; p < numOfProcesses; p++) {
 		printf("Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
 		processes[p] = p+1;
@@ -102,7 +102,7 @@ void *fcfs(void *arg) {
 	printf("\nAverage waiting time = %.6f\n", waitingAvg);
 	printf("Average turn around time = %.6f\n", turnAroundAvg);
 
-	pthread_mutex_unlock(&mutex);
+	//pthread_mutex_unlock(&mutex);
 
 	free(dt);
 
@@ -110,7 +110,7 @@ void *fcfs(void *arg) {
 }
 /* Shortest Job First Preemptive Scheduling Algorithm */
 void *sjfPreemptive(void *arg) {
-	printf("\n\nPreemptive\n\n");
+	printf("\n\n*************************Shortest Job Preemptive*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
 	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
@@ -138,7 +138,7 @@ void *sjfPreemptive(void *arg) {
 
 	dt[numOfProcesses].burstTime = 9999;
 
-	pthread_mutex_lock(&mutex1);
+	//pthread_mutex_lock(&mutex1);
 
 	for (time = 0; count != numOfProcesses; time++) {
 
@@ -165,14 +165,14 @@ void *sjfPreemptive(void *arg) {
 	printf("\nAverage Waiting Time:		%lf\n", waitingAvg);
 	printf("Average TurnAround Time:	%lf\n", turnAroundAvg);
 
-	pthread_mutex_unlock(&mutex1);
+	//pthread_mutex_unlock(&mutex1);
 	free(dt);
 
 	return NULL;
 }
 /* Shortest job first Non-Preemptive Scheduling Algorithm */
 void *sjfNon(void *arg) {
-	printf("\n\nNonPreemptive\n\n");
+	printf("\n\n*************************Shortest Job NonPreemptive*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
 	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
@@ -195,7 +195,7 @@ void *sjfNon(void *arg) {
 	int position = 0, tempVal = 0, total = 0, closing_descriptor = 0, i = 0, j = 0;
 	double waitingAvg = 0.0, turnAroundAvg = 0.0;
 
-	pthread_mutex_lock(&mutex2);
+	//pthread_mutex_lock(&mutex2);
 	
 	for (int p = 0; p < numOfProcesses; p++) {
 		printf("Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
@@ -254,7 +254,7 @@ void *sjfNon(void *arg) {
 	printf("\nAverage Waiting Time = %f\n", waitingAvg);
 	printf("\nAverage TurnAround Time = %f\n", turnAroundAvg);
 	
-	pthread_mutex_unlock(&mutex2);
+	//pthread_mutex_unlock(&mutex2);
 
 	free(dt);
 
@@ -264,7 +264,7 @@ void *sjfNon(void *arg) {
 
 /* Round Robin Scheduling Algorithm */
 void *roundRobin(void *arg) {
-	printf("\n\nRound Robin\n\n");
+	printf("\n\n*************************Round Robin*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
 	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
@@ -275,7 +275,7 @@ void *roundRobin(void *arg) {
 	double avg_wt, avg_tat;
 	int i = 0, y = 0;
 	// Use for loop to enter the details of the process like Arrival time and the Burst Time
-	pthread_mutex_lock(&mutex3);
+	//pthread_mutex_lock(&mutex3);
 
 	for(i=0; i< numOfProcesses; i++) {
 	
@@ -326,14 +326,14 @@ void *roundRobin(void *arg) {
 	printf("\n Average Turn Around Time: \t%f", avg_wt);
 	printf("\n Average Waiting Time: \t%f", avg_tat);
 	// getch();  
-	pthread_mutex_unlock(&mutex3);
+	//pthread_mutex_unlock(&mutex3);
 	free(dt);
 	return NULL;
 }
 
 /* Priority Non-Preemptive Schedling Algorithm */
 void *priorityNon(void *arg) {
-		printf("\n\nNon Preemptive Priority\n\n");
+		printf("\n\n*************************Non Preemptive Priority*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 
 		data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
@@ -341,7 +341,7 @@ void *priorityNon(void *arg) {
 
 		
 		int bt[20],p[20],wt[20],tat[20],pr[20],i,j,n,total=0,pos,temp,avg_wt,avg_tat;
-		pthread_mutex_lock(&mutex4);
+		//pthread_mutex_lock(&mutex4);
 
 		printf("\nEnter Burst Time and Priority\n");
 		for(i=0;i<numOfProcesses;i++) {
@@ -400,14 +400,14 @@ void *priorityNon(void *arg) {
 		printf("\n\nAverage Waiting Time=%d",avg_wt);
 		printf("\nAverage Turnaround Time=%d\n",avg_tat);
 
-		pthread_mutex_unlock(&mutex4);
+		//pthread_mutex_unlock(&mutex4);
 		free(dt);
 		return NULL;
 }
 
 /* Priority Preemptive Scheduling Algorithm */
 void *priorityPre(void *arg) {
-	printf("\n\nPreemptive Priority\n\n");
+	printf("\n\n*************************Preemptive Priority*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
 	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
@@ -415,7 +415,7 @@ void *priorityPre(void *arg) {
 	double avg_wt,avg_tat;
 
 
-	pthread_mutex_lock(&mutex5);
+	//pthread_mutex_lock(&mutex5);
 	for(i=0;i<numOfProcesses;i++) {
 
 	printf("Enter process %d burst time: %d",i+1, dt[i].burstTime);
@@ -478,7 +478,7 @@ void *priorityPre(void *arg) {
 
 	printf("\nAverage Turnaround Time: %f",avg_tat);
 
-	pthread_mutex_unlock(&mutex5);
+	//pthread_mutex_unlock(&mutex5);
 	free(dt);
 	return NULL;	
 
