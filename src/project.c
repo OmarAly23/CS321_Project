@@ -273,29 +273,29 @@ void *roundRobin(void *arg) {
 	int count = 0, sum = 0;
 	int wt = 0, tat = 0;
 	double avg_wt, avg_tat;
-	int i = 0, y = 0;
+	int i = 0, y = numOfProcesses;
 	// Use for loop to enter the details of the process like Arrival time and the Burst Time
 	//pthread_mutex_lock(&mutex3);
 
 	for(i=0; i< numOfProcesses; i++) {
 	
-		printf("\n Enter the Arrival and Burst time of the Process[%d]\n", i+1);
-		printf(" Arrival time is: \t%d", dt[i].arrivalTime); 
-		printf(" \nBurst time is: \t%d", dt[i].burstTime);
+		printf("\nEnter the Arrival and Burst time of the Process[%d]\n", i+1);
+		printf("\nArrival time is: \t%d\n", dt[i].arrivalTime); 
+		printf("\nBurst time is: \t%d\n", dt[i].burstTime);
 		temp[i] = dt[i].burstTime; // store the burst time in temp array
 	}
 	
 	// Accept the Time qunat
-	printf("Enter the Time Quantum for the process: \t%d", dt[i].quantumTime);
+	printf("Enter the Time Quantum for the process: \t%d\n", dt[0].quantumTime);
 	// Display the process No, burst time, Turn Around Time and the waiting time
-	printf("\n Process No \t\t Burst Time \t\t TAT \t\t Waiting Time ");
+	printf("\nProcess No \t\tBurst Time \t\tTAT \t\tWaiting Time ");
 	
 	for(sum=0, i = 0; y!=0;) {
 	
 		if(temp[i] <= dt[i].quantumTime && temp[i] > 0) { // define the condition 
 	    		sum = sum + temp[i];
 	    		temp[i] = 0;
-	    		count=1;
+	    		count = 1;
     		} else if(temp[i] > 0) {
 			
         		temp[i] = temp[i] - dt[i].quantumTime;
@@ -305,13 +305,13 @@ void *roundRobin(void *arg) {
 		if(temp[i]==0 && count==1) {
 			
         		y--; //decrement the process no.
-        		printf("\nProcess No[%d] \t\t %d\t\t\t\t %d\t\t\t %d", i+1, dt[i].burstTime, sum-dt[i].arrivalTime, sum-dt[i].arrivalTime-dt[i].burstTime);
-        		wt = wt+sum-dt[i].arrivalTime-dt[i].burstTime;
-       	 		tat = tat+sum-dt[i].arrivalTime;
+        		printf("\nProcess No[%d] \t\t %d\t\t\t\t %d\t\t\t %d\n", i+1, dt[i].burstTime, sum-dt[i].arrivalTime, sum-dt[i].arrivalTime-dt[i].burstTime);
+        		wt = wt + sum - dt[i].arrivalTime - dt[i].burstTime;
+       	 		tat = tat + sum - dt[i].arrivalTime;
         		count =0;
   	  	}
   	  
-		if(i==numOfProcesses-1) {
+		if(i == numOfProcesses-1) {
   	      		i=0;
   	  	} else if(dt[i+1].arrivalTime<=sum) {
        	 		i++;
@@ -321,8 +321,8 @@ void *roundRobin(void *arg) {
 	}
 	
 	// represents the average waiting time and Turn Around time
-	avg_wt = wt * 1.0/numOfProcesses;
-	avg_tat = tat * 1.0/numOfProcesses;
+	avg_wt = (double)wt/numOfProcesses;
+	avg_tat = (double)tat/numOfProcesses;
 	printf("\n Average Turn Around Time: \t%f", avg_wt);
 	printf("\n Average Waiting Time: \t%f", avg_tat);
 	// getch();  
@@ -418,9 +418,9 @@ void *priorityPre(void *arg) {
 	//pthread_mutex_lock(&mutex5);
 	for(i=0;i<numOfProcesses;i++) {
 
-	printf("Enter process %d burst time: %d",i+1, dt[i].burstTime);
+	printf("Enter process %d burst time: %d\n",i+1, dt[i].burstTime);
 
-	printf("Enter process %d priority: %d",i+1, dt[i].priority);
+	printf("Enter process %d priority: %d\n",i+1, dt[i].priority);
 
 	}
 
@@ -458,11 +458,11 @@ void *priorityPre(void *arg) {
 
 	}
 
-	printf("Process\tP\tBT\tWT\tTAT\n");
+	printf("\nProcess\tP\tBT\tWT\tTAT\n");
 
 	for(i=0;i<numOfProcesses;i++) {
 
-		printf("%d\t%d\t%d\t%d\n",dt[i].priority,dt[i].burstTime,wt[i],tat[i]);
+		printf("\t%d\t%d\t%d\t%d\n",dt[i].priority,dt[i].burstTime,wt[i],tat[i]);
 
 		avg_wt=avg_wt+wt[i];
 
@@ -557,23 +557,34 @@ int main (void) {
 	/* The six threads each to represent one scheduling algorithm */
 
 	/* First Come First Serve Scheduling Algorithm*/
-	pthread_create(&tid1, NULL, fcfs,  NULL);
-	
+	//pthread_mutex_lock(&mutex);
+	pthread_create(&tid1, NULL, fcfs,  NULL);	
+	//pthread_mutex_unlock(&mutex);
+
 	/* Shortest Job First Preemptive Scheduling Algorithm */
+	//pthread_mutex_lock(&mutex1);
 	pthread_create(&tid2, NULL, sjfPreemptive, NULL);
+	//pthread_mutex_unlock(&mutex1);
 	
 	/* Shortest Job First Non-Preemptive Scheduling Algorithm */
+	//pthread_mutex_lock(&mutex2);
 	pthread_create(&tid3, NULL, sjfNon,  NULL);
-	
-	/* Round Robin Scheduling Algorithm */
-	pthread_create(&tid4, NULL, roundRobin, NULL);
-	
-	/* Priority Non-Preemptive Scheduling Algorithm*/
-	pthread_create(&tid5, NULL, priorityNon, NULL);
-	
-	/* Priority Preemptive Scheduling Algorithm */
-	pthread_create(&tid6, NULL, priorityPre, NULL);
+	//pthread_mutex_unlock(&mutex2);
 
+	/* Round Robin Scheduling Algorithm */
+	//pthread_mutex_lock(&mutex3);
+	pthread_create(&tid4, NULL, roundRobin, NULL);
+	//pthread_mutex_unlock(&mutex3);
+
+	/* Priority Non-Preemptive Scheduling Algorithm*/
+	//pthread_mutex_lock(&mutex4);
+	pthread_create(&tid5, NULL, priorityNon, NULL);
+	//pthread_mutex_unlock(&mutex4);
+
+	/* Priority Preemptive Scheduling Algorithm */
+	//pthread_mutex_lock(&mutex5);
+	pthread_create(&tid6, NULL, priorityPre, NULL);
+	//pthread_mutex_unlock(&mutex5);
 	
 
 	/* Looping over each created thread to reap them */
