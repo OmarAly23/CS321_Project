@@ -273,6 +273,7 @@ void *roundRobin(void *arg) {
 	int count = 0, sum = 0;
 	int wt = 0, tat = 0;
 	double avg_wt, avg_tat;
+	int i = 0, y = 0;
 	// Use for loop to enter the details of the process like Arrival time and the Burst Time
 	pthread_mutex_lock(&mutex3);
 
@@ -281,7 +282,7 @@ void *roundRobin(void *arg) {
 		printf("\n Enter the Arrival and Burst time of the Process[%d]\n", i+1);
 		printf(" Arrival time is: \t%d", dt[i].arrivalTime); 
 		printf(" \nBurst time is: \t%d", dt[i].burstTime);
-		temp[i] = bt[i]; // store the burst time in temp array
+		temp[i] = dt[i].burstTime; // store the burst time in temp array
 	}
 	
 	// Accept the Time qunat
