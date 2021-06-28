@@ -28,7 +28,7 @@ typedef struct data {
 } data;
 
 
-data dt_main[ASIZE];
+data *dt_main;
 
 
 void *safe_calloc(size_t size) {
@@ -533,15 +533,26 @@ int main (void) {
 	printf("Number Of Processes: %d\n", numberOfLines);
 	printf("Quantum time: %d\n", quantumTime);
 
+	rewind(filePtr);
+	fgets(buffer, MAXBUF - 1, filePtr);
+
+	dt_main = safe_calloc( (sizeof *dt_main) * numberOfLines);
 
 	for (int i = 0; i < numberOfLines; i++) {
+		memset(buffer, 0, MAXBUF);
+
 		dt_main[i].pid = (i + 1);
 
 		fgets(buffer, MAXBUF - 1, filePtr);
 
 		sscanf(buffer, "%d %d %d", &dt_main[i].burstTime, &dt_main[i].arrivalTime, &dt_main[i].priority);
+
 		
-		memset(buffer, 0, MAXBUF);
+	}
+
+	printf("****************Printing the struct********************\n");
+	for (i = 0; i < numberOfLines; i++) {
+		printf("%d %d %d\n", dt_main[i].burstTime, dt_main[i].arrivalTime, dt_main[i].priority);
 	}
 
 
