@@ -23,6 +23,6 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#define MAXBUF 8192
-#define MAXLINE 8192
+#define MAXBUF 300000
+#define MAXLINE 300000
 #define ASIZE 600
