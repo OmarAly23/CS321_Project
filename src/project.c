@@ -9,6 +9,8 @@ int quantumTime = 0;
 int numberOfLines = 0;
 // global file pointer
 FILE *filePtr = NULL;
+// global file pointer to the output file
+int outputFile = 0;
 // global job counter
 int job_counter = 0;
 
@@ -546,7 +548,7 @@ int main (void) {
 	int qt = 0;
 
 	// struct stat info;
-	int i = 0, j = 0;
+	int i = 0, j = 0, retval = 0;
 
 	// int fd = 0;
 	// fd = open("proj.txt", O_RDONLY, 0);
@@ -557,8 +559,23 @@ int main (void) {
 	// printf("The size of the file is: %ld\n", info.st_size);
 	// region = mmap(NULL, info.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
 
-
+	// Opening the file to extract the data
 	filePtr = fopen("data_100.txt", "r");
+	
+	if (filePtr == NULL)
+		die_with_error("Error Opening Data File");
+	
+	// opening the output file for output redirection
+	outputFile = open("output.txt", O_WRONLY | O_CREAT, 0666);
+
+	if (outputFile == 0)
+		die_with_error("Error Opening the output File");
+
+	// Output Redirection
+	retval = dup2(outputFile, STDOUT_FILENO);
+
+	if (retval < 0)
+		die_with_error("Error Duplicating the file descriptor for redirection");
 
 	fgets(buffer, MAXBUF - 1, filePtr);
 	sscanf(buffer, "%d", &quantumTime);
@@ -645,8 +662,8 @@ int main (void) {
 
 
 	pthread_mutex_destroy(&mutex);
-    pthread_mutex_destroy(&mutex1);
 	fclose(filePtr);
+	close(outputFile);
 	// munmap(region, sizeof(region));
 	/*free(temp);
 	free(temp2);
