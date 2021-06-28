@@ -25,4 +25,4 @@
 
 #define MAXBUF 8192
 #define MAXLINE 8192
-#define ASIZE 100
+#define ASIZE 600

@@ -1,31 +1,38 @@
 #include "project.h"
 #include "die_with_error.h"
-#define numOfProcesses 3
+// #define numOfProcesses 600
 // #define arr 2
+
+// global variable to define the quantum time
+int quantumTime = 0;
+// global variable to store the number of lines read from the file
+int numberOfLines = 0;
+FILE *filePtr = NULL;
 
 void die_with_error(char *msg); // Function Prototype
 
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutex_t mutex1 = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutex_t mutex2 = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutex_t mutex3 = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutex_t mutex4 = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutex_t mutex5 = PTHREAD_MUTEX_INITIALIZER;
+// pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+// pthread_mutex_t mutex1 = PTHREAD_MUTEX_INITIALIZER;
+// pthread_mutex_t mutex2 = PTHREAD_MUTEX_INITIALIZER;
+// pthread_mutex_t mutex3 = PTHREAD_MUTEX_INITIALIZER;
+// pthread_mutex_t mutex4 = PTHREAD_MUTEX_INITIALIZER;
+// pthread_mutex_t mutex5 = PTHREAD_MUTEX_INITIALIZER;
 
 
 
 typedef struct data {
+	int pid;
 	int burstTime;
 	int arrivalTime;
-	int priority;
-	int quantumTime;
+	int priority;	
 } data;
 
-data dt_main[numOfProcesses];
+
+data dt_main[ASIZE];
 
 
 void *safe_calloc(size_t size) {
-	void *temp = calloc(numOfProcesses, size);
+	void *temp = calloc(numberOfLines, size);
 
 	if (temp == NULL)
 		die_with_error("Error Allocating Data");
@@ -36,8 +43,8 @@ void *safe_calloc(size_t size) {
 void *fcfs(void *arg) {
 	printf("\n\n*************************FCFS*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
-	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
-	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
+	data *dt = safe_calloc( (sizeof *dt) * numberOfLines);
+	memcpy(dt, dt_main, (sizeof *dt) * numberOfLines);
 
 	// for (int t = 0; t < numOfProcesses; t++) {
 	// 	printf("%d %d %d %d\n", dt[t].burstTime, dt[t].arrivalTime, dt[t].priority, dt[t].quantumTime);
@@ -57,7 +64,7 @@ void *fcfs(void *arg) {
 	double waitingAvg = 0.0, turnAroundAvg = 0.0;
 
 	//pthread_mutex_lock(&mutex);
-	for (int p = 0; p < numOfProcesses; p++) {
+	for (int p = 0; p < numberOfLines; p++) {
 		printf("Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
 		processes[p] = p+1;
 	}
@@ -66,7 +73,7 @@ void *fcfs(void *arg) {
 	/* The waiting time of the first process is always zero */
 	waitingTime[0] = 0;
 
-	for (i = 0; i < numOfProcesses; i++)
+	for (i = 0; i < numberOfLines; i++)
 		waitingTime[i] = dt[i].burstTime + waitingTime[i-1];
 
 	/* Now we calculate the average turnAround time
@@ -74,7 +81,7 @@ void *fcfs(void *arg) {
 	 * BurstTime + waitingTime;
 	 */
 
-	for (i = 0; i < numOfProcesses; i++)
+	for (i = 0; i < numberOfLines; i++)
 		turnAroundTime[i] = dt[i].burstTime + waitingTime[i];
 
 	/* Now we display each processes's information
@@ -84,7 +91,7 @@ void *fcfs(void *arg) {
 	printf("\nProcesses	Burst time	Waiting time	TurnAround time\n\n");
 
 
-	for (i = 0; i < numOfProcesses; i++) {
+	for (i = 0; i < numberOfLines; i++) {
 
 		total_waiting_time += waitingTime[i];
 		total_turnAround_time += turnAroundTime[i];
@@ -96,8 +103,8 @@ void *fcfs(void *arg) {
 
 	}
 
-	waitingAvg = (double)total_waiting_time / numOfProcesses;
-	turnAroundAvg = (double)total_turnAround_time / numOfProcesses;
+	waitingAvg = (double)total_waiting_time / numberOfLines;
+	turnAroundAvg = (double)total_turnAround_time / numberOfLines;
 
 	printf("\nAverage waiting time = %.6f\n", waitingAvg);
 	printf("Average turn around time = %.6f\n", turnAroundAvg);
@@ -112,8 +119,8 @@ void *fcfs(void *arg) {
 void *sjfPreemptive(void *arg) {
 	printf("\n\n*************************Shortest Job Preemptive*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
-	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
-	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
+	data *dt = safe_calloc( (sizeof *dt) * numberOfLines);
+	memcpy(dt, dt_main, (sizeof *dt) * numberOfLines);
 
 	// for (int t = 0; t < numOfProcesses; t++) {
 	// 	printf("%d %d %d %d\n", dt[t].burstTime, dt[t].arrivalTime, dt[t].priority, dt[t].quantumTime);
@@ -136,14 +143,14 @@ void *sjfPreemptive(void *arg) {
 	int time = 0, count = 0, end = 0;
 	int i = 0, smallest = 0;
 
-	dt[numOfProcesses].burstTime = 9999;
+	dt[numberOfLines].burstTime = 9999;
 
 	//pthread_mutex_lock(&mutex1);
 
-	for (time = 0; count != numOfProcesses; time++) {
+	for (time = 0; count != numberOfLines; time++) {
 
-		smallest = numOfProcesses;
-		for (i = 0; i < numOfProcesses; i++) {
+		smallest = numberOfLines;
+		for (i = 0; i < numberOfLines; i++) {
 
 			if (dt[i].arrivalTime <= time && dt[i].burstTime < dt[smallest].burstTime && dt[i].burstTime > 0)
 				smallest = i;
@@ -159,8 +166,8 @@ void *sjfPreemptive(void *arg) {
 
 	}
 
-	waitingAvg = waitTime / numOfProcesses;
-	turnAroundAvg = total_turnAround_time / numOfProcesses;
+	waitingAvg = waitTime / numberOfLines;
+	turnAroundAvg = total_turnAround_time / numberOfLines;
 
 	printf("\nAverage Waiting Time:		%lf\n", waitingAvg);
 	printf("Average TurnAround Time:	%lf\n", turnAroundAvg);
@@ -174,8 +181,8 @@ void *sjfPreemptive(void *arg) {
 void *sjfNon(void *arg) {
 	printf("\n\n*************************Shortest Job NonPreemptive*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
-	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
-	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
+	data *dt = safe_calloc( (sizeof *dt) * numberOfLines);
+	memcpy(dt, dt_main, (sizeof *dt) * numberOfLines);
 
 	// for (int t = 0; t < numOfProcesses; t++) {
 	// 	printf("%d %d %d %d\n", dt[t].burstTime, dt[t].arrivalTime, dt[t].priority, dt[t].quantumTime);
@@ -197,16 +204,16 @@ void *sjfNon(void *arg) {
 
 	//pthread_mutex_lock(&mutex2);
 	
-	for (int p = 0; p < numOfProcesses; p++) {
+	for (int p = 0; p < numberOfLines; p++) {
 		printf("Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
 		processes[p] = p+1;
 	}
 	
 	/* Sorting algorithm of the burst time */
 	/* The burst times are being sorted using the selection sort algorithm */
-	for (i = 0; i < numOfProcesses; i++) {
+	for (i = 0; i < numberOfLines; i++) {
 		position = i;
-		for (j = i; j < numOfProcesses; j++) {
+		for (j = i; j < numberOfLines; j++) {
 			if (dt[i].burstTime < dt[position].burstTime)
 				position = j;
 		}
@@ -225,7 +232,7 @@ void *sjfNon(void *arg) {
 	waitingTime[0] = 0;
 
 	/* The waiting time is computed by adding the burst time with the waiting time */
-	for (i = 1; i < numOfProcesses; i++) {
+	for (i = 1; i < numberOfLines; i++) {
 		waitingTime[i] = 0;
 		for (j = 0; j < i; j++)
 			waitingTime[i] += dt[j].burstTime;
@@ -236,20 +243,20 @@ void *sjfNon(void *arg) {
 	 * Now that we have the sum of the waiting time and the number of processes 
 	 * We can compute the average of the waiting time
 	 */
-	waitingAvg = (double)total / numOfProcesses; 
+	waitingAvg = (double)total / numberOfLines; 
 
 	/* re-initialize the variable to be used again for the turn around time calculation */
 	total = 0;
 	
 	printf("\nProcess ID		Burst Time		Waiting Time		TurnAround Time\n");
-	for (i = 0; i < numOfProcesses; i++) {
+	for (i = 0; i < numberOfLines; i++) {
 		turnAroundTime[i] = dt[i].burstTime + waitingTime[i];
 		total += turnAroundTime[i];
 		printf("\nProcess[%d]		%d			%d			%d\n", processes[i], dt[i].burstTime, waitingTime[i], turnAroundTime[i]);
 	}
 
 	/* The turn around time is the additon of the burst time with the waiting time */
-	turnAroundAvg = (double)total / numOfProcesses;
+	turnAroundAvg = (double)total / numberOfLines;
 
 	printf("\nAverage Waiting Time = %f\n", waitingAvg);
 	printf("\nAverage TurnAround Time = %f\n", turnAroundAvg);
@@ -266,18 +273,18 @@ void *sjfNon(void *arg) {
 void *roundRobin(void *arg) {
 	printf("\n\n*************************Round Robin*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
-	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
-	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
+	data *dt = safe_calloc( (sizeof *dt) * numberOfLines);
+	memcpy(dt, dt_main, (sizeof *dt) * numberOfLines);
 
 	int temp[ASIZE];
 	int count = 0, sum = 0;
 	int wt = 0, tat = 0;
 	double avg_wt, avg_tat;
-	int i = 0, y = numOfProcesses;
+	int i = 0, y = numberOfLines;
 	// Use for loop to enter the details of the process like Arrival time and the Burst Time
 	//pthread_mutex_lock(&mutex3);
 
-	for(i=0; i< numOfProcesses; i++) {
+	for(i=0; i< numberOfLines; i++) {
 	
 		printf("\nEnter the Arrival and Burst time of the Process[%d]\n", i+1);
 		printf("\nArrival time is: \t%d\n", dt[i].arrivalTime); 
@@ -286,20 +293,20 @@ void *roundRobin(void *arg) {
 	}
 	
 	// Accept the Time qunat
-	printf("Enter the Time Quantum for the process: \t%d\n", dt[0].quantumTime);
+	printf("Enter the Time Quantum for the process: \t%d\n", quantumTime);
 	// Display the process No, burst time, Turn Around Time and the waiting time
 	printf("\nProcess No \t\tBurst Time \t\tTAT \t\tWaiting Time ");
 	
 	for(sum=0, i = 0; y!=0;) {
 	
-		if(temp[i] <= dt[i].quantumTime && temp[i] > 0) { // define the condition 
+		if(temp[i] <= quantumTime && temp[i] > 0) { // define the condition 
 	    		sum = sum + temp[i];
 	    		temp[i] = 0;
 	    		count = 1;
     		} else if(temp[i] > 0) {
 			
-        		temp[i] = temp[i] - dt[i].quantumTime;
-        		sum = sum + dt[i].quantumTime;
+        		temp[i] = temp[i] - quantumTime;
+        		sum = sum + quantumTime;
     		}
     		
 		if(temp[i]==0 && count==1) {
@@ -311,7 +318,7 @@ void *roundRobin(void *arg) {
         		count =0;
   	  	}
   	  
-		if(i == numOfProcesses-1) {
+		if(i == numberOfLines-1) {
   	      		i=0;
   	  	} else if(dt[i+1].arrivalTime<=sum) {
        	 		i++;
@@ -321,8 +328,8 @@ void *roundRobin(void *arg) {
 	}
 	
 	// represents the average waiting time and Turn Around time
-	avg_wt = (double)wt/numOfProcesses;
-	avg_tat = (double)tat/numOfProcesses;
+	avg_wt = (double)wt/numberOfLines;
+	avg_tat = (double)tat/numberOfLines;
 	printf("\n Average Turn Around Time: \t%f", avg_wt);
 	printf("\n Average Waiting Time: \t%f", avg_tat);
 	// getch();  
@@ -336,15 +343,15 @@ void *priorityNon(void *arg) {
 		printf("\n\n*************************Non Preemptive Priority*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 
-		data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
-		memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
+		data *dt = safe_calloc( (sizeof *dt) * numberOfLines);
+		memcpy(dt, dt_main, (sizeof *dt) * numberOfLines);
 
 		
 		int bt[20],p[20],wt[20],tat[20],pr[20],i,j,n,total=0,pos,temp,avg_wt,avg_tat;
 		//pthread_mutex_lock(&mutex4);
 
 		printf("\nEnter Burst Time and Priority\n");
-		for(i=0;i<numOfProcesses;i++) {
+		for(i=0;i<numberOfLines;i++) {
 	
 			printf("\nP[%d]\n",i+1);
 			printf("Burst Time: %d\n", dt[i].burstTime);
@@ -353,10 +360,10 @@ void *priorityNon(void *arg) {
 		}
 
 		//sorting burst time, priority and process number in ascending order using selection sort
-		for(i=0;i<numOfProcesses;i++) {
+		for(i=0;i<numberOfLines;i++) {
 
 			pos=i;
-			for(j=i+1;j<numOfProcesses;j++) {
+			for(j=i+1;j<numberOfLines;j++) {
 				if(pr[j]<pr[pos])
 					pos=j;
 			}
@@ -377,7 +384,7 @@ void *priorityNon(void *arg) {
 		wt[0]=0;	//waiting time for first process is zero
 
 		//calculate waiting time
-		for(i=1;i<numOfProcesses;i++) {
+		for(i=1;i<numberOfLines;i++) {
 			wt[i]=0;
 			for(j=0;j<i;j++)
 					wt[i]+=dt[j].burstTime;
@@ -385,18 +392,18 @@ void *priorityNon(void *arg) {
 			total+=wt[i];
 		}
 
-		avg_wt=total/numOfProcesses;//average waiting time
+		avg_wt=total/numberOfLines;//average waiting time
 		total=0;
 
 		printf("\nProcess\t    Burst Time    \tWaiting Time\tTurnaround Time");
-		for(i=0;i<numOfProcesses;i++) {
+		for(i=0;i<numberOfLines;i++) {
 		
 			tat[i]=dt[i].burstTime+wt[i]; //calculate turnaround time
 			total+=tat[i];
 			printf("\nP[%d]\t\t  %d\t\t    %d\t\t\t%d",p[i],dt[i].burstTime,wt[i],tat[i]);
 		}
 
-		avg_tat=total/numOfProcesses; //average turnaround time
+		avg_tat=total/numberOfLines; //average turnaround time
 		printf("\n\nAverage Waiting Time=%d",avg_wt);
 		printf("\nAverage Turnaround Time=%d\n",avg_tat);
 
@@ -409,14 +416,14 @@ void *priorityNon(void *arg) {
 void *priorityPre(void *arg) {
 	printf("\n\n*************************Preemptive Priority*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
-	data *dt = safe_calloc( (sizeof *dt) * numOfProcesses);
-	memcpy(dt, dt_main, (sizeof *dt) * numOfProcesses);
+	data *dt = safe_calloc( (sizeof *dt) * numberOfLines);
+	memcpy(dt, dt_main, (sizeof *dt) * numberOfLines);
 	int bt[20],p[20],wt[20],tat[20],pr[20],i,j,n,total=0,pos,temp= 0;
 	double avg_wt,avg_tat;
 
 
 	//pthread_mutex_lock(&mutex5);
-	for(i=0;i<numOfProcesses;i++) {
+	for(i=0;i<numberOfLines;i++) {
 
 	printf("Enter process %d burst time: %d\n",i+1, dt[i].burstTime);
 
@@ -424,9 +431,9 @@ void *priorityPre(void *arg) {
 
 	}
 
-	for(i=0;i<numOfProcesses;i++) {
+	for(i=0;i<numberOfLines;i++) {
 
-		for(j=i+1;j<numOfProcesses;j++) {
+		for(j=i+1;j<numberOfLines;j++) {
 
 			if(dt[i].priority>dt[j].priority) {
 
@@ -446,7 +453,7 @@ void *priorityPre(void *arg) {
 
 	}
 
-	for(i=0;i<numOfProcesses;i++) {
+	for(i=0;i<numberOfLines;i++) {
 
 		for(j=0;j<i;j++) {
 
@@ -460,7 +467,7 @@ void *priorityPre(void *arg) {
 
 	printf("\nProcess\tP\tBT\tWT\tTAT\n");
 
-	for(i=0;i<numOfProcesses;i++) {
+	for(i=0;i<numberOfLines;i++) {
 
 		printf("\t%d\t%d\t%d\t%d\n",dt[i].priority,dt[i].burstTime,wt[i],tat[i]);
 
@@ -470,9 +477,9 @@ void *priorityPre(void *arg) {
 
 	}
 
-	avg_wt=avg_wt/numOfProcesses;
+	avg_wt=avg_wt/numberOfLines;
 
-	avg_tat=avg_tat/numOfProcesses;
+	avg_tat=avg_tat/numberOfLines;
 
 	printf("Average Waiting Time: %f\n",avg_wt);
 
@@ -490,64 +497,51 @@ int main (void) {
 		/* Considering that the data is to be read from a text file and shared among all thread */
 
 	char *region = calloc(MAXBUF, sizeof(char));
-	char buff[100]; bzero(buff, sizeof(buff));
-	char *temp = malloc(sizeof(char) * MAXBUF);
-	char *temp2 = malloc(sizeof(char) * MAXBUF);
-	char *temp3 = malloc(sizeof(char) * MAXBUF);
-	struct stat info;
+	char buffer[MAXBUF];
+	memset(buffer, 0, MAXBUF);
+	
+
+	int bt[ASIZE] = {};
+	int at[ASIZE] = {};
+	int pt[ASIZE] = {};
+	int qt = 0;
+
+	// struct stat info;
 	int i = 0, j = 0;
 
-	int fd = 0;
-	fd = open("proj.txt", O_RDONLY, 0);
-	if (fd < 0)
-		die_with_error("Error opening the file");
+	// int fd = 0;
+	// fd = open("proj.txt", O_RDONLY, 0);
+	// if (fd < 0)
+	// 	die_with_error("Error opening the file");
 	
-	fstat(fd, &info);
+	// fstat(fd, &info);
 	// printf("The size of the file is: %ld\n", info.st_size);
-	region = mmap(NULL, info.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
-
-	for (i = 0, j = 0; i < info.st_size; i++, j++)
-		buff[j] = region[i];
-	/* buff should now contain the contents of the entire file */
+	// region = mmap(NULL, info.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
 
 
-	// for (i = 0; i < info.st_size; i++) {
-	// 	printf("%s\n", buff);
-	// }
+	filePtr = fopen("data_100.txt", "r");
 
-	int bt[3] = {};
-	int at[3] = {};
-	int pt[3] = {};
-	int qt = atoi(&buff[0]);
+	fgets(buffer, MAXBUF - 1, filePtr);
+	sscanf(buffer, "%d", &quantumTime);
 
-	// printf("testing\n");
-	temp = strcat(&buff[2], &buff[3]);
-	bt[0] = atoi(temp);
-	temp2 = strcat(&buff[5], &buff[6]);
-	bt[1] = atoi(temp);
-	// temp3 = strcat(&buff[8], &buff[9]);
-	bt[2] = 30;
 
-	// printf("testing1\n");
-	at[0] = buff[10];
-	at[1] = buff[12];
-	at[2] = buff[14];
+	while ( fgets(buffer, MAXBUF - 1, filePtr) != NULL) {
+		memset(buffer, 0, MAXBUF - 1);
+		numberOfLines++;
+	}
 
-	// printf("testing2\n");
-	pt[0] = buff[15];
-	pt[1] = buff[17];
-	pt[2] = buff[19];
+	printf("Number Of Processes: %d\n", numberOfLines);
+	printf("Quantum time: %d\n", quantumTime);
 
-	
-	// for (i = 0; i < numOfProcesses; i++) {
-	// 	printf("%d %d %d\n", bt[i], at[i], pt[i]);
-	// }
 
-	for (i = 0; i < numOfProcesses; i++) {
-		dt_main[i].quantumTime = qt;
-		dt_main[i].burstTime = bt[i];
-		dt_main[i].arrivalTime = at[i];
-		dt_main[i].priority = pt[i];
+	for (int i = 0; i < numberOfLines; i++) {
+		dt_main[i].pid = (i + 1);
+
+		fgets(buffer, MAXBUF - 1, filePtr);
+
+		sscanf(buffer, "%d %d %d", &dt_main[i].burstTime, &dt_main[i].arrivalTime, &dt_main[i].priority);
+		
+		memset(buffer, 0, MAXBUF);
 	}
 
 
@@ -597,8 +591,8 @@ int main (void) {
 
 
 
-	close(fd);
-	munmap(region, sizeof(region));
+	fclose(filePtr);
+	// munmap(region, sizeof(region));
 	/*free(temp);
 	free(temp2);
 	free(temp3);*/
