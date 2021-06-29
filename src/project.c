@@ -1,7 +1,8 @@
 #include "project.h"
 #include "die_with_error.h"
-// #define numOfProcesses 600
-// #define arr 2
+
+
+// Global Variable Declarations
 
 // global variable to define the quantum time
 int quantumTime = 0;
@@ -13,6 +14,10 @@ FILE *filePtr = NULL;
 int outputFile = 0;
 // global job counter
 int job_counter = 0;
+// Special Buffer For Printing Threaded statements
+char Buffer[MAXBUF] = {0};
+// Special Buffer for printing sequential statements
+char sequential[MAXBUF] = {0};
 
 void die_with_error(char *msg); // Function Prototype
 
@@ -71,7 +76,7 @@ void *fcfs(void *arg) {
 	// free(dt);
 
 	// pthread_detach(pthread_self());
-
+	
 	int waitingTime[ASIZE] = {};
 	int processes[ASIZE] = {};
 	// int waitingTime[ASIZE] = {};
@@ -82,10 +87,10 @@ void *fcfs(void *arg) {
 	double waitingAvg = 0.0, turnAroundAvg = 0.0;
 
 	pthread_mutex_lock(&mutex1);
-	printf("\n\n*************************FCFS*************************\n\n");
+	sprintf(Buffer, "\n\n*************************FCFS THREAD*************************\n\n");
 	//pthread_mutex_lock(&mutex);
 	for (int p = 0; p < numberOfLines; p++) {
-		printf("Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
+		sprintf(Buffer, "Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
 		processes[p] = p+1;
 	}
 
@@ -97,7 +102,7 @@ void *fcfs(void *arg) {
 		waitingTime[i] = dt[i].burstTime + waitingTime[i-1];
 		pthread_mutex_lock(&mutex);
 		job_counter++;
-		printf("\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
+		sprintf(Buffer, "\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
 		pthread_mutex_unlock(&mutex);
 	}
 	/* Now we calculate the average turnAround time
@@ -112,7 +117,7 @@ void *fcfs(void *arg) {
 	 * Burst time, waiting time and turnAround time
 	 */
 
-	printf("\nProcesses	Burst time	Waiting time	TurnAround time\n\n");
+	sprintf(Buffer, "\nProcesses	Burst time	Waiting time	TurnAround time\n\n");
 
 
 	for (i = 0; i < numberOfLines; i++) {
@@ -120,10 +125,10 @@ void *fcfs(void *arg) {
 		total_waiting_time += waitingTime[i];
 		total_turnAround_time += turnAroundTime[i];
 
-		printf("Process	[%d] ", (i+1));
-		printf("	   %d ", dt[i].burstTime);
-		printf("		%d ", waitingTime[i]);
-		printf("		     %d\n", turnAroundTime[i]);
+		sprintf(Buffer, "Process	[%d] ", (i+1));
+		sprintf(Buffer, "	   %d ", dt[i].burstTime);
+		sprintf(Buffer, "		%d ", waitingTime[i]);
+		sprintf(Buffer, "		     %d\n", turnAroundTime[i]);
 
 	}
 
@@ -131,10 +136,10 @@ void *fcfs(void *arg) {
 	turnAroundAvg = (double)total_turnAround_time / numberOfLines;
 
 	// printf("\nThe Job Counter for the FirstComeFirstServe : %d\n", job_counter);
-	printf("\nAverage waiting time = %.6f\n", waitingAvg);
-	printf("Average turn around time = %.6f\n", turnAroundAvg);
+	sprintf(Buffer, "\nAverage waiting time = %.6f\n", waitingAvg);
+	sprintf(Buffer, "Average turn around time = %.6f\n", turnAroundAvg);
 
-	printf("\n\n*************************END OF FCFS*************************\n\n");
+	sprintf(Buffer, "\n\n*************************END OF FCFS THREAD*************************\n\n");
 	pthread_mutex_unlock(&mutex1);
 	//pthread_mutex_unlock(&mutex);
 
@@ -144,7 +149,6 @@ void *fcfs(void *arg) {
 }
 /* Shortest Job First Preemptive Scheduling Algorithm */
 void *sjfPreemptive(void *arg) {
-	printf("\n\n*************************Shortest Job Preemptive*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numberOfLines);
 	memcpy(dt, dt_main, (sizeof *dt) * numberOfLines);
@@ -173,12 +177,12 @@ void *sjfPreemptive(void *arg) {
 	dt[numberOfLines].burstTime = 9999;
 
 	pthread_mutex_lock(&mutex1);
-	printf("\n\n*************************Shortest Job Preemptive*************************\n\n");
+	sprintf(Buffer, "\n\n*************************Shortest Job Preemptive THREAD*************************\n\n");
 	for (time = 0; count != numberOfLines; time++) {
 
 		pthread_mutex_lock(&mutex);
 		job_counter++;
-		printf("\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
+		sprintf(Buffer, "\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
 		pthread_mutex_unlock(&mutex);
 
 		smallest = numberOfLines;
@@ -202,10 +206,10 @@ void *sjfPreemptive(void *arg) {
 	turnAroundAvg = total_turnAround_time / numberOfLines;
 
 	// printf("\nThe Job Counter for the ShortestJobFirst-Preemptive: %d\n", job_counter);
-	printf("\nAverage Waiting Time:		%lf\n", waitingAvg);
-	printf("Average TurnAround Time:	%lf\n", turnAroundAvg);
+	sprintf(Buffer, "\nAverage Waiting Time:		%lf\n", waitingAvg);
+	sprintf(Buffer, "Average TurnAround Time:	%lf\n", turnAroundAvg);
 
-	printf("\n\n*************************END OF Shortest Job Preemptive*************************\n\n");
+	sprintf(Buffer, "\n\n*************************END OF Shortest Job Preemptive THREAD*************************\n\n");
 	pthread_mutex_unlock(&mutex1);
 	free(dt);
 
@@ -213,7 +217,6 @@ void *sjfPreemptive(void *arg) {
 }
 /* Shortest job first Non-Preemptive Scheduling Algorithm */
 void *sjfNon(void *arg) {
-	printf("\n\n*************************Shortest Job NonPreemptive*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numberOfLines);
 	memcpy(dt, dt_main, (sizeof *dt) * numberOfLines);
@@ -238,8 +241,10 @@ void *sjfNon(void *arg) {
 
 	//pthread_mutex_lock(&mutex2);
 	pthread_mutex_lock(&mutex1);
+	sprintf(Buffer, "\n\n*************************Shortest Job NonPreemptive THREAD*************************\n\n");
+
 	for (int p = 0; p < numberOfLines; p++) {
-		printf("Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
+		sprintf(Buffer, "Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
 		processes[p] = p+1;
 	}
 	
@@ -249,7 +254,7 @@ void *sjfNon(void *arg) {
 
 		pthread_mutex_lock(&mutex);
 		job_counter++;
-		printf("\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
+		sprintf(Buffer, "\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
 		pthread_mutex_unlock(&mutex);		
 
 		position = i;
@@ -288,20 +293,20 @@ void *sjfNon(void *arg) {
 	/* re-initialize the variable to be used again for the turn around time calculation */
 	total = 0;
 	
-	printf("\nProcess ID		Burst Time		Waiting Time		TurnAround Time\n");
+	sprintf(Buffer, "\nProcess ID		Burst Time		Waiting Time		TurnAround Time\n");
 	for (i = 0; i < numberOfLines; i++) {
 		turnAroundTime[i] = dt[i].burstTime + waitingTime[i];
 		total += turnAroundTime[i];
-		printf("\nProcess[%d]		%d			%d			%d\n", processes[i], dt[i].burstTime, waitingTime[i], turnAroundTime[i]);
+		sprintf(Buffer, "\nProcess[%d]		%d			%d			%d\n", processes[i], dt[i].burstTime, waitingTime[i], turnAroundTime[i]);
 	}
 
 	/* The turn around time is the additon of the burst time with the waiting time */
 	turnAroundAvg = (double)total / numberOfLines;
 	// printf("\nThe Job Counter for the ShortestJobFirst-NonPreemptive: %d\n", job_counter);
-	printf("\nAverage Waiting Time = %f\n", waitingAvg);
-	printf("\nAverage TurnAround Time = %f\n", turnAroundAvg);
+	sprintf(Buffer, "\nAverage Waiting Time = %f\n", waitingAvg);
+	sprintf(Buffer, "\nAverage TurnAround Time = %f\n", turnAroundAvg);
 
-	printf("\n\n*************************END OF Shortest Job NonPreemptive*************************\n\n");
+	sprintf(Buffer, "\n\n*************************END OF Shortest Job NonPreemptive THREAD*************************\n\n");
 	pthread_mutex_unlock(&mutex1);
 	//pthread_mutex_unlock(&mutex2);
 
@@ -325,24 +330,24 @@ void *roundRobin(void *arg) {
 	// Use for loop to enter the details of the process like Arrival time and the Burst Time
 	//pthread_mutex_lock(&mutex3);
 	pthread_mutex_lock(&mutex1);
-	printf("\n\n*************************Round Robin*************************\n\n");
+	sprintf(Buffer, "\n\n*************************Round Robin THREAD*************************\n\n");
 	for(i=0; i< numberOfLines; i++) {
 	
-		printf("\nEnter the Arrival and Burst time of the Process[%d]\n", i+1);
-		printf("\nArrival time is: \t%d\n", dt[i].arrivalTime); 
-		printf("\nBurst time is: \t%d\n", dt[i].burstTime);
+		sprintf(Buffer, "\nEnter the Arrival and Burst time of the Process[%d]\n", i+1);
+		sprintf(Buffer, "\nArrival time is: \t%d\n", dt[i].arrivalTime); 
+		sprintf(Buffer, "\nBurst time is: \t%d\n", dt[i].burstTime);
 		temp[i] = dt[i].burstTime; // store the burst time in temp array
 
 		pthread_mutex_lock(&mutex);
 		job_counter++;
-		printf("\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
+		sprintf(Buffer, "\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
 		pthread_mutex_unlock(&mutex);
 	}
 	
 	// Accept the Time qunat
-	printf("Enter the Time Quantum for the process: \t%d\n", quantumTime);
+	sprintf(Buffer, "Enter the Time Quantum for the process: \t%d\n", quantumTime);
 	// Display the process No, burst time, Turn Around Time and the waiting time
-	printf("\nProcess No \t\tBurst Time \t\tTAT \t\tWaiting Time ");
+	sprintf(Buffer, "\nProcess No \t\tBurst Time \t\tTAT \t\tWaiting Time ");
 	
 	for(sum=0, i = 0; y!=0;) {
 	
@@ -359,7 +364,7 @@ void *roundRobin(void *arg) {
 		if(temp[i]==0 && count==1) {
 			
         		y--; //decrement the process no.
-        		printf("\nProcess No[%d] \t\t %d\t\t\t\t %d\t\t\t %d\n", i+1, dt[i].burstTime, sum-dt[i].arrivalTime, sum-dt[i].arrivalTime-dt[i].burstTime);
+        		sprintf(Buffer, "\nProcess No[%d] \t\t %d\t\t\t\t %d\t\t\t %d\n", i+1, dt[i].burstTime, sum-dt[i].arrivalTime, sum-dt[i].arrivalTime-dt[i].burstTime);
         		wt = wt + sum - dt[i].arrivalTime - dt[i].burstTime;
        	 		tat = tat + sum - dt[i].arrivalTime;
         		count =0;
@@ -378,10 +383,10 @@ void *roundRobin(void *arg) {
 	// represents the average waiting time and Turn Around time
 	avg_wt = (double)wt/numberOfLines;
 	avg_tat = (double)tat/numberOfLines;
-	printf("\n Average Turn Around Time: \t%f", avg_wt);
-	printf("\n Average Waiting Time: \t%f", avg_tat);
+	sprintf(Buffer, "\n Average Turn Around Time: \t%f", avg_wt);
+	sprintf(Buffer, "\n Average Waiting Time: \t%f", avg_tat);
 
-	printf("\n\n*************************END OF Round Robin*************************\n\n");
+	sprintf(Buffer, "\n\n*************************END OF Round Robin THREAD*************************\n\n");
 	pthread_mutex_unlock(&mutex1);
 	// getch();  
 	//pthread_mutex_unlock(&mutex3);
@@ -407,18 +412,18 @@ void *priorityNon(void *arg) {
 		//pthread_mutex_lock(&mutex4);
 
 		pthread_mutex_lock(&mutex1);
-		printf("\n\n*************************Non Preemptive Priority*************************\n\n");
-		printf("\nEnter Burst Time and Priority\n");
+		sprintf(Buffer, "\n\n*************************Non Preemptive Priority THREAD*************************\n\n");
+		sprintf(Buffer, "\nEnter Burst Time and Priority\n");
 		for(i=0;i<numberOfLines;i++) {
 	
-			printf("\nP[%d]\n",i+1);
-			printf("Burst Time: %d\n", dt[i].burstTime);
-			printf("Priority: %d\n", dt[i].priority);
+			sprintf(Buffer, "\nP[%d]\n",i+1);
+			sprintf(Buffer, "Burst Time: %d\n", dt[i].burstTime);
+			sprintf(Buffer, "Priority: %d\n", dt[i].priority);
 			p[i]=i+1; //contains process number
 			
 			pthread_mutex_lock(&mutex);
 			job_counter++;
-			printf("\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
+			sprintf(Buffer, "\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
 			pthread_mutex_unlock(&mutex);
 		}
 
@@ -458,20 +463,20 @@ void *priorityNon(void *arg) {
 		avg_wt=total/numberOfLines;//average waiting time
 		total=0;
 
-		printf("\nProcess\t    Burst Time    \tWaiting Time\tTurnaround Time");
+		sprintf(Buffer, "\nProcess\t    Burst Time    \tWaiting Time\tTurnaround Time");
 		for(i=0;i<numberOfLines;i++) {
 		
 			tat[i]=dt[i].burstTime+wt[i]; //calculate turnaround time
 			total+=tat[i];
-			printf("\nP[%d]\t\t  %d\t\t    %d\t\t\t%d",p[i],dt[i].burstTime,wt[i],tat[i]);
+			sprintf(Buffer, "\nP[%d]\t\t  %d\t\t    %d\t\t\t%d",p[i],dt[i].burstTime,wt[i],tat[i]);
 		}
 
 		// printf("\nThe Job Counter for the Priority-NonPreemptive: %d\n", job_counter);
 		avg_tat=total/numberOfLines; //average turnaround time
-		printf("\n\nAverage Waiting Time=%d",avg_wt);
-		printf("\nAverage Turnaround Time=%d\n",avg_tat);
+		sprintf(Buffer, "\n\nAverage Waiting Time=%d",avg_wt);
+		sprintf(Buffer, "\nAverage Turnaround Time=%d\n",avg_tat);
 
-		printf("\n\n*************************END OF Non Preemptive Priority*************************\n\n");
+		sprintf(Buffer, "\n\n*************************END OF Non Preemptive Priority THREAD*************************\n\n");
 		pthread_mutex_unlock(&mutex1);
 
 		//pthread_mutex_unlock(&mutex4);
@@ -494,17 +499,17 @@ void *priorityPre(void *arg) {
 	double avg_wt,avg_tat;
 
 	pthread_mutex_lock(&mutex1);
-	printf("\n\n*************************Preemptive Priority*************************\n\n");
+	sprintf(Buffer, "\n\n*************************Preemptive Priority THREAD*************************\n\n");
 	//pthread_mutex_lock(&mutex5);
 	for(i=0;i<numberOfLines;i++) {
 
-	printf("Enter process %d burst time: %d\n",i+1, dt[i].burstTime);
+	sprintf(Buffer, "Enter process %d burst time: %d\n",i+1, dt[i].burstTime);
 
-	printf("Enter process %d priority: %d\n",i+1, dt[i].priority);
+	sprintf(Buffer, "Enter process %d priority: %d\n",i+1, dt[i].priority);
 
 	pthread_mutex_lock(&mutex);
 	job_counter++;
-	printf("\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
+	sprintf(Buffer, "\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
 	pthread_mutex_unlock(&mutex);
 
 	}
@@ -543,11 +548,11 @@ void *priorityPre(void *arg) {
 
 	}
 
-	printf("\nProcess\tP\tBT\tWT\tTAT\n");
+	sprintf(Buffer, "\nProcess\tP\tBT\tWT\tTAT\n");
 
 	for(i=0;i<numberOfLines;i++) {
 
-		printf("\t%d\t%d\t%d\t%d\n",dt[i].priority,dt[i].burstTime,wt[i],tat[i]);
+		sprintf(Buffer, "\t%d\t%d\t%d\t%d\n",dt[i].priority,dt[i].burstTime,wt[i],tat[i]);
 
 		avg_wt=avg_wt+wt[i];
 
@@ -561,11 +566,11 @@ void *priorityPre(void *arg) {
 
 	// printf("\nThe Job Counter for the Priority-Preemptive: %d\n", job_counter);
 
-	printf("Average Waiting Time: %f\n",avg_wt);
+	sprintf(Buffer, "Average Waiting Time: %f\n",avg_wt);
 
-	printf("\nAverage Turnaround Time: %f",avg_tat);
+	sprintf(Buffer, "\nAverage Turnaround Time: %f",avg_tat);
 
-	printf("\n\n*************************END OF Preemptive Priority*************************\n\n");
+	sprintf(Buffer, "\n\n*************************END OF Preemptive Priority THREAD*************************\n\n");
 	pthread_mutex_unlock(&mutex1);
 
 	//pthread_mutex_unlock(&mutex5);
@@ -602,10 +607,10 @@ void fcfs_sequential() {
 	double waitingAvg = 0.0, turnAroundAvg = 0.0;
 
 	pthread_mutex_lock(&mutex1);
-	printf("\n\n*************************FCFS*************************\n\n");
+	sprintf(sequential, "\n\n*************************FCFS SEQUENTIAl*************************\n\n");
 	//pthread_mutex_lock(&mutex);
 	for (int p = 0; p < numberOfLines; p++) {
-		printf("Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
+		sprintf(sequential, "Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
 		processes[p] = p+1;
 	}
 
@@ -617,7 +622,7 @@ void fcfs_sequential() {
 		waitingTime[i] = dt[i].burstTime + waitingTime[i-1];
 		pthread_mutex_lock(&mutex);
 		job_counter++;
-		printf("\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
+		sprintf(sequential, "\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
 		pthread_mutex_unlock(&mutex);
 	}
 	/* Now we calculate the average turnAround time
@@ -632,7 +637,7 @@ void fcfs_sequential() {
 	 * Burst time, waiting time and turnAround time
 	 */
 
-	printf("\nProcesses	Burst time	Waiting time	TurnAround time\n\n");
+	sprintf(sequential, "\nProcesses	Burst time	Waiting time	TurnAround time\n\n");
 
 
 	for (i = 0; i < numberOfLines; i++) {
@@ -640,10 +645,10 @@ void fcfs_sequential() {
 		total_waiting_time += waitingTime[i];
 		total_turnAround_time += turnAroundTime[i];
 
-		printf("Process	[%d] ", (i+1));
-		printf("	   %d ", dt[i].burstTime);
-		printf("		%d ", waitingTime[i]);
-		printf("		     %d\n", turnAroundTime[i]);
+		sprintf(sequential, "Process	[%d] ", (i+1));
+		sprintf(sequential, "	   %d ", dt[i].burstTime);
+		sprintf(sequential, "		%d ", waitingTime[i]);
+		sprintf(sequential, "		     %d\n", turnAroundTime[i]);
 
 	}
 
@@ -651,10 +656,10 @@ void fcfs_sequential() {
 	turnAroundAvg = (double)total_turnAround_time / numberOfLines;
 
 	// printf("\nThe Job Counter for the FirstComeFirstServe : %d\n", job_counter);
-	printf("\nAverage waiting time = %.6f\n", waitingAvg);
-	printf("Average turn around time = %.6f\n", turnAroundAvg);
+	sprintf(sequential, "\nAverage waiting time = %.6f\n", waitingAvg);
+	sprintf(sequential, "Average turn around time = %.6f\n", turnAroundAvg);
 
-	printf("\n\n*************************END OF FCFS*************************\n\n");
+	sprintf(sequential, "\n\n*************************END OF FCFS SEQUENTIAl*************************\n\n");
 	pthread_mutex_unlock(&mutex1);
 	//pthread_mutex_unlock(&mutex);
 
@@ -664,7 +669,6 @@ void fcfs_sequential() {
 }
 /* Shortest Job First Preemptive Scheduling Algorithm */
 void sjfPreemptive_sequential() {
-	printf("\n\n*************************Shortest Job Preemptive*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numberOfLines);
 	memcpy(dt, dt_main, (sizeof *dt) * numberOfLines);
@@ -693,12 +697,12 @@ void sjfPreemptive_sequential() {
 	dt[numberOfLines].burstTime = 9999;
 
 	pthread_mutex_lock(&mutex1);
-	printf("\n\n*************************Shortest Job Preemptive*************************\n\n");
+	sprintf(sequential, "\n\n*************************Shortest Job Preemptive SEQUENTIAl*************************\n\n");
 	for (time = 0; count != numberOfLines; time++) {
 
 		pthread_mutex_lock(&mutex);
 		job_counter++;
-		printf("\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
+		sprintf(sequential, "\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
 		pthread_mutex_unlock(&mutex);
 
 		smallest = numberOfLines;
@@ -722,10 +726,10 @@ void sjfPreemptive_sequential() {
 	turnAroundAvg = total_turnAround_time / numberOfLines;
 
 	// printf("\nThe Job Counter for the ShortestJobFirst-Preemptive: %d\n", job_counter);
-	printf("\nAverage Waiting Time:		%lf\n", waitingAvg);
-	printf("Average TurnAround Time:	%lf\n", turnAroundAvg);
+	sprintf(sequential, "\nAverage Waiting Time:		%lf\n", waitingAvg);
+	sprintf(sequential, "Average TurnAround Time:	%lf\n", turnAroundAvg);
 
-	printf("\n\n*************************END OF Shortest Job Preemptive*************************\n\n");
+	sprintf(sequential, "\n\n*************************END OF Shortest Job Preemptive SEQUENTIAl*************************\n\n");
 	pthread_mutex_unlock(&mutex1);
 	free(dt);
 
@@ -733,7 +737,6 @@ void sjfPreemptive_sequential() {
 }
 /* Shortest job first Non-Preemptive Scheduling Algorithm */
 void sjfNon_sequential() {
-	printf("\n\n*************************Shortest Job NonPreemptive*************************\n\n");
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numberOfLines);
 	memcpy(dt, dt_main, (sizeof *dt) * numberOfLines);
@@ -758,8 +761,9 @@ void sjfNon_sequential() {
 
 	//pthread_mutex_lock(&mutex2);
 	pthread_mutex_lock(&mutex1);
+	sprintf(sequential, "\n\n*************************Shortest Job NonPreemptive SEQUENTIAL*************************\n\n");
 	for (int p = 0; p < numberOfLines; p++) {
-		printf("Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
+		sprintf(sequential, "Enter Burst Time For Process[%d]:	%d\n", p+1, dt[p].burstTime);
 		processes[p] = p+1;
 	}
 	
@@ -769,7 +773,7 @@ void sjfNon_sequential() {
 
 		pthread_mutex_lock(&mutex);
 		job_counter++;
-		printf("\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
+		sprintf(sequential, "\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
 		pthread_mutex_unlock(&mutex);		
 
 		position = i;
@@ -808,20 +812,20 @@ void sjfNon_sequential() {
 	/* re-initialize the variable to be used again for the turn around time calculation */
 	total = 0;
 	
-	printf("\nProcess ID		Burst Time		Waiting Time		TurnAround Time\n");
+	sprintf(sequential, "\nProcess ID		Burst Time		Waiting Time		TurnAround Time\n");
 	for (i = 0; i < numberOfLines; i++) {
 		turnAroundTime[i] = dt[i].burstTime + waitingTime[i];
 		total += turnAroundTime[i];
-		printf("\nProcess[%d]		%d			%d			%d\n", processes[i], dt[i].burstTime, waitingTime[i], turnAroundTime[i]);
+		sprintf(sequential, "\nProcess[%d]		%d			%d			%d\n", processes[i], dt[i].burstTime, waitingTime[i], turnAroundTime[i]);
 	}
 
 	/* The turn around time is the additon of the burst time with the waiting time */
 	turnAroundAvg = (double)total / numberOfLines;
 	// printf("\nThe Job Counter for the ShortestJobFirst-NonPreemptive: %d\n", job_counter);
-	printf("\nAverage Waiting Time = %f\n", waitingAvg);
-	printf("\nAverage TurnAround Time = %f\n", turnAroundAvg);
+	sprintf(sequential, "\nAverage Waiting Time = %f\n", waitingAvg);
+	sprintf(sequential, "\nAverage TurnAround Time = %f\n", turnAroundAvg);
 
-	printf("\n\n*************************END OF Shortest Job NonPreemptive*************************\n\n");
+	sprintf(sequential, "\n\n*************************END OF Shortest Job NonPreemptive SEQUENTIAL*************************\n\n");
 	pthread_mutex_unlock(&mutex1);
 	//pthread_mutex_unlock(&mutex2);
 
@@ -845,24 +849,24 @@ void roundRobin_sequential() {
 	// Use for loop to enter the details of the process like Arrival time and the Burst Time
 	//pthread_mutex_lock(&mutex3);
 	pthread_mutex_lock(&mutex1);
-	printf("\n\n*************************Round Robin*************************\n\n");
+	sprintf(sequential, "\n\n*************************Round Robin SEQUENTIAL*************************\n\n");
 	for(i=0; i< numberOfLines; i++) {
 	
-		printf("\nEnter the Arrival and Burst time of the Process[%d]\n", i+1);
-		printf("\nArrival time is: \t%d\n", dt[i].arrivalTime); 
-		printf("\nBurst time is: \t%d\n", dt[i].burstTime);
+		sprintf(sequential, "\nEnter the Arrival and Burst time of the Process[%d]\n", i+1);
+		sprintf(sequential, "\nArrival time is: \t%d\n", dt[i].arrivalTime); 
+		sprintf(sequential, "\nBurst time is: \t%d\n", dt[i].burstTime);
 		temp[i] = dt[i].burstTime; // store the burst time in temp array
 
 		pthread_mutex_lock(&mutex);
 		job_counter++;
-		printf("\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
+		sprintf(sequential, "\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
 		pthread_mutex_unlock(&mutex);
 	}
 	
 	// Accept the Time qunat
-	printf("Enter the Time Quantum for the process: \t%d\n", quantumTime);
+	sprintf(sequential, "Enter the Time Quantum for the process: \t%d\n", quantumTime);
 	// Display the process No, burst time, Turn Around Time and the waiting time
-	printf("\nProcess No \t\tBurst Time \t\tTAT \t\tWaiting Time ");
+	sprintf(sequential, "\nProcess No \t\tBurst Time \t\tTAT \t\tWaiting Time ");
 	
 	for(sum=0, i = 0; y!=0;) {
 	
@@ -879,7 +883,7 @@ void roundRobin_sequential() {
 		if(temp[i]==0 && count==1) {
 			
         		y--; //decrement the process no.
-        		printf("\nProcess No[%d] \t\t %d\t\t\t\t %d\t\t\t %d\n", i+1, dt[i].burstTime, sum-dt[i].arrivalTime, sum-dt[i].arrivalTime-dt[i].burstTime);
+        		sprintf(sequential, "\nProcess No[%d] \t\t %d\t\t\t\t %d\t\t\t %d\n", i+1, dt[i].burstTime, sum-dt[i].arrivalTime, sum-dt[i].arrivalTime-dt[i].burstTime);
         		wt = wt + sum - dt[i].arrivalTime - dt[i].burstTime;
        	 		tat = tat + sum - dt[i].arrivalTime;
         		count =0;
@@ -898,10 +902,10 @@ void roundRobin_sequential() {
 	// represents the average waiting time and Turn Around time
 	avg_wt = (double)wt/numberOfLines;
 	avg_tat = (double)tat/numberOfLines;
-	printf("\n Average Turn Around Time: \t%f", avg_wt);
-	printf("\n Average Waiting Time: \t%f", avg_tat);
+	sprintf(sequential, "\n Average Turn Around Time: \t%f", avg_wt);
+	sprintf(sequential, "\n Average Waiting Time: \t%f", avg_tat);
 
-	printf("\n\n*************************END OF Round Robin*************************\n\n");
+	sprintf(sequential, "\n\n*************************END OF Round Robin SEQUENTIAL*************************\n\n");
 	pthread_mutex_unlock(&mutex1);
 	// getch();  
 	//pthread_mutex_unlock(&mutex3);
@@ -927,18 +931,18 @@ void priorityNon_sequential() {
 		//pthread_mutex_lock(&mutex4);
 
 		pthread_mutex_lock(&mutex1);
-		printf("\n\n*************************Non Preemptive Priority*************************\n\n");
-		printf("\nEnter Burst Time and Priority\n");
+		sprintf(sequential, "\n\n*************************Non Preemptive Priority SEQUENTIAL*************************\n\n");
+		sprintf(sequential, "\nEnter Burst Time and Priority\n");
 		for(i=0;i<numberOfLines;i++) {
 	
-			printf("\nP[%d]\n",i+1);
-			printf("Burst Time: %d\n", dt[i].burstTime);
-			printf("Priority: %d\n", dt[i].priority);
+			sprintf(sequential, "\nP[%d]\n",i+1);
+			sprintf(sequential, "Burst Time: %d\n", dt[i].burstTime);
+			sprintf(sequential, "Priority: %d\n", dt[i].priority);
 			p[i]=i+1; //contains process number
 			
 			pthread_mutex_lock(&mutex);
 			job_counter++;
-			printf("\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
+			sprintf(sequential, "\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
 			pthread_mutex_unlock(&mutex);
 		}
 
@@ -978,20 +982,20 @@ void priorityNon_sequential() {
 		avg_wt=total/numberOfLines;//average waiting time
 		total=0;
 
-		printf("\nProcess\t    Burst Time    \tWaiting Time\tTurnaround Time");
+		sprintf(sequential, "\nProcess\t    Burst Time    \tWaiting Time\tTurnaround Time");
 		for(i=0;i<numberOfLines;i++) {
 		
 			tat[i]=dt[i].burstTime+wt[i]; //calculate turnaround time
 			total+=tat[i];
-			printf("\nP[%d]\t\t  %d\t\t    %d\t\t\t%d",p[i],dt[i].burstTime,wt[i],tat[i]);
+			sprintf(sequential, "\nP[%d]\t\t  %d\t\t    %d\t\t\t%d",p[i],dt[i].burstTime,wt[i],tat[i]);
 		}
 
 		// printf("\nThe Job Counter for the Priority-NonPreemptive: %d\n", job_counter);
 		avg_tat=total/numberOfLines; //average turnaround time
-		printf("\n\nAverage Waiting Time=%d",avg_wt);
-		printf("\nAverage Turnaround Time=%d\n",avg_tat);
+		sprintf(sequential, "\n\nAverage Waiting Time=%d",avg_wt);
+		sprintf(sequential, "\nAverage Turnaround Time=%d\n",avg_tat);
 
-		printf("\n\n*************************END OF Non Preemptive Priority*************************\n\n");
+		sprintf(sequential, "\n\n*************************END OF Non Preemptive Priority SEQUENTIAL*************************\n\n");
 		pthread_mutex_unlock(&mutex1);
 
 		//pthread_mutex_unlock(&mutex4);
@@ -1014,17 +1018,17 @@ void priorityPre_sequential() {
 	double avg_wt,avg_tat;
 
 	pthread_mutex_lock(&mutex1);
-	printf("\n\n*************************Preemptive Priority*************************\n\n");
+	sprintf(sequential, "\n\n*************************Preemptive Priority SEQUENTIAL*************************\n\n");
 	//pthread_mutex_lock(&mutex5);
 	for(i=0;i<numberOfLines;i++) {
 
-	printf("Enter process %d burst time: %d\n",i+1, dt[i].burstTime);
+	sprintf(sequential, "Enter process %d burst time: %d\n",i+1, dt[i].burstTime);
 
-	printf("Enter process %d priority: %d\n",i+1, dt[i].priority);
+	sprintf(sequential, "Enter process %d priority: %d\n",i+1, dt[i].priority);
 
 	pthread_mutex_lock(&mutex);
 	job_counter++;
-	printf("\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
+	sprintf(sequential, "\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", i+1, job_counter);
 	pthread_mutex_unlock(&mutex);
 
 	}
@@ -1063,11 +1067,11 @@ void priorityPre_sequential() {
 
 	}
 
-	printf("\nProcess\tP\tBT\tWT\tTAT\n");
+	sprintf(sequential, "\nProcess\tP\tBT\tWT\tTAT\n");
 
 	for(i=0;i<numberOfLines;i++) {
 
-		printf("\t%d\t%d\t%d\t%d\n",dt[i].priority,dt[i].burstTime,wt[i],tat[i]);
+		sprintf(sequential, "\t%d\t%d\t%d\t%d\n",dt[i].priority,dt[i].burstTime,wt[i],tat[i]);
 
 		avg_wt=avg_wt+wt[i];
 
@@ -1081,11 +1085,11 @@ void priorityPre_sequential() {
 
 	// printf("\nThe Job Counter for the Priority-Preemptive: %d\n", job_counter);
 
-	printf("Average Waiting Time: %f\n",avg_wt);
+	sprintf(sequential, "Average Waiting Time: %f\n",avg_wt);
 
-	printf("\nAverage Turnaround Time: %f",avg_tat);
+	sprintf(sequential, "\nAverage Turnaround Time: %f",avg_tat);
 
-	printf("\n\n*************************END OF Preemptive Priority*************************\n\n");
+	sprintf(sequential, "\n\n*************************END OF Preemptive Priority SEQUENTIAL*************************\n\n");
 	pthread_mutex_unlock(&mutex1);
 
 	//pthread_mutex_unlock(&mutex5);
@@ -1102,6 +1106,8 @@ int main (void) {
 	char *region = calloc(MAXBUF, sizeof(char));
 	char buffer[MAXBUF];
 	memset(buffer, 0, MAXBUF);
+	memset(Buffer, 0, MAXBUF);
+	memset(sequential, 0, MAXBUF);
 	long double start = 0, end = 0, elapse = 0;
 	
 
@@ -1185,6 +1191,7 @@ int main (void) {
 
 
 	start = getTime();
+	sprintf(Buffer, "Parallelism (Threaded) Execution Begins\n");
 	/* First Come First Serve Scheduling Algorithm*/
 	//pthread_mutex_lock(&mutex);
 	pthread_create(&tid1, NULL, fcfs,  NULL);	
@@ -1215,6 +1222,8 @@ int main (void) {
 	pthread_create(&tid6, NULL, priorityPre, NULL);
 	//pthread_mutex_unlock(&mutex5);
 	
+	// printf("%s\n", Buffer);
+
 	end = getTime();
 	elapse = end - start;
 
@@ -1231,13 +1240,15 @@ int main (void) {
 
 
 	start = getTime();
-
+	sprintf(sequential, "Sequential Execution Begins\n");
 	fcfs_sequential();
 	sjfPreemptive_sequential();
 	sjfNon_sequential();
 	roundRobin_sequential();
 	priorityPre_sequential();
 	priorityNon_sequential();
+	
+	// printf("%s\n",sequential);
 	
 	end = getTime();
 	elapse = end - start;
