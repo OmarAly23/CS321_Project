@@ -26,3 +26,5 @@
 #define MAXBUF 300000
 #define MAXLINE 300000
 #define ASIZE 600
+#define SIZE 20000
+
