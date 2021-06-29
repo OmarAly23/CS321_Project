@@ -8,7 +8,7 @@
   - Output the result to a file.
   
 ## The project is divided into three phases
-### Currently at Phase 1
+### Done with Phase 3: Project Completion
 
 ### Phase 1:
   - Reading scheduling data from a file and implementing three scheduling algorithms.
@@ -16,3 +16,6 @@
 ### Phase 2:
   - Implementing the remaining algorithms 
   - Create the threads for each of the scheduling algorithms 
+### Phase 3:
+  - Implement the locking and synchronization and output the results back to a file.
+  - Finalizing the project.
