@@ -15,9 +15,9 @@ int outputFile = 0;
 // global job counter
 int job_counter = 0;
 // Special Buffer For Printing Threaded statements
-char Buffer[MAXBUF] = {0};
+char *Buffer;
 // Special Buffer for printing sequential statements
-char sequential[MAXBUF] = {0};
+char *sequential;
 
 void die_with_error(char *msg); // Function Prototype
 
@@ -1106,8 +1106,11 @@ int main (void) {
 	char *region = calloc(MAXBUF, sizeof(char));
 	char buffer[MAXBUF];
 	memset(buffer, 0, MAXBUF);
-	memset(Buffer, 0, MAXBUF);
-	memset(sequential, 0, MAXBUF);
+
+	Buffer = calloc(MAXBUF, sizeof(char));
+	sequential = calloc(MAXBUF, sizeof(char));
+	// memset(Buffer, 0, MAXBUF);
+	// memset(sequential, 0, MAXBUF);
 	long double start = 0, end = 0, elapse = 0;
 	
 
@@ -1191,7 +1194,7 @@ int main (void) {
 
 
 	start = getTime();
-	sprintf(Buffer, "Parallelism (Threaded) Execution Begins\n");
+	sprintf(Buffer, "\n\nParallelism (Threaded) Execution Begins\n\n");
 	/* First Come First Serve Scheduling Algorithm*/
 	//pthread_mutex_lock(&mutex);
 	pthread_create(&tid1, NULL, fcfs,  NULL);	
@@ -1240,7 +1243,7 @@ int main (void) {
 
 
 	start = getTime();
-	sprintf(sequential, "Sequential Execution Begins\n");
+	sprintf(sequential, "\n\nSequential Execution Begins\n\n");
 	fcfs_sequential();
 	sjfPreemptive_sequential();
 	sjfNon_sequential();
@@ -1257,12 +1260,12 @@ int main (void) {
 
 	pthread_mutex_destroy(&mutex);
 	pthread_mutex_destroy(&mutex1);
+
 	fclose(filePtr);
 	close(outputFile);
-	// munmap(region, sizeof(region));
-	/*free(temp);
-	free(temp2);
-	free(temp3);*/
+
+	free(Buffer);
+	free(sequential);
 	return 0;
 }
 
