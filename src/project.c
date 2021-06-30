@@ -412,9 +412,9 @@ void *priorityNon(void *arg) {
 		sprintf(Buffer, "%s\nEnter Burst Time and Priority\n", Buffer);
 		for(i=0;i<numberOfLines;i++) {
 	
-			sprintf(Buffer, "\nP[%d]\n",i+1);
-			sprintf(Buffer, "Burst Time: %d\n", dt[i].burstTime);
-			sprintf(Buffer, "Priority: %d\n", dt[i].priority);
+			sprintf(Buffer, "%s\nP[%d]\n", Buffer, i+1);
+			sprintf(Buffer, "%sBurst Time: %d\n", Buffer, dt[i].burstTime);
+			sprintf(Buffer, "%sPriority: %d\n", Buffer, dt[i].priority);
 			p[i]=i+1; //contains process number
 			
 			pthread_mutex_lock(&mutex);
@@ -1193,31 +1193,37 @@ int main (void) {
 	/* First Come First Serve Scheduling Algorithm*/
 	//pthread_mutex_lock(&mutex);
 	pthread_create(&tid1, NULL, fcfs,  NULL);	
+	sleep(1);
 	//pthread_mutex_unlock(&mutex);
 
 	/* Shortest Job First Preemptive Scheduling Algorithm */
 	//pthread_mutex_lock(&mutex1);
 	pthread_create(&tid2, NULL, sjfPreemptive, NULL);
+	sleep(1);
 	//pthread_mutex_unlock(&mutex1);
 	
 	/* Shortest Job First Non-Preemptive Scheduling Algorithm */
 	//pthread_mutex_lock(&mutex2);
 	pthread_create(&tid3, NULL, sjfNon,  NULL);
+	sleep(1);
 	//pthread_mutex_unlock(&mutex2);
 
 	/* Round Robin Scheduling Algorithm */
 	//pthread_mutex_lock(&mutex3);
 	pthread_create(&tid4, NULL, roundRobin, NULL);
+	sleep(1);
 	//pthread_mutex_unlock(&mutex3);
 
 	/* Priority Non-Preemptive Scheduling Algorithm*/
 	//pthread_mutex_lock(&mutex4);
 	pthread_create(&tid5, NULL, priorityNon, NULL);
+	sleep(1);
 	//pthread_mutex_unlock(&mutex4);
 
 	/* Priority Preemptive Scheduling Algorithm */
 	//pthread_mutex_lock(&mutex5);
 	pthread_create(&tid6, NULL, priorityPre, NULL);
+	sleep(1);
 	//pthread_mutex_unlock(&mutex5);
 
 	pthread_mutex_lock(&mutex1);
