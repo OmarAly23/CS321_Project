@@ -1186,16 +1186,21 @@ int main (void) {
 		die_with_error("Error Opening Data File");
 	
 	// opening the output file for output redirection
-	outputFile = open("output.txt", O_WRONLY | O_CREAT, 0666);
+	// outputFile = open("output.txt", O_WRONLY | O_CREAT, 0666);
+	FILE *outFile = fopen("output.txt", "w");
 
-	if (outputFile == 0)
-		die_with_error("Error Opening the output File");
+	
+	if (outFile == NULL)
+		die_with_error("Error Opening Output Data File");
+
+	// if (outputFile == 0)
+	// 	die_with_error("Error Opening the output File");
 
 	// Output Redirection
-	retval = dup2(outputFile, STDOUT_FILENO);
+	// retval = dup2(outputFile, STDOUT_FILENO);
 
-	if (retval < 0)
-		die_with_error("Error Duplicating the file descriptor for redirection");
+	// if (retval < 0)
+	// 	die_with_error("Error Duplicating the file descriptor for redirection");
 
 	fgets(buffer, MAXBUF - 1, filePtr);
 	sscanf(buffer, "%d", &quantumTime);
@@ -1208,6 +1213,10 @@ int main (void) {
 
 	printf("Number Of Processes: %d\n\n", numberOfLines);
 	printf("Quantum time: %d\n\n\n", quantumTime);
+
+
+	fprintf(outFile, "Number Of Processes: %d\n\n", numberOfLines);
+	fprintf(outFile, "Quantum time: %d\n\n\n", quantumTime);
 
 	rewind(filePtr);
 	fgets(buffer, MAXBUF - 1, filePtr);
@@ -1281,6 +1290,7 @@ int main (void) {
 	//pthread_mutex_unlock(&mutex5);
 
 	pthread_mutex_lock(&mutex1);
+	printf("\033[1;36m");
 	printf("%s\n", Buffer);
 	pthread_mutex_unlock(&mutex1);
 
@@ -1297,8 +1307,9 @@ int main (void) {
 	end = getTime();
 	elapse = end - start;
 
-	
+	fprintf(outFile, "%s\n", Buffer);
 	printf("\n\n\n*************************Execution Time Elapsed for parallelism (Threads): %LF SEC*************************\n", elapse);
+	fprintf(outFile, "\n\n\n*************************Execution Time Elapsed for parallelism (Threads): %LF SEC*************************\n", elapse);
 
 
 	start = getTime();
@@ -1311,12 +1322,15 @@ int main (void) {
 	priorityPre_sequential();
 	priorityNon_sequential();
 	
+	printf("\033[1;31m");
 	printf("%s\n",sequential);
+	fprintf(outFile, "%s\n", sequential);
 	
 	end = getTime();
 	elapse = end - start;
 
 	printf("\n\n\n*************************Execution Time Elapsed for Sequential: %LF SEC*************************\n", elapse);
+	fprintf(outFile, "\n\n\n*************************Execution Time Elapsed for Sequential: %LF SEC*************************\n", elapse);
 
 	
 
@@ -1324,7 +1338,7 @@ int main (void) {
 	pthread_mutex_destroy(&mutex1);
 
 	fclose(filePtr);
-	close(outputFile);
+	fclose(outFile);
 
 	free(Buffer);
 	free(sequential);
