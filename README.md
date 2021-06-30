@@ -21,11 +21,11 @@
   - Finalizing the project.
 
 ### How to Run:
-  - after cloning the repo
-  - * make project
+  - After cloning the repo
+  - (*) make project
   - ./project
   - The output will be redirected to a text file called "output.txt"
-  - to recompile and run the source file
+  - To recompile and run the source file
   - make clean
   - which will remove the output.txt and the executable file "project"
   - Go TO *
