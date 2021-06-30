@@ -1234,6 +1234,1318 @@ Average TurnAround Time:	1887.000000
 
 
 
+*************************Round Robin THREAD*************************
+
+
+Enter the Arrival and Burst time of the Process[1]
+
+Arrival time is: 	0
+
+Burst time is: 	3
+
+
+The Job Counter has just been updated:
+Job Counter for Process[1]: 201
+
+
+Enter the Arrival and Burst time of the Process[2]
+
+Arrival time is: 	0
+
+Burst time is: 	33
+
+
+The Job Counter has just been updated:
+Job Counter for Process[2]: 202
+
+
+Enter the Arrival and Burst time of the Process[3]
+
+Arrival time is: 	0
+
+Burst time is: 	74
+
+
+The Job Counter has just been updated:
+Job Counter for Process[3]: 203
+
+
+Enter the Arrival and Burst time of the Process[4]
+
+Arrival time is: 	0
+
+Burst time is: 	8
+
+
+The Job Counter has just been updated:
+Job Counter for Process[4]: 204
+
+
+Enter the Arrival and Burst time of the Process[5]
+
+Arrival time is: 	0
+
+Burst time is: 	65
+
+
+The Job Counter has just been updated:
+Job Counter for Process[5]: 205
+
+
+Enter the Arrival and Burst time of the Process[6]
+
+Arrival time is: 	0
+
+Burst time is: 	62
+
+
+The Job Counter has just been updated:
+Job Counter for Process[6]: 206
+
+
+Enter the Arrival and Burst time of the Process[7]
+
+Arrival time is: 	0
+
+Burst time is: 	30
+
+
+The Job Counter has just been updated:
+Job Counter for Process[7]: 207
+
+
+Enter the Arrival and Burst time of the Process[8]
+
+Arrival time is: 	0
+
+Burst time is: 	39
+
+
+The Job Counter has just been updated:
+Job Counter for Process[8]: 208
+
+
+Enter the Arrival and Burst time of the Process[9]
+
+Arrival time is: 	0
+
+Burst time is: 	80
+
+
+The Job Counter has just been updated:
+Job Counter for Process[9]: 209
+
+
+Enter the Arrival and Burst time of the Process[10]
+
+Arrival time is: 	0
+
+Burst time is: 	94
+
+
+The Job Counter has just been updated:
+Job Counter for Process[10]: 210
+
+
+Enter the Arrival and Burst time of the Process[11]
+
+Arrival time is: 	0
+
+Burst time is: 	78
+
+
+The Job Counter has just been updated:
+Job Counter for Process[11]: 211
+
+
+Enter the Arrival and Burst time of the Process[12]
+
+Arrival time is: 	0
+
+Burst time is: 	40
+
+
+The Job Counter has just been updated:
+Job Counter for Process[12]: 212
+
+
+Enter the Arrival and Burst time of the Process[13]
+
+Arrival time is: 	0
+
+Burst time is: 	47
+
+
+The Job Counter has just been updated:
+Job Counter for Process[13]: 213
+
+
+Enter the Arrival and Burst time of the Process[14]
+
+Arrival time is: 	0
+
+Burst time is: 	85
+
+
+The Job Counter has just been updated:
+Job Counter for Process[14]: 214
+
+
+Enter the Arrival and Burst time of the Process[15]
+
+Arrival time is: 	0
+
+Burst time is: 	25
+
+
+The Job Counter has just been updated:
+Job Counter for Process[15]: 215
+
+
+Enter the Arrival and Burst time of the Process[16]
+
+Arrival time is: 	0
+
+Burst time is: 	94
+
+
+The Job Counter has just been updated:
+Job Counter for Process[16]: 216
+
+
+Enter the Arrival and Burst time of the Process[17]
+
+Arrival time is: 	1
+
+Burst time is: 	16
+
+
+The Job Counter has just been updated:
+Job Counter for Process[17]: 217
+
+
+Enter the Arrival and Burst time of the Process[18]
+
+Arrival time is: 	1
+
+Burst time is: 	54
+
+
+The Job Counter has just been updated:
+Job Counter for Process[18]: 218
+
+
+Enter the Arrival and Burst time of the Process[19]
+
+Arrival time is: 	1
+
+Burst time is: 	5
+
+
+The Job Counter has just been updated:
+Job Counter for Process[19]: 219
+
+
+Enter the Arrival and Burst time of the Process[20]
+
+Arrival time is: 	1
+
+Burst time is: 	29
+
+
+The Job Counter has just been updated:
+Job Counter for Process[20]: 220
+
+
+Enter the Arrival and Burst time of the Process[21]
+
+Arrival time is: 	1
+
+Burst time is: 	10
+
+
+The Job Counter has just been updated:
+Job Counter for Process[21]: 221
+
+
+Enter the Arrival and Burst time of the Process[22]
+
+Arrival time is: 	1
+
+Burst time is: 	76
+
+
+The Job Counter has just been updated:
+Job Counter for Process[22]: 222
+
+
+Enter the Arrival and Burst time of the Process[23]
+
+Arrival time is: 	1
+
+Burst time is: 	88
+
+
+The Job Counter has just been updated:
+Job Counter for Process[23]: 223
+
+
+Enter the Arrival and Burst time of the Process[24]
+
+Arrival time is: 	2
+
+Burst time is: 	45
+
+
+The Job Counter has just been updated:
+Job Counter for Process[24]: 224
+
+
+Enter the Arrival and Burst time of the Process[25]
+
+Arrival time is: 	2
+
+Burst time is: 	73
+
+
+The Job Counter has just been updated:
+Job Counter for Process[25]: 225
+
+
+Enter the Arrival and Burst time of the Process[26]
+
+Arrival time is: 	2
+
+Burst time is: 	67
+
+
+The Job Counter has just been updated:
+Job Counter for Process[26]: 226
+
+
+Enter the Arrival and Burst time of the Process[27]
+
+Arrival time is: 	2
+
+Burst time is: 	24
+
+
+The Job Counter has just been updated:
+Job Counter for Process[27]: 227
+
+
+Enter the Arrival and Burst time of the Process[28]
+
+Arrival time is: 	2
+
+Burst time is: 	4
+
+
+The Job Counter has just been updated:
+Job Counter for Process[28]: 228
+
+
+Enter the Arrival and Burst time of the Process[29]
+
+Arrival time is: 	2
+
+Burst time is: 	92
+
+
+The Job Counter has just been updated:
+Job Counter for Process[29]: 229
+
+
+Enter the Arrival and Burst time of the Process[30]
+
+Arrival time is: 	2
+
+Burst time is: 	15
+
+
+The Job Counter has just been updated:
+Job Counter for Process[30]: 230
+
+
+Enter the Arrival and Burst time of the Process[31]
+
+Arrival time is: 	2
+
+Burst time is: 	91
+
+
+The Job Counter has just been updated:
+Job Counter for Process[31]: 231
+
+
+Enter the Arrival and Burst time of the Process[32]
+
+Arrival time is: 	2
+
+Burst time is: 	69
+
+
+The Job Counter has just been updated:
+Job Counter for Process[32]: 232
+
+
+Enter the Arrival and Burst time of the Process[33]
+
+Arrival time is: 	2
+
+Burst time is: 	92
+
+
+The Job Counter has just been updated:
+Job Counter for Process[33]: 233
+
+
+Enter the Arrival and Burst time of the Process[34]
+
+Arrival time is: 	2
+
+Burst time is: 	39
+
+
+The Job Counter has just been updated:
+Job Counter for Process[34]: 234
+
+
+Enter the Arrival and Burst time of the Process[35]
+
+Arrival time is: 	3
+
+Burst time is: 	95
+
+
+The Job Counter has just been updated:
+Job Counter for Process[35]: 235
+
+
+Enter the Arrival and Burst time of the Process[36]
+
+Arrival time is: 	3
+
+Burst time is: 	60
+
+
+The Job Counter has just been updated:
+Job Counter for Process[36]: 236
+
+
+Enter the Arrival and Burst time of the Process[37]
+
+Arrival time is: 	3
+
+Burst time is: 	19
+
+
+The Job Counter has just been updated:
+Job Counter for Process[37]: 237
+
+
+Enter the Arrival and Burst time of the Process[38]
+
+Arrival time is: 	3
+
+Burst time is: 	69
+
+
+The Job Counter has just been updated:
+Job Counter for Process[38]: 238
+
+
+Enter the Arrival and Burst time of the Process[39]
+
+Arrival time is: 	3
+
+Burst time is: 	57
+
+
+The Job Counter has just been updated:
+Job Counter for Process[39]: 239
+
+
+Enter the Arrival and Burst time of the Process[40]
+
+Arrival time is: 	3
+
+Burst time is: 	57
+
+
+The Job Counter has just been updated:
+Job Counter for Process[40]: 240
+
+
+Enter the Arrival and Burst time of the Process[41]
+
+Arrival time is: 	3
+
+Burst time is: 	78
+
+
+The Job Counter has just been updated:
+Job Counter for Process[41]: 241
+
+
+Enter the Arrival and Burst time of the Process[42]
+
+Arrival time is: 	4
+
+Burst time is: 	48
+
+
+The Job Counter has just been updated:
+Job Counter for Process[42]: 242
+
+
+Enter the Arrival and Burst time of the Process[43]
+
+Arrival time is: 	4
+
+Burst time is: 	76
+
+
+The Job Counter has just been updated:
+Job Counter for Process[43]: 243
+
+
+Enter the Arrival and Burst time of the Process[44]
+
+Arrival time is: 	4
+
+Burst time is: 	7
+
+
+The Job Counter has just been updated:
+Job Counter for Process[44]: 244
+
+
+Enter the Arrival and Burst time of the Process[45]
+
+Arrival time is: 	4
+
+Burst time is: 	10
+
+
+The Job Counter has just been updated:
+Job Counter for Process[45]: 245
+
+
+Enter the Arrival and Burst time of the Process[46]
+
+Arrival time is: 	4
+
+Burst time is: 	95
+
+
+The Job Counter has just been updated:
+Job Counter for Process[46]: 246
+
+
+Enter the Arrival and Burst time of the Process[47]
+
+Arrival time is: 	4
+
+Burst time is: 	80
+
+
+The Job Counter has just been updated:
+Job Counter for Process[47]: 247
+
+
+Enter the Arrival and Burst time of the Process[48]
+
+Arrival time is: 	4
+
+Burst time is: 	90
+
+
+The Job Counter has just been updated:
+Job Counter for Process[48]: 248
+
+
+Enter the Arrival and Burst time of the Process[49]
+
+Arrival time is: 	4
+
+Burst time is: 	87
+
+
+The Job Counter has just been updated:
+Job Counter for Process[49]: 249
+
+
+Enter the Arrival and Burst time of the Process[50]
+
+Arrival time is: 	5
+
+Burst time is: 	44
+
+
+The Job Counter has just been updated:
+Job Counter for Process[50]: 250
+
+
+Enter the Arrival and Burst time of the Process[51]
+
+Arrival time is: 	5
+
+Burst time is: 	75
+
+
+The Job Counter has just been updated:
+Job Counter for Process[51]: 251
+
+
+Enter the Arrival and Burst time of the Process[52]
+
+Arrival time is: 	5
+
+Burst time is: 	48
+
+
+The Job Counter has just been updated:
+Job Counter for Process[52]: 252
+
+
+Enter the Arrival and Burst time of the Process[53]
+
+Arrival time is: 	5
+
+Burst time is: 	18
+
+
+The Job Counter has just been updated:
+Job Counter for Process[53]: 253
+
+
+Enter the Arrival and Burst time of the Process[54]
+
+Arrival time is: 	5
+
+Burst time is: 	45
+
+
+The Job Counter has just been updated:
+Job Counter for Process[54]: 254
+
+
+Enter the Arrival and Burst time of the Process[55]
+
+Arrival time is: 	5
+
+Burst time is: 	75
+
+
+The Job Counter has just been updated:
+Job Counter for Process[55]: 255
+
+
+Enter the Arrival and Burst time of the Process[56]
+
+Arrival time is: 	5
+
+Burst time is: 	94
+
+
+The Job Counter has just been updated:
+Job Counter for Process[56]: 256
+
+
+Enter the Arrival and Burst time of the Process[57]
+
+Arrival time is: 	5
+
+Burst time is: 	48
+
+
+The Job Counter has just been updated:
+Job Counter for Process[57]: 257
+
+
+Enter the Arrival and Burst time of the Process[58]
+
+Arrival time is: 	5
+
+Burst time is: 	57
+
+
+The Job Counter has just been updated:
+Job Counter for Process[58]: 258
+
+
+Enter the Arrival and Burst time of the Process[59]
+
+Arrival time is: 	6
+
+Burst time is: 	14
+
+
+The Job Counter has just been updated:
+Job Counter for Process[59]: 259
+
+
+Enter the Arrival and Burst time of the Process[60]
+
+Arrival time is: 	6
+
+Burst time is: 	69
+
+
+The Job Counter has just been updated:
+Job Counter for Process[60]: 260
+
+
+Enter the Arrival and Burst time of the Process[61]
+
+Arrival time is: 	6
+
+Burst time is: 	31
+
+
+The Job Counter has just been updated:
+Job Counter for Process[61]: 261
+
+
+Enter the Arrival and Burst time of the Process[62]
+
+Arrival time is: 	6
+
+Burst time is: 	18
+
+
+The Job Counter has just been updated:
+Job Counter for Process[62]: 262
+
+
+Enter the Arrival and Burst time of the Process[63]
+
+Arrival time is: 	6
+
+Burst time is: 	62
+
+
+The Job Counter has just been updated:
+Job Counter for Process[63]: 263
+
+
+Enter the Arrival and Burst time of the Process[64]
+
+Arrival time is: 	6
+
+Burst time is: 	34
+
+
+The Job Counter has just been updated:
+Job Counter for Process[64]: 264
+
+
+Enter the Arrival and Burst time of the Process[65]
+
+Arrival time is: 	6
+
+Burst time is: 	52
+
+
+The Job Counter has just been updated:
+Job Counter for Process[65]: 265
+
+
+Enter the Arrival and Burst time of the Process[66]
+
+Arrival time is: 	6
+
+Burst time is: 	96
+
+
+The Job Counter has just been updated:
+Job Counter for Process[66]: 266
+
+
+Enter the Arrival and Burst time of the Process[67]
+
+Arrival time is: 	6
+
+Burst time is: 	18
+
+
+The Job Counter has just been updated:
+Job Counter for Process[67]: 267
+
+
+Enter the Arrival and Burst time of the Process[68]
+
+Arrival time is: 	6
+
+Burst time is: 	36
+
+
+The Job Counter has just been updated:
+Job Counter for Process[68]: 268
+
+
+Enter the Arrival and Burst time of the Process[69]
+
+Arrival time is: 	6
+
+Burst time is: 	27
+
+
+The Job Counter has just been updated:
+Job Counter for Process[69]: 269
+
+
+Enter the Arrival and Burst time of the Process[70]
+
+Arrival time is: 	7
+
+Burst time is: 	80
+
+
+The Job Counter has just been updated:
+Job Counter for Process[70]: 270
+
+
+Enter the Arrival and Burst time of the Process[71]
+
+Arrival time is: 	7
+
+Burst time is: 	10
+
+
+The Job Counter has just been updated:
+Job Counter for Process[71]: 271
+
+
+Enter the Arrival and Burst time of the Process[72]
+
+Arrival time is: 	7
+
+Burst time is: 	79
+
+
+The Job Counter has just been updated:
+Job Counter for Process[72]: 272
+
+
+Enter the Arrival and Burst time of the Process[73]
+
+Arrival time is: 	7
+
+Burst time is: 	47
+
+
+The Job Counter has just been updated:
+Job Counter for Process[73]: 273
+
+
+Enter the Arrival and Burst time of the Process[74]
+
+Arrival time is: 	7
+
+Burst time is: 	27
+
+
+The Job Counter has just been updated:
+Job Counter for Process[74]: 274
+
+
+Enter the Arrival and Burst time of the Process[75]
+
+Arrival time is: 	7
+
+Burst time is: 	55
+
+
+The Job Counter has just been updated:
+Job Counter for Process[75]: 275
+
+
+Enter the Arrival and Burst time of the Process[76]
+
+Arrival time is: 	7
+
+Burst time is: 	90
+
+
+The Job Counter has just been updated:
+Job Counter for Process[76]: 276
+
+
+Enter the Arrival and Burst time of the Process[77]
+
+Arrival time is: 	7
+
+Burst time is: 	16
+
+
+The Job Counter has just been updated:
+Job Counter for Process[77]: 277
+
+
+Enter the Arrival and Burst time of the Process[78]
+
+Arrival time is: 	8
+
+Burst time is: 	30
+
+
+The Job Counter has just been updated:
+Job Counter for Process[78]: 278
+
+
+Enter the Arrival and Burst time of the Process[79]
+
+Arrival time is: 	8
+
+Burst time is: 	67
+
+
+The Job Counter has just been updated:
+Job Counter for Process[79]: 279
+
+
+Enter the Arrival and Burst time of the Process[80]
+
+Arrival time is: 	8
+
+Burst time is: 	33
+
+
+The Job Counter has just been updated:
+Job Counter for Process[80]: 280
+
+
+Enter the Arrival and Burst time of the Process[81]
+
+Arrival time is: 	8
+
+Burst time is: 	21
+
+
+The Job Counter has just been updated:
+Job Counter for Process[81]: 281
+
+
+Enter the Arrival and Burst time of the Process[82]
+
+Arrival time is: 	8
+
+Burst time is: 	71
+
+
+The Job Counter has just been updated:
+Job Counter for Process[82]: 282
+
+
+Enter the Arrival and Burst time of the Process[83]
+
+Arrival time is: 	8
+
+Burst time is: 	28
+
+
+The Job Counter has just been updated:
+Job Counter for Process[83]: 283
+
+
+Enter the Arrival and Burst time of the Process[84]
+
+Arrival time is: 	8
+
+Burst time is: 	97
+
+
+The Job Counter has just been updated:
+Job Counter for Process[84]: 284
+
+
+Enter the Arrival and Burst time of the Process[85]
+
+Arrival time is: 	8
+
+Burst time is: 	62
+
+
+The Job Counter has just been updated:
+Job Counter for Process[85]: 285
+
+
+Enter the Arrival and Burst time of the Process[86]
+
+Arrival time is: 	8
+
+Burst time is: 	95
+
+
+The Job Counter has just been updated:
+Job Counter for Process[86]: 286
+
+
+Enter the Arrival and Burst time of the Process[87]
+
+Arrival time is: 	8
+
+Burst time is: 	48
+
+
+The Job Counter has just been updated:
+Job Counter for Process[87]: 287
+
+
+Enter the Arrival and Burst time of the Process[88]
+
+Arrival time is: 	9
+
+Burst time is: 	97
+
+
+The Job Counter has just been updated:
+Job Counter for Process[88]: 288
+
+
+Enter the Arrival and Burst time of the Process[89]
+
+Arrival time is: 	9
+
+Burst time is: 	23
+
+
+The Job Counter has just been updated:
+Job Counter for Process[89]: 289
+
+
+Enter the Arrival and Burst time of the Process[90]
+
+Arrival time is: 	9
+
+Burst time is: 	33
+
+
+The Job Counter has just been updated:
+Job Counter for Process[90]: 290
+
+
+Enter the Arrival and Burst time of the Process[91]
+
+Arrival time is: 	9
+
+Burst time is: 	27
+
+
+The Job Counter has just been updated:
+Job Counter for Process[91]: 291
+
+
+Enter the Arrival and Burst time of the Process[92]
+
+Arrival time is: 	9
+
+Burst time is: 	67
+
+
+The Job Counter has just been updated:
+Job Counter for Process[92]: 292
+
+
+Enter the Arrival and Burst time of the Process[93]
+
+Arrival time is: 	9
+
+Burst time is: 	54
+
+
+The Job Counter has just been updated:
+Job Counter for Process[93]: 293
+
+
+Enter the Arrival and Burst time of the Process[94]
+
+Arrival time is: 	10
+
+Burst time is: 	84
+
+
+The Job Counter has just been updated:
+Job Counter for Process[94]: 294
+
+
+Enter the Arrival and Burst time of the Process[95]
+
+Arrival time is: 	10
+
+Burst time is: 	86
+
+
+The Job Counter has just been updated:
+Job Counter for Process[95]: 295
+
+
+Enter the Arrival and Burst time of the Process[96]
+
+Arrival time is: 	10
+
+Burst time is: 	88
+
+
+The Job Counter has just been updated:
+Job Counter for Process[96]: 296
+
+
+Enter the Arrival and Burst time of the Process[97]
+
+Arrival time is: 	10
+
+Burst time is: 	75
+
+
+The Job Counter has just been updated:
+Job Counter for Process[97]: 297
+
+
+Enter the Arrival and Burst time of the Process[98]
+
+Arrival time is: 	10
+
+Burst time is: 	16
+
+
+The Job Counter has just been updated:
+Job Counter for Process[98]: 298
+
+
+Enter the Arrival and Burst time of the Process[99]
+
+Arrival time is: 	10
+
+Burst time is: 	68
+
+
+The Job Counter has just been updated:
+Job Counter for Process[99]: 299
+
+
+Enter the Arrival and Burst time of the Process[100]
+
+Arrival time is: 	10
+
+Burst time is: 	48
+
+
+The Job Counter has just been updated:
+Job Counter for Process[100]: 300
+
+Enter the Time Quantum for the process: 	2
+
+Process No 		Burst Time 		TAT 		Waiting Time 
+Process No[1] 		 3				 201			 198
+
+Process No[28] 		 4				 253			 249
+
+Process No[19] 		 5				 433			 428
+
+Process No[4] 		 8				 600			 592
+
+Process No[44] 		 7				 671			 664
+
+Process No[21] 		 10				 822			 812
+
+Process No[45] 		 10				 863			 853
+
+Process No[71] 		 10				 912			 902
+
+Process No[59] 		 14				 1259			 1245
+
+Process No[17] 		 16				 1374			 1358
+
+Process No[30] 		 15				 1392			 1377
+
+Process No[77] 		 16				 1473			 1457
+
+Process No[98] 		 16				 1512			 1496
+
+Process No[53] 		 18				 1609			 1591
+
+Process No[62] 		 18				 1624			 1606
+
+Process No[67] 		 18				 1634			 1616
+
+Process No[37] 		 19				 1756			 1737
+
+Process No[81] 		 21				 1988			 1967
+
+Process No[27] 		 24				 2074			 2050
+
+Process No[89] 		 23				 2166			 2143
+
+Process No[15] 		 25				 2220			 2195
+
+Process No[69] 		 27				 2453			 2426
+
+Process No[74] 		 27				 2459			 2432
+
+Process No[83] 		 28				 2472			 2444
+
+Process No[91] 		 27				 2484			 2457
+
+Process No[7] 		 30				 2519			 2489
+
+Process No[20] 		 29				 2537			 2508
+
+Process No[78] 		 30				 2616			 2586
+
+Process No[61] 		 31				 2741			 2710
+
+Process No[2] 		 33				 2802			 2769
+
+Process No[64] 		 34				 2886			 2852
+
+Process No[80] 		 33				 2903			 2870
+
+Process No[90] 		 33				 2915			 2882
+
+Process No[68] 		 36				 3028			 2992
+
+Process No[8] 		 39				 3213			 3174
+
+Process No[12] 		 40				 3221			 3181
+
+Process No[34] 		 39				 3246			 3207
+
+Process No[50] 		 44				 3521			 3477
+
+Process No[24] 		 45				 3611			 3566
+
+Process No[54] 		 45				 3649			 3604
+
+Process No[13] 		 47				 3723			 3676
+
+Process No[42] 		 48				 3755			 3707
+
+Process No[52] 		 48				 3768			 3720
+
+Process No[57] 		 48				 3774			 3726
+
+Process No[73] 		 47				 3787			 3740
+
+Process No[87] 		 48				 3802			 3754
+
+Process No[100] 		 48				 3818			 3770
+
+Process No[65] 		 52				 3998			 3946
+
+Process No[18] 		 54				 4057			 4003
+
+Process No[93] 		 54				 4125			 4071
+
+Process No[75] 		 55				 4210			 4155
+
+Process No[39] 		 57				 4279			 4222
+
+Process No[40] 		 57				 4280			 4223
+
+Process No[58] 		 57				 4297			 4240
+
+Process No[36] 		 60				 4371			 4311
+
+Process No[6] 		 62				 4436			 4374
+
+Process No[63] 		 62				 4482			 4420
+
+Process No[85] 		 62				 4496			 4434
+
+Process No[5] 		 65				 4607			 4542
+
+Process No[26] 		 67				 4704			 4637
+
+Process No[79] 		 67				 4739			 4672
+
+Process No[92] 		 67				 4747			 4680
+
+Process No[99] 		 68				 4756			 4688
+
+Process No[32] 		 69				 4787			 4718
+
+Process No[38] 		 69				 4791			 4722
+
+Process No[60] 		 69				 4807			 4738
+
+Process No[82] 		 71				 4882			 4811
+
+Process No[3] 		 74				 4906			 4832
+
+Process No[25] 		 73				 4919			 4846
+
+Process No[22] 		 76				 4980			 4904
+
+Process No[43] 		 76				 4991			 4915
+
+Process No[51] 		 75				 4999			 4924
+
+Process No[55] 		 75				 5000			 4925
+
+Process No[97] 		 75				 5018			 4943
+
+Process No[11] 		 78				 5034			 4956
+
+Process No[41] 		 78				 5047			 4969
+
+Process No[9] 		 80				 5082			 5002
+
+Process No[47] 		 80				 5098			 5018
+
+Process No[70] 		 80				 5105			 5025
+
+Process No[72] 		 79				 5106			 5027
+
+Process No[94] 		 84				 5193			 5109
+
+Process No[14] 		 85				 5210			 5125
+
+Process No[95] 		 86				 5232			 5146
+
+Process No[23] 		 88				 5249			 5161
+
+Process No[49] 		 87				 5259			 5172
+
+Process No[96] 		 88				 5267			 5179
+
+Process No[48] 		 90				 5289			 5199
+
+Process No[76] 		 90				 5292			 5202
+
+Process No[29] 		 92				 5309			 5217
+
+Process No[31] 		 91				 5310			 5219
+
+Process No[33] 		 92				 5312			 5220
+
+Process No[10] 		 94				 5330			 5236
+
+Process No[16] 		 94				 5332			 5238
+
+Process No[56] 		 94				 5333			 5239
+
+Process No[35] 		 95				 5344			 5249
+
+Process No[46] 		 95				 5344			 5249
+
+Process No[66] 		 96				 5344			 5248
+
+Process No[86] 		 95				 5345			 5250
+
+Process No[84] 		 97				 5348			 5251
+
+Process No[88] 		 97				 5348			 5251
+
+ Average Turn Around Time: 	3643.080000
+ Average Waiting Time: 	3696.650000
+
+*************************END OF Round Robin THREAD*************************
+
+
+
 *************************Shortest Job NonPreemptive THREAD*************************
 
 Enter Burst Time For Process[1]:	3
@@ -1339,502 +2651,502 @@ Enter Burst Time For Process[100]:	48
 
 
 The Job Counter has just been updated:
-Job Counter for Process[1]: 201
+Job Counter for Process[1]: 301
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[2]: 202
+Job Counter for Process[2]: 302
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[3]: 203
+Job Counter for Process[3]: 303
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[4]: 204
+Job Counter for Process[4]: 304
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[5]: 205
+Job Counter for Process[5]: 305
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[6]: 206
+Job Counter for Process[6]: 306
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[7]: 207
+Job Counter for Process[7]: 307
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[8]: 208
+Job Counter for Process[8]: 308
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[9]: 209
+Job Counter for Process[9]: 309
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[10]: 210
+Job Counter for Process[10]: 310
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[11]: 211
+Job Counter for Process[11]: 311
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[12]: 212
+Job Counter for Process[12]: 312
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[13]: 213
+Job Counter for Process[13]: 313
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[14]: 214
+Job Counter for Process[14]: 314
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[15]: 215
+Job Counter for Process[15]: 315
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[16]: 216
+Job Counter for Process[16]: 316
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[17]: 217
+Job Counter for Process[17]: 317
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[18]: 218
+Job Counter for Process[18]: 318
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[19]: 219
+Job Counter for Process[19]: 319
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[20]: 220
+Job Counter for Process[20]: 320
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[21]: 221
+Job Counter for Process[21]: 321
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[22]: 222
+Job Counter for Process[22]: 322
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[23]: 223
+Job Counter for Process[23]: 323
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[24]: 224
+Job Counter for Process[24]: 324
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[25]: 225
+Job Counter for Process[25]: 325
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[26]: 226
+Job Counter for Process[26]: 326
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[27]: 227
+Job Counter for Process[27]: 327
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[28]: 228
+Job Counter for Process[28]: 328
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[29]: 229
+Job Counter for Process[29]: 329
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[30]: 230
+Job Counter for Process[30]: 330
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[31]: 231
+Job Counter for Process[31]: 331
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[32]: 232
+Job Counter for Process[32]: 332
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[33]: 233
+Job Counter for Process[33]: 333
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[34]: 234
+Job Counter for Process[34]: 334
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[35]: 235
+Job Counter for Process[35]: 335
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[36]: 236
+Job Counter for Process[36]: 336
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[37]: 237
+Job Counter for Process[37]: 337
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[38]: 238
+Job Counter for Process[38]: 338
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[39]: 239
+Job Counter for Process[39]: 339
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[40]: 240
+Job Counter for Process[40]: 340
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[41]: 241
+Job Counter for Process[41]: 341
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[42]: 242
+Job Counter for Process[42]: 342
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[43]: 243
+Job Counter for Process[43]: 343
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[44]: 244
+Job Counter for Process[44]: 344
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[45]: 245
+Job Counter for Process[45]: 345
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[46]: 246
+Job Counter for Process[46]: 346
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[47]: 247
+Job Counter for Process[47]: 347
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[48]: 248
+Job Counter for Process[48]: 348
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[49]: 249
+Job Counter for Process[49]: 349
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[50]: 250
+Job Counter for Process[50]: 350
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[51]: 251
+Job Counter for Process[51]: 351
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[52]: 252
+Job Counter for Process[52]: 352
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[53]: 253
+Job Counter for Process[53]: 353
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[54]: 254
+Job Counter for Process[54]: 354
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[55]: 255
+Job Counter for Process[55]: 355
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[56]: 256
+Job Counter for Process[56]: 356
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[57]: 257
+Job Counter for Process[57]: 357
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[58]: 258
+Job Counter for Process[58]: 358
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[59]: 259
+Job Counter for Process[59]: 359
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[60]: 260
+Job Counter for Process[60]: 360
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[61]: 261
+Job Counter for Process[61]: 361
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[62]: 262
+Job Counter for Process[62]: 362
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[63]: 263
+Job Counter for Process[63]: 363
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[64]: 264
+Job Counter for Process[64]: 364
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[65]: 265
+Job Counter for Process[65]: 365
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[66]: 266
+Job Counter for Process[66]: 366
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[67]: 267
+Job Counter for Process[67]: 367
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[68]: 268
+Job Counter for Process[68]: 368
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[69]: 269
+Job Counter for Process[69]: 369
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[70]: 270
+Job Counter for Process[70]: 370
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[71]: 271
+Job Counter for Process[71]: 371
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[72]: 272
+Job Counter for Process[72]: 372
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[73]: 273
+Job Counter for Process[73]: 373
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[74]: 274
+Job Counter for Process[74]: 374
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[75]: 275
+Job Counter for Process[75]: 375
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[76]: 276
+Job Counter for Process[76]: 376
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[77]: 277
+Job Counter for Process[77]: 377
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[78]: 278
+Job Counter for Process[78]: 378
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[79]: 279
+Job Counter for Process[79]: 379
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[80]: 280
+Job Counter for Process[80]: 380
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[81]: 281
+Job Counter for Process[81]: 381
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[82]: 282
+Job Counter for Process[82]: 382
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[83]: 283
+Job Counter for Process[83]: 383
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[84]: 284
+Job Counter for Process[84]: 384
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[85]: 285
+Job Counter for Process[85]: 385
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[86]: 286
+Job Counter for Process[86]: 386
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[87]: 287
+Job Counter for Process[87]: 387
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[88]: 288
+Job Counter for Process[88]: 388
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[89]: 289
+Job Counter for Process[89]: 389
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[90]: 290
+Job Counter for Process[90]: 390
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[91]: 291
+Job Counter for Process[91]: 391
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[92]: 292
+Job Counter for Process[92]: 392
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[93]: 293
+Job Counter for Process[93]: 393
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[94]: 294
+Job Counter for Process[94]: 394
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[95]: 295
+Job Counter for Process[95]: 395
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[96]: 296
+Job Counter for Process[96]: 396
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[97]: 297
+Job Counter for Process[97]: 397
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[98]: 298
+Job Counter for Process[98]: 398
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[99]: 299
+Job Counter for Process[99]: 399
 
 
 
 The Job Counter has just been updated:
-Job Counter for Process[100]: 300
+Job Counter for Process[100]: 400
 
 
 Process ID		Burst Time		Waiting Time		TurnAround Time
@@ -2048,1321 +3360,9 @@ Average TurnAround Time = 2656.130000
 
 
 
-*************************Round Robin THREAD*************************
 
 
-Enter the Arrival and Burst time of the Process[1]
-
-Arrival time is: 	0
-
-Burst time is: 	3
-
-
-The Job Counter has just been updated:
-Job Counter for Process[1]: 301
-
-
-Enter the Arrival and Burst time of the Process[2]
-
-Arrival time is: 	0
-
-Burst time is: 	33
-
-
-The Job Counter has just been updated:
-Job Counter for Process[2]: 302
-
-
-Enter the Arrival and Burst time of the Process[3]
-
-Arrival time is: 	0
-
-Burst time is: 	74
-
-
-The Job Counter has just been updated:
-Job Counter for Process[3]: 303
-
-
-Enter the Arrival and Burst time of the Process[4]
-
-Arrival time is: 	0
-
-Burst time is: 	8
-
-
-The Job Counter has just been updated:
-Job Counter for Process[4]: 304
-
-
-Enter the Arrival and Burst time of the Process[5]
-
-Arrival time is: 	0
-
-Burst time is: 	65
-
-
-The Job Counter has just been updated:
-Job Counter for Process[5]: 305
-
-
-Enter the Arrival and Burst time of the Process[6]
-
-Arrival time is: 	0
-
-Burst time is: 	62
-
-
-The Job Counter has just been updated:
-Job Counter for Process[6]: 306
-
-
-Enter the Arrival and Burst time of the Process[7]
-
-Arrival time is: 	0
-
-Burst time is: 	30
-
-
-The Job Counter has just been updated:
-Job Counter for Process[7]: 307
-
-
-Enter the Arrival and Burst time of the Process[8]
-
-Arrival time is: 	0
-
-Burst time is: 	39
-
-
-The Job Counter has just been updated:
-Job Counter for Process[8]: 308
-
-
-Enter the Arrival and Burst time of the Process[9]
-
-Arrival time is: 	0
-
-Burst time is: 	80
-
-
-The Job Counter has just been updated:
-Job Counter for Process[9]: 309
-
-
-Enter the Arrival and Burst time of the Process[10]
-
-Arrival time is: 	0
-
-Burst time is: 	94
-
-
-The Job Counter has just been updated:
-Job Counter for Process[10]: 310
-
-
-Enter the Arrival and Burst time of the Process[11]
-
-Arrival time is: 	0
-
-Burst time is: 	78
-
-
-The Job Counter has just been updated:
-Job Counter for Process[11]: 311
-
-
-Enter the Arrival and Burst time of the Process[12]
-
-Arrival time is: 	0
-
-Burst time is: 	40
-
-
-The Job Counter has just been updated:
-Job Counter for Process[12]: 312
-
-
-Enter the Arrival and Burst time of the Process[13]
-
-Arrival time is: 	0
-
-Burst time is: 	47
-
-
-The Job Counter has just been updated:
-Job Counter for Process[13]: 313
-
-
-Enter the Arrival and Burst time of the Process[14]
-
-Arrival time is: 	0
-
-Burst time is: 	85
-
-
-The Job Counter has just been updated:
-Job Counter for Process[14]: 314
-
-
-Enter the Arrival and Burst time of the Process[15]
-
-Arrival time is: 	0
-
-Burst time is: 	25
-
-
-The Job Counter has just been updated:
-Job Counter for Process[15]: 315
-
-
-Enter the Arrival and Burst time of the Process[16]
-
-Arrival time is: 	0
-
-Burst time is: 	94
-
-
-The Job Counter has just been updated:
-Job Counter for Process[16]: 316
-
-
-Enter the Arrival and Burst time of the Process[17]
-
-Arrival time is: 	1
-
-Burst time is: 	16
-
-
-The Job Counter has just been updated:
-Job Counter for Process[17]: 317
-
-
-Enter the Arrival and Burst time of the Process[18]
-
-Arrival time is: 	1
-
-Burst time is: 	54
-
-
-The Job Counter has just been updated:
-Job Counter for Process[18]: 318
-
-
-Enter the Arrival and Burst time of the Process[19]
-
-Arrival time is: 	1
-
-Burst time is: 	5
-
-
-The Job Counter has just been updated:
-Job Counter for Process[19]: 319
-
-
-Enter the Arrival and Burst time of the Process[20]
-
-Arrival time is: 	1
-
-Burst time is: 	29
-
-
-The Job Counter has just been updated:
-Job Counter for Process[20]: 320
-
-
-Enter the Arrival and Burst time of the Process[21]
-
-Arrival time is: 	1
-
-Burst time is: 	10
-
-
-The Job Counter has just been updated:
-Job Counter for Process[21]: 321
-
-
-Enter the Arrival and Burst time of the Process[22]
-
-Arrival time is: 	1
-
-Burst time is: 	76
-
-
-The Job Counter has just been updated:
-Job Counter for Process[22]: 322
-
-
-Enter the Arrival and Burst time of the Process[23]
-
-Arrival time is: 	1
-
-Burst time is: 	88
-
-
-The Job Counter has just been updated:
-Job Counter for Process[23]: 323
-
-
-Enter the Arrival and Burst time of the Process[24]
-
-Arrival time is: 	2
-
-Burst time is: 	45
-
-
-The Job Counter has just been updated:
-Job Counter for Process[24]: 324
-
-
-Enter the Arrival and Burst time of the Process[25]
-
-Arrival time is: 	2
-
-Burst time is: 	73
-
-
-The Job Counter has just been updated:
-Job Counter for Process[25]: 325
-
-
-Enter the Arrival and Burst time of the Process[26]
-
-Arrival time is: 	2
-
-Burst time is: 	67
-
-
-The Job Counter has just been updated:
-Job Counter for Process[26]: 326
-
-
-Enter the Arrival and Burst time of the Process[27]
-
-Arrival time is: 	2
-
-Burst time is: 	24
-
-
-The Job Counter has just been updated:
-Job Counter for Process[27]: 327
-
-
-Enter the Arrival and Burst time of the Process[28]
-
-Arrival time is: 	2
-
-Burst time is: 	4
-
-
-The Job Counter has just been updated:
-Job Counter for Process[28]: 328
-
-
-Enter the Arrival and Burst time of the Process[29]
-
-Arrival time is: 	2
-
-Burst time is: 	92
-
-
-The Job Counter has just been updated:
-Job Counter for Process[29]: 329
-
-
-Enter the Arrival and Burst time of the Process[30]
-
-Arrival time is: 	2
-
-Burst time is: 	15
-
-
-The Job Counter has just been updated:
-Job Counter for Process[30]: 330
-
-
-Enter the Arrival and Burst time of the Process[31]
-
-Arrival time is: 	2
-
-Burst time is: 	91
-
-
-The Job Counter has just been updated:
-Job Counter for Process[31]: 331
-
-
-Enter the Arrival and Burst time of the Process[32]
-
-Arrival time is: 	2
-
-Burst time is: 	69
-
-
-The Job Counter has just been updated:
-Job Counter for Process[32]: 332
-
-
-Enter the Arrival and Burst time of the Process[33]
-
-Arrival time is: 	2
-
-Burst time is: 	92
-
-
-The Job Counter has just been updated:
-Job Counter for Process[33]: 333
-
-
-Enter the Arrival and Burst time of the Process[34]
-
-Arrival time is: 	2
-
-Burst time is: 	39
-
-
-The Job Counter has just been updated:
-Job Counter for Process[34]: 334
-
-
-Enter the Arrival and Burst time of the Process[35]
-
-Arrival time is: 	3
-
-Burst time is: 	95
-
-
-The Job Counter has just been updated:
-Job Counter for Process[35]: 335
-
-
-Enter the Arrival and Burst time of the Process[36]
-
-Arrival time is: 	3
-
-Burst time is: 	60
-
-
-The Job Counter has just been updated:
-Job Counter for Process[36]: 336
-
-
-Enter the Arrival and Burst time of the Process[37]
-
-Arrival time is: 	3
-
-Burst time is: 	19
-
-
-The Job Counter has just been updated:
-Job Counter for Process[37]: 337
-
-
-Enter the Arrival and Burst time of the Process[38]
-
-Arrival time is: 	3
-
-Burst time is: 	69
-
-
-The Job Counter has just been updated:
-Job Counter for Process[38]: 338
-
-
-Enter the Arrival and Burst time of the Process[39]
-
-Arrival time is: 	3
-
-Burst time is: 	57
-
-
-The Job Counter has just been updated:
-Job Counter for Process[39]: 339
-
-
-Enter the Arrival and Burst time of the Process[40]
-
-Arrival time is: 	3
-
-Burst time is: 	57
-
-
-The Job Counter has just been updated:
-Job Counter for Process[40]: 340
-
-
-Enter the Arrival and Burst time of the Process[41]
-
-Arrival time is: 	3
-
-Burst time is: 	78
-
-
-The Job Counter has just been updated:
-Job Counter for Process[41]: 341
-
-
-Enter the Arrival and Burst time of the Process[42]
-
-Arrival time is: 	4
-
-Burst time is: 	48
-
-
-The Job Counter has just been updated:
-Job Counter for Process[42]: 342
-
-
-Enter the Arrival and Burst time of the Process[43]
-
-Arrival time is: 	4
-
-Burst time is: 	76
-
-
-The Job Counter has just been updated:
-Job Counter for Process[43]: 343
-
-
-Enter the Arrival and Burst time of the Process[44]
-
-Arrival time is: 	4
-
-Burst time is: 	7
-
-
-The Job Counter has just been updated:
-Job Counter for Process[44]: 344
-
-
-Enter the Arrival and Burst time of the Process[45]
-
-Arrival time is: 	4
-
-Burst time is: 	10
-
-
-The Job Counter has just been updated:
-Job Counter for Process[45]: 345
-
-
-Enter the Arrival and Burst time of the Process[46]
-
-Arrival time is: 	4
-
-Burst time is: 	95
-
-
-The Job Counter has just been updated:
-Job Counter for Process[46]: 346
-
-
-Enter the Arrival and Burst time of the Process[47]
-
-Arrival time is: 	4
-
-Burst time is: 	80
-
-
-The Job Counter has just been updated:
-Job Counter for Process[47]: 347
-
-
-Enter the Arrival and Burst time of the Process[48]
-
-Arrival time is: 	4
-
-Burst time is: 	90
-
-
-The Job Counter has just been updated:
-Job Counter for Process[48]: 348
-
-
-Enter the Arrival and Burst time of the Process[49]
-
-Arrival time is: 	4
-
-Burst time is: 	87
-
-
-The Job Counter has just been updated:
-Job Counter for Process[49]: 349
-
-
-Enter the Arrival and Burst time of the Process[50]
-
-Arrival time is: 	5
-
-Burst time is: 	44
-
-
-The Job Counter has just been updated:
-Job Counter for Process[50]: 350
-
-
-Enter the Arrival and Burst time of the Process[51]
-
-Arrival time is: 	5
-
-Burst time is: 	75
-
-
-The Job Counter has just been updated:
-Job Counter for Process[51]: 351
-
-
-Enter the Arrival and Burst time of the Process[52]
-
-Arrival time is: 	5
-
-Burst time is: 	48
-
-
-The Job Counter has just been updated:
-Job Counter for Process[52]: 352
-
-
-Enter the Arrival and Burst time of the Process[53]
-
-Arrival time is: 	5
-
-Burst time is: 	18
-
-
-The Job Counter has just been updated:
-Job Counter for Process[53]: 353
-
-
-Enter the Arrival and Burst time of the Process[54]
-
-Arrival time is: 	5
-
-Burst time is: 	45
-
-
-The Job Counter has just been updated:
-Job Counter for Process[54]: 354
-
-
-Enter the Arrival and Burst time of the Process[55]
-
-Arrival time is: 	5
-
-Burst time is: 	75
-
-
-The Job Counter has just been updated:
-Job Counter for Process[55]: 355
-
-
-Enter the Arrival and Burst time of the Process[56]
-
-Arrival time is: 	5
-
-Burst time is: 	94
-
-
-The Job Counter has just been updated:
-Job Counter for Process[56]: 356
-
-
-Enter the Arrival and Burst time of the Process[57]
-
-Arrival time is: 	5
-
-Burst time is: 	48
-
-
-The Job Counter has just been updated:
-Job Counter for Process[57]: 357
-
-
-Enter the Arrival and Burst time of the Process[58]
-
-Arrival time is: 	5
-
-Burst time is: 	57
-
-
-The Job Counter has just been updated:
-Job Counter for Process[58]: 358
-
-
-Enter the Arrival and Burst time of the Process[59]
-
-Arrival time is: 	6
-
-Burst time is: 	14
-
-
-The Job Counter has just been updated:
-Job Counter for Process[59]: 359
-
-
-Enter the Arrival and Burst time of the Process[60]
-
-Arrival time is: 	6
-
-Burst time is: 	69
-
-
-The Job Counter has just been updated:
-Job Counter for Process[60]: 360
-
-
-Enter the Arrival and Burst time of the Process[61]
-
-Arrival time is: 	6
-
-Burst time is: 	31
-
-
-The Job Counter has just been updated:
-Job Counter for Process[61]: 361
-
-
-Enter the Arrival and Burst time of the Process[62]
-
-Arrival time is: 	6
-
-Burst time is: 	18
-
-
-The Job Counter has just been updated:
-Job Counter for Process[62]: 362
-
-
-Enter the Arrival and Burst time of the Process[63]
-
-Arrival time is: 	6
-
-Burst time is: 	62
-
-
-The Job Counter has just been updated:
-Job Counter for Process[63]: 363
-
-
-Enter the Arrival and Burst time of the Process[64]
-
-Arrival time is: 	6
-
-Burst time is: 	34
-
-
-The Job Counter has just been updated:
-Job Counter for Process[64]: 364
-
-
-Enter the Arrival and Burst time of the Process[65]
-
-Arrival time is: 	6
-
-Burst time is: 	52
-
-
-The Job Counter has just been updated:
-Job Counter for Process[65]: 365
-
-
-Enter the Arrival and Burst time of the Process[66]
-
-Arrival time is: 	6
-
-Burst time is: 	96
-
-
-The Job Counter has just been updated:
-Job Counter for Process[66]: 366
-
-
-Enter the Arrival and Burst time of the Process[67]
-
-Arrival time is: 	6
-
-Burst time is: 	18
-
-
-The Job Counter has just been updated:
-Job Counter for Process[67]: 367
-
-
-Enter the Arrival and Burst time of the Process[68]
-
-Arrival time is: 	6
-
-Burst time is: 	36
-
-
-The Job Counter has just been updated:
-Job Counter for Process[68]: 368
-
-
-Enter the Arrival and Burst time of the Process[69]
-
-Arrival time is: 	6
-
-Burst time is: 	27
-
-
-The Job Counter has just been updated:
-Job Counter for Process[69]: 369
-
-
-Enter the Arrival and Burst time of the Process[70]
-
-Arrival time is: 	7
-
-Burst time is: 	80
-
-
-The Job Counter has just been updated:
-Job Counter for Process[70]: 370
-
-
-Enter the Arrival and Burst time of the Process[71]
-
-Arrival time is: 	7
-
-Burst time is: 	10
-
-
-The Job Counter has just been updated:
-Job Counter for Process[71]: 371
-
-
-Enter the Arrival and Burst time of the Process[72]
-
-Arrival time is: 	7
-
-Burst time is: 	79
-
-
-The Job Counter has just been updated:
-Job Counter for Process[72]: 372
-
-
-Enter the Arrival and Burst time of the Process[73]
-
-Arrival time is: 	7
-
-Burst time is: 	47
-
-
-The Job Counter has just been updated:
-Job Counter for Process[73]: 373
-
-
-Enter the Arrival and Burst time of the Process[74]
-
-Arrival time is: 	7
-
-Burst time is: 	27
-
-
-The Job Counter has just been updated:
-Job Counter for Process[74]: 374
-
-
-Enter the Arrival and Burst time of the Process[75]
-
-Arrival time is: 	7
-
-Burst time is: 	55
-
-
-The Job Counter has just been updated:
-Job Counter for Process[75]: 375
-
-
-Enter the Arrival and Burst time of the Process[76]
-
-Arrival time is: 	7
-
-Burst time is: 	90
-
-
-The Job Counter has just been updated:
-Job Counter for Process[76]: 376
-
-
-Enter the Arrival and Burst time of the Process[77]
-
-Arrival time is: 	7
-
-Burst time is: 	16
-
-
-The Job Counter has just been updated:
-Job Counter for Process[77]: 377
-
-
-Enter the Arrival and Burst time of the Process[78]
-
-Arrival time is: 	8
-
-Burst time is: 	30
-
-
-The Job Counter has just been updated:
-Job Counter for Process[78]: 378
-
-
-Enter the Arrival and Burst time of the Process[79]
-
-Arrival time is: 	8
-
-Burst time is: 	67
-
-
-The Job Counter has just been updated:
-Job Counter for Process[79]: 379
-
-
-Enter the Arrival and Burst time of the Process[80]
-
-Arrival time is: 	8
-
-Burst time is: 	33
-
-
-The Job Counter has just been updated:
-Job Counter for Process[80]: 380
-
-
-Enter the Arrival and Burst time of the Process[81]
-
-Arrival time is: 	8
-
-Burst time is: 	21
-
-
-The Job Counter has just been updated:
-Job Counter for Process[81]: 381
-
-
-Enter the Arrival and Burst time of the Process[82]
-
-Arrival time is: 	8
-
-Burst time is: 	71
-
-
-The Job Counter has just been updated:
-Job Counter for Process[82]: 382
-
-
-Enter the Arrival and Burst time of the Process[83]
-
-Arrival time is: 	8
-
-Burst time is: 	28
-
-
-The Job Counter has just been updated:
-Job Counter for Process[83]: 383
-
-
-Enter the Arrival and Burst time of the Process[84]
-
-Arrival time is: 	8
-
-Burst time is: 	97
-
-
-The Job Counter has just been updated:
-Job Counter for Process[84]: 384
-
-
-Enter the Arrival and Burst time of the Process[85]
-
-Arrival time is: 	8
-
-Burst time is: 	62
-
-
-The Job Counter has just been updated:
-Job Counter for Process[85]: 385
-
-
-Enter the Arrival and Burst time of the Process[86]
-
-Arrival time is: 	8
-
-Burst time is: 	95
-
-
-The Job Counter has just been updated:
-Job Counter for Process[86]: 386
-
-
-Enter the Arrival and Burst time of the Process[87]
-
-Arrival time is: 	8
-
-Burst time is: 	48
-
-
-The Job Counter has just been updated:
-Job Counter for Process[87]: 387
-
-
-Enter the Arrival and Burst time of the Process[88]
-
-Arrival time is: 	9
-
-Burst time is: 	97
-
-
-The Job Counter has just been updated:
-Job Counter for Process[88]: 388
-
-
-Enter the Arrival and Burst time of the Process[89]
-
-Arrival time is: 	9
-
-Burst time is: 	23
-
-
-The Job Counter has just been updated:
-Job Counter for Process[89]: 389
-
-
-Enter the Arrival and Burst time of the Process[90]
-
-Arrival time is: 	9
-
-Burst time is: 	33
-
-
-The Job Counter has just been updated:
-Job Counter for Process[90]: 390
-
-
-Enter the Arrival and Burst time of the Process[91]
-
-Arrival time is: 	9
-
-Burst time is: 	27
-
-
-The Job Counter has just been updated:
-Job Counter for Process[91]: 391
-
-
-Enter the Arrival and Burst time of the Process[92]
-
-Arrival time is: 	9
-
-Burst time is: 	67
-
-
-The Job Counter has just been updated:
-Job Counter for Process[92]: 392
-
-
-Enter the Arrival and Burst time of the Process[93]
-
-Arrival time is: 	9
-
-Burst time is: 	54
-
-
-The Job Counter has just been updated:
-Job Counter for Process[93]: 393
-
-
-Enter the Arrival and Burst time of the Process[94]
-
-Arrival time is: 	10
-
-Burst time is: 	84
-
-
-The Job Counter has just been updated:
-Job Counter for Process[94]: 394
-
-
-Enter the Arrival and Burst time of the Process[95]
-
-Arrival time is: 	10
-
-Burst time is: 	86
-
-
-The Job Counter has just been updated:
-Job Counter for Process[95]: 395
-
-
-Enter the Arrival and Burst time of the Process[96]
-
-Arrival time is: 	10
-
-Burst time is: 	88
-
-
-The Job Counter has just been updated:
-Job Counter for Process[96]: 396
-
-
-Enter the Arrival and Burst time of the Process[97]
-
-Arrival time is: 	10
-
-Burst time is: 	75
-
-
-The Job Counter has just been updated:
-Job Counter for Process[97]: 397
-
-
-Enter the Arrival and Burst time of the Process[98]
-
-Arrival time is: 	10
-
-Burst time is: 	16
-
-
-The Job Counter has just been updated:
-Job Counter for Process[98]: 398
-
-
-Enter the Arrival and Burst time of the Process[99]
-
-Arrival time is: 	10
-
-Burst time is: 	68
-
-
-The Job Counter has just been updated:
-Job Counter for Process[99]: 399
-
-
-Enter the Arrival and Burst time of the Process[100]
-
-Arrival time is: 	10
-
-Burst time is: 	48
-
-
-The Job Counter has just been updated:
-Job Counter for Process[100]: 400
-
-Enter the Time Quantum for the process: 	2
-
-Process No 		Burst Time 		TAT 		Waiting Time 
-Process No[1] 		 3				 201			 198
-
-Process No[28] 		 4				 253			 249
-
-Process No[19] 		 5				 433			 428
-
-Process No[4] 		 8				 600			 592
-
-Process No[44] 		 7				 671			 664
-
-Process No[21] 		 10				 822			 812
-
-Process No[45] 		 10				 863			 853
-
-Process No[71] 		 10				 912			 902
-
-Process No[59] 		 14				 1259			 1245
-
-Process No[17] 		 16				 1374			 1358
-
-Process No[30] 		 15				 1392			 1377
-
-Process No[77] 		 16				 1473			 1457
-
-Process No[98] 		 16				 1512			 1496
-
-Process No[53] 		 18				 1609			 1591
-
-Process No[62] 		 18				 1624			 1606
-
-Process No[67] 		 18				 1634			 1616
-
-Process No[37] 		 19				 1756			 1737
-
-Process No[81] 		 21				 1988			 1967
-
-Process No[27] 		 24				 2074			 2050
-
-Process No[89] 		 23				 2166			 2143
-
-Process No[15] 		 25				 2220			 2195
-
-Process No[69] 		 27				 2453			 2426
-
-Process No[74] 		 27				 2459			 2432
-
-Process No[83] 		 28				 2472			 2444
-
-Process No[91] 		 27				 2484			 2457
-
-Process No[7] 		 30				 2519			 2489
-
-Process No[20] 		 29				 2537			 2508
-
-Process No[78] 		 30				 2616			 2586
-
-Process No[61] 		 31				 2741			 2710
-
-Process No[2] 		 33				 2802			 2769
-
-Process No[64] 		 34				 2886			 2852
-
-Process No[80] 		 33				 2903			 2870
-
-Process No[90] 		 33				 2915			 2882
-
-Process No[68] 		 36				 3028			 2992
-
-Process No[8] 		 39				 3213			 3174
-
-Process No[12] 		 40				 3221			 3181
-
-Process No[34] 		 39				 3246			 3207
-
-Process No[50] 		 44				 3521			 3477
-
-Process No[24] 		 45				 3611			 3566
-
-Process No[54] 		 45				 3649			 3604
-
-Process No[13] 		 47				 3723			 3676
-
-Process No[42] 		 48				 3755			 3707
-
-Process No[52] 		 48				 3768			 3720
-
-Process No[57] 		 48				 3774			 3726
-
-Process No[73] 		 47				 3787			 3740
-
-Process No[87] 		 48				 3802			 3754
-
-Process No[100] 		 48				 3818			 3770
-
-Process No[65] 		 52				 3998			 3946
-
-Process No[18] 		 54				 4057			 4003
-
-Process No[93] 		 54				 4125			 4071
-
-Process No[75] 		 55				 4210			 4155
-
-Process No[39] 		 57				 4279			 4222
-
-Process No[40] 		 57				 4280			 4223
-
-Process No[58] 		 57				 4297			 4240
-
-Process No[36] 		 60				 4371			 4311
-
-Process No[6] 		 62				 4436			 4374
-
-Process No[63] 		 62				 4482			 4420
-
-Process No[85] 		 62				 4496			 4434
-
-Process No[5] 		 65				 4607			 4542
-
-Process No[26] 		 67				 4704			 4637
-
-Process No[79] 		 67				 4739			 4672
-
-Process No[92] 		 67				 4747			 4680
-
-Process No[99] 		 68				 4756			 4688
-
-Process No[32] 		 69				 4787			 4718
-
-Process No[38] 		 69				 4791			 4722
-
-Process No[60] 		 69				 4807			 4738
-
-Process No[82] 		 71				 4882			 4811
-
-Process No[3] 		 74				 4906			 4832
-
-Process No[25] 		 73				 4919			 4846
-
-Process No[22] 		 76				 4980			 4904
-
-Process No[43] 		 76				 4991			 4915
-
-Process No[51] 		 75				 4999			 4924
-
-Process No[55] 		 75				 5000			 4925
-
-Process No[97] 		 75				 5018			 4943
-
-Process No[11] 		 78				 5034			 4956
-
-Process No[41] 		 78				 5047			 4969
-
-Process No[9] 		 80				 5082			 5002
-
-Process No[47] 		 80				 5098			 5018
-
-Process No[70] 		 80				 5105			 5025
-
-Process No[72] 		 79				 5106			 5027
-
-Process No[94] 		 84				 5193			 5109
-
-Process No[14] 		 85				 5210			 5125
-
-Process No[95] 		 86				 5232			 5146
-
-Process No[23] 		 88				 5249			 5161
-
-Process No[49] 		 87				 5259			 5172
-
-Process No[96] 		 88				 5267			 5179
-
-Process No[48] 		 90				 5289			 5199
-
-Process No[76] 		 90				 5292			 5202
-
-Process No[29] 		 92				 5309			 5217
-
-Process No[31] 		 91				 5310			 5219
-
-Process No[33] 		 92				 5312			 5220
-
-Process No[10] 		 94				 5330			 5236
-
-Process No[16] 		 94				 5332			 5238
-
-Process No[56] 		 94				 5333			 5239
-
-Process No[35] 		 95				 5344			 5249
-
-Process No[46] 		 95				 5344			 5249
-
-Process No[66] 		 96				 5344			 5248
-
-Process No[86] 		 95				 5345			 5250
-
-Process No[84] 		 97				 5348			 5251
-
-Process No[88] 		 97				 5348			 5251
-
- Average Turn Around Time: 	3643.080000
- Average Waiting Time: 	3696.650000
-
-*************************END OF Round Robin THREAD*************************
-
-
-
-
-
-*************************Execution Time Elapsed for parallelism (Threads): 0.005330 SEC*************************
+*************************Execution Time Elapsed for parallelism (Threads): 0.006423 SEC*************************
 
 
 *************************Sequential Execution Begins*************************
@@ -8549,4 +8549,4 @@ Average Turnaround Time=2656
 
 
 
-*************************Execution Time Elapsed for Sequential: 0.005427 SEC*************************
+*************************Execution Time Elapsed for Sequential: 0.005440 SEC*************************
