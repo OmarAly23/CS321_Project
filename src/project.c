@@ -18,8 +18,8 @@ int job_counter = 0;
 char *Buffer;
 // Special Buffer for printing sequential statements
 char *sequential;
-// Timing variable
-long double executionTimer;
+// // Timing variable
+// long double executionTimer;
 
 
 void die_with_error(char *msg); // Function Prototype
@@ -68,8 +68,6 @@ void *safe_calloc(size_t size) {
 
 void *fcfs(void *arg) {
 
-	long double startTimer, endTimer, elapsedTimer;
-	startTimer = getTime();
 	
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numberOfLines);
@@ -150,17 +148,17 @@ void *fcfs(void *arg) {
 
 	free(dt);
 
-	endTimer = getTime();
-	elapsedTimer = endTimer - startTimer;
-	executionTimer += elapsedTimer;
+	// endTimer = getTime();
+	// elapsedTimer = endTimer - startTimer;
+	// executionTimer += elapsedTimer;
 
 	return NULL;
 }
 /* Shortest Job First Preemptive Scheduling Algorithm */
 void *sjfPreemptive(void *arg) {
 
-	long double startTimer, endTimer, elapsedTimer;
-	startTimer = getTime();
+	// long double startTimer, endTimer, elapsedTimer;
+	// startTimer = getTime();
 
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numberOfLines);
@@ -227,17 +225,17 @@ void *sjfPreemptive(void *arg) {
 	pthread_mutex_unlock(&mutex1);
 	free(dt);
 
-	endTimer = getTime();
-	elapsedTimer = endTimer - startTimer;
-	executionTimer += elapsedTimer;
+	// endTimer = getTime();
+	// elapsedTimer = endTimer - startTimer;
+	// executionTimer += elapsedTimer;
 
 	return NULL;
 }
 /* Shortest job first Non-Preemptive Scheduling Algorithm */
 void *sjfNon(void *arg) {
 
-	long double startTimer, endTimer, elapsedTimer;
-	startTimer = getTime();
+	// long double startTimer, endTimer, elapsedTimer;
+	// startTimer = getTime();
 
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numberOfLines);
@@ -332,9 +330,9 @@ void *sjfNon(void *arg) {
 
 	free(dt);
 
-	endTimer = getTime();
-	elapsedTimer = endTimer - startTimer;
-	executionTimer += elapsedTimer;
+	// endTimer = getTime();
+	// elapsedTimer = endTimer - startTimer;
+	// executionTimer += elapsedTimer;
 
 	return NULL;
 }
@@ -343,8 +341,8 @@ void *sjfNon(void *arg) {
 /* Round Robin Scheduling Algorithm */
 void *roundRobin(void *arg) {
 	
-	long double startTimer, endTimer, elapsedTimer;
-	startTimer = getTime();
+	// long double startTimer, endTimer, elapsedTimer;
+	// startTimer = getTime();
 
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numberOfLines);
@@ -418,9 +416,9 @@ void *roundRobin(void *arg) {
 	// getch();  
 	free(dt);
 	
-	endTimer = getTime();
-	elapsedTimer = endTimer - startTimer;
-	executionTimer += elapsedTimer;
+	// endTimer = getTime();
+	// elapsedTimer = endTimer - startTimer;
+	// executionTimer += elapsedTimer;
 
 	return NULL;
 }
@@ -428,8 +426,8 @@ void *roundRobin(void *arg) {
 /* Priority Non-Preemptive Schedling Algorithm */
 void *priorityNon(void *arg) {
 
-	long double startTimer, endTimer, elapsedTimer;
-	startTimer = getTime();
+	// long double startTimer, endTimer, elapsedTimer;
+	// startTimer = getTime();
 
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 
@@ -516,9 +514,9 @@ void *priorityNon(void *arg) {
 		//pthread_mutex_unlock(&mutex4);
 		free(dt);
 
-		endTimer = getTime();
-		elapsedTimer = endTimer - startTimer;
-		executionTimer += elapsedTimer;
+		// endTimer = getTime();
+		// elapsedTimer = endTimer - startTimer;
+		// executionTimer += elapsedTimer;
 
 		return NULL;
 }
@@ -526,8 +524,8 @@ void *priorityNon(void *arg) {
 /* Priority Preemptive Scheduling Algorithm */
 void *priorityPre(void *arg) {
 
-	long double startTimer, endTimer, elapsedTimer;
-	startTimer = getTime();
+	// long double startTimer, endTimer, elapsedTimer;
+	// startTimer = getTime();
 	/* The struct d2 should contain the burst and arrival time of all the processes */
 	data *dt = safe_calloc( (sizeof *dt) * numberOfLines);
 	memcpy(dt, dt_main, (sizeof *dt) * numberOfLines);
@@ -618,9 +616,9 @@ void *priorityPre(void *arg) {
 	//pthread_mutex_unlock(&mutex5);
 	free(dt);
 	
-	endTimer = getTime();
-	elapsedTimer = endTimer - startTimer;
-	executionTimer += elapsedTimer;
+	// endTimer = getTime();
+	// elapsedTimer = endTimer - startTimer;
+	// executionTimer += elapsedTimer;
 
 	return NULL;	
 
@@ -747,11 +745,6 @@ void sjfPreemptive_sequential() {
 	sprintf(sequential, "%s\n\n*************************Shortest Job Preemptive SEQUENTIAl*************************\n\n", sequential);
 	for (time = 0; count != numberOfLines; time++) {
 
-		pthread_mutex_lock(&mutex);
-		job_counter++;
-		sprintf(sequential, "%s\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", sequential, time+1, job_counter);
-		pthread_mutex_unlock(&mutex);
-
 		smallest = numberOfLines;
 		for (i = 0; i < numberOfLines; i++) {
 
@@ -766,6 +759,15 @@ void sjfPreemptive_sequential() {
 			waitTime += end - dt[smallest].arrivalTime;
 			total_turnAround_time += end - dt[smallest].arrivalTime;
 		}
+
+	}
+
+	for (i = 0; i < numberOfLines; i++) {
+
+		pthread_mutex_lock(&mutex);
+		job_counter++;
+		sprintf(sequential, "%s\n\nThe Job Counter has just been updated:\nJob Counter for Process[%d]: %d\n\n", sequential, i+1, job_counter);
+		pthread_mutex_unlock(&mutex);
 
 	}
 
@@ -1240,36 +1242,36 @@ int main (void) {
 	/* The six threads each to represent one scheduling algorithm */
 
 
-	// start = getTime();
+	start = getTime();
 	sprintf(Buffer, "%s\n\n*************************Parallelism (Threaded) Execution Begins*************************\n\n", Buffer);
 	/* First Come First Serve Scheduling Algorithm*/
 	//pthread_mutex_lock(&mutex);
 	pthread_create(&tid1, NULL, fcfs,  NULL);	
-	usleep(usecs);
+	// usleep(usecs);
 	//pthread_mutex_unlock(&mutex);
 
 	/* Shortest Job First Preemptive Scheduling Algorithm */
 	//pthread_mutex_lock(&mutex1);
 	pthread_create(&tid2, NULL, sjfPreemptive, NULL);
-	usleep(usecs);
+	// usleep(usecs);
 	//pthread_mutex_unlock(&mutex1);
 	
 	/* Shortest Job First Non-Preemptive Scheduling Algorithm */
 	//pthread_mutex_lock(&mutex2);
 	pthread_create(&tid3, NULL, sjfNon,  NULL);
-	usleep(usecs);
+	// usleep(usecs);
 	//pthread_mutex_unlock(&mutex2);
 
 	/* Round Robin Scheduling Algorithm */
 	//pthread_mutex_lock(&mutex3);
 	pthread_create(&tid4, NULL, roundRobin, NULL);
-	usleep(usecs);
+	// usleep(usecs);
 	//pthread_mutex_unlock(&mutex3);
 
 	/* Priority Non-Preemptive Scheduling Algorithm*/
 	//pthread_mutex_lock(&mutex4);
 	pthread_create(&tid5, NULL, priorityNon, NULL);
-	usleep(usecs);
+	// usleep(usecs);
 	//pthread_mutex_unlock(&mutex4);
 
 	/* Priority Preemptive Scheduling Algorithm */
@@ -1292,15 +1294,16 @@ int main (void) {
 	pthread_join(tid6, NULL);
 
 
-	// end = getTime();
-	// elapse = (end - start)/2;
+	end = getTime();
+	elapse = end - start;
 
 	
-	printf("\n\n\n*************************Execution Time Elapsed for parallelism (Threads): %LF SEC*************************\n", executionTimer);
+	printf("\n\n\n*************************Execution Time Elapsed for parallelism (Threads): %LF SEC*************************\n", elapse);
 
 
 	start = getTime();
 	sprintf(sequential, "%s\n\n*************************Sequential Execution Begins*************************\n\n", sequential);
+	
 	fcfs_sequential();
 	sjfPreemptive_sequential();
 	sjfNon_sequential();
