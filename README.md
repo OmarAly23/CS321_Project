@@ -21,7 +21,7 @@
   - Finalizing the project.
 
 ### How to Run:
-  - After cloning the repo
+  - After cloning the repo: cd src
   - (*) make project
   - ./project
   - The output will be redirected to a text file called "output.txt"
